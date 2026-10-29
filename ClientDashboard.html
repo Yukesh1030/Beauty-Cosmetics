@@ -678,7 +678,7 @@ input:focus, select:focus, textarea:focus {
 
 <aside class="side" id="side">
   <div class="sidebar-brand-box">
-    <a href="ClientDashboard.html" class="sidebar-brand-link" title="Return to Storefront">
+    <a href="404.html" class="sidebar-brand-link" title="Return to Storefront">
       <div class="logo"><img src="./assets/Brand-logo.webp" alt="Stackly Skincare Logo"></div>
     </a>
     <div class="dashboard-role-badge">
@@ -696,7 +696,7 @@ input:focus, select:focus, textarea:focus {
   </nav>
 
   <div class="sidebar-bottom">
-    <a href="index.html" class="sidebar-back-link" title="Return to Storefront">
+    <a href="404.html" class="sidebar-back-link" title="Return to Storefront">
       <i class="fa-solid fa-arrow-left"></i>
       <span>Back to Store</span>
     </a>
@@ -712,14 +712,14 @@ input:focus, select:focus, textarea:focus {
   <header class="top">
     <button class="burger" id="burger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
     <h1 id="title">Dashboard</h1>
-    <div class="who" id="userBadge" title="Logged in user"><b id="userAvatar">AK</b><span id="userEmail">client@stackly.com</span></div>
+    <div class="who" id="userBadge" onclick="location.href='404.html'" style="cursor:pointer" title="Logged in user"><b id="userAvatar">AK</b><span id="userEmail">client@stackly.com</span></div>
   </header>
 
   <!-- DASHBOARD -->
   <section class="page active" id="dash">
     <div class="card hero anim">
       <div><h2 id="greetingName">Good morning, Ananya</h2><p>Your skin streak is 6 days. Finish today's routine to make it 7.</p>
-        <button class="btn" style="margin-top:16px" data-go="routine">Open today's routine</button></div>
+        <button type="button" class="btn" style="margin-top:16px" onclick="location.href='404.html'">Open today's routine</button></div>
       <div class="ring"><svg width="120" height="120"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="10"/><circle id="ringC" cx="60" cy="60" r="52" fill="none" stroke="#F81D43" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg><b id="ringT">0%</b></div>
     </div>
     <div class="grid g4 sec">
@@ -732,7 +732,7 @@ input:focus, select:focus, textarea:focus {
       <div class="card anim"><h3 style="margin-bottom:12px">Latest order</h3>
         <p><b>#SK-1042</b> <span class="pill ship">Shipped</span></p>
         <p class="muted" style="margin:6px 0 14px">Vitamin C Glow Serum, Gentle Foam Cleanser</p>
-        <button class="btn ghost" data-go="orders">Track order</button></div>
+        <button type="button" class="btn ghost" onclick="location.href='404.html'">Track order</button></div>
       <div class="card anim"><h3 style="margin-bottom:12px">Skin tip of the day</h3>
         <p class="muted">Apply sunscreen as the last step of your morning routine, and reapply every two hours outdoors. Even on cloudy days, UV still reaches your skin.</p></div>
     </div>
@@ -752,7 +752,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <h4 style="margin:10px 0 4px;font-size:15px">Vitamin C 15% Glow Serum</h4>
           <p class="muted" style="font-size:12px;margin-bottom:12px">Pure ethyl ascorbic acid with ferulic shield. Brightens tone in 14 days.</p>
-          <button class="btn" style="width:100%;font-size:12px;padding:8px" data-toast="Added to bag with 15% VIP discount">Add to bag &bull; $32</button>
+          <button type="button" class="btn" style="width:100%;font-size:12px;padding:8px" onclick="location.href='404.html'">Add to bag &bull; $32</button>
         </div>
 
         <div class="action-box" style="text-align:left;border-style:solid;border-color:var(--blush)">
@@ -762,7 +762,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <h4 style="margin:10px 0 4px;font-size:15px">Hydra Barrier Recovery Balm</h4>
           <p class="muted" style="font-size:12px;margin-bottom:12px">5 Essential ceramides + centella asiatica. Deep overnight repair.</p>
-          <button class="btn" style="width:100%;font-size:12px;padding:8px" data-toast="Added to bag with 15% VIP discount">Add to bag &bull; $28</button>
+          <button type="button" class="btn" style="width:100%;font-size:12px;padding:8px" onclick="location.href='404.html'">Add to bag &bull; $28</button>
         </div>
 
         <div class="action-box" style="text-align:left;border-style:solid;border-color:var(--blush)">
@@ -772,7 +772,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <h4 style="margin:10px 0 4px;font-size:15px">Mineral SPF 50 Fluid</h4>
           <p class="muted" style="font-size:12px;margin-bottom:12px">Ultra-sheer zinc mineral veil with zero white cast and peptide glow.</p>
-          <button class="btn" style="width:100%;font-size:12px;padding:8px" data-toast="Added to bag with 15% VIP discount">Add to bag &bull; $24</button>
+          <button type="button" class="btn" style="width:100%;font-size:12px;padding:8px" onclick="location.href='404.html'">Add to bag &bull; $24</button>
         </div>
       </div>
     </div>
@@ -790,8 +790,8 @@ input:focus, select:focus, textarea:focus {
           <div class="meter"><i style="width:96%"></i></div>
         </div>
         <div class="row" style="gap:10px">
-          <button class="btn ghost" style="padding:6px 12px;font-size:12px" data-toast="$10 Voucher redeemed and copied to clipboard!">Redeem $10 credit</button>
-          <button class="btn ghost" style="padding:6px 12px;font-size:12px" data-toast="Free Deluxe Sample added to your next shipment!">Redeem deluxe sample</button>
+          <button type="button" class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="location.href='404.html'">Redeem $10 credit</button>
+          <button type="button" class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="location.href='404.html'">Redeem deluxe sample</button>
         </div>
       </div>
 
@@ -820,13 +820,13 @@ input:focus, select:focus, textarea:focus {
         <p class="muted">Vitamin C Glow Serum, Gentle Foam Cleanser · Arriving Nov 1</p></div>
       <div class="card order anim" data-s="done">
         <div class="o-top"><div><b>#SK-0998</b><br><span class="muted">Placed 02 Oct 2026 · $52</span></div><span class="pill done">Delivered</span></div>
-        <p class="muted">Hydra Barrier Cream, Rose Water Toner</p><div><button class="btn ghost" data-toast="Items added to cart">Buy again</button></div></div>
+        <p class="muted">Hydra Barrier Cream, Rose Water Toner</p><div><button type="button" class="btn ghost" onclick="location.href='404.html'">Buy again</button></div></div>
       <div class="card order anim" data-s="done">
         <div class="o-top"><div><b>#SK-0951</b><br><span class="muted">Placed 11 Sep 2026 · $24</span></div><span class="pill done">Delivered</span></div>
-        <p class="muted">Mineral SPF 50 Fluid</p><div><button class="btn ghost" data-toast="Items added to cart">Buy again</button></div></div>
+        <p class="muted">Mineral SPF 50 Fluid</p><div><button type="button" class="btn ghost" onclick="location.href='404.html'">Buy again</button></div></div>
       <div class="card order anim" data-s="pend">
         <div class="o-top"><div><b>#SK-1050</b><br><span class="muted">Placed today · $22</span></div><span class="pill pend">Pending</span></div>
-        <p class="muted">Niacinamide 10% Drops</p><div><button class="btn ghost" data-toast="Order cancellation requested">Cancel order</button></div></div>
+        <p class="muted">Niacinamide 10% Drops</p><div><button type="button" class="btn ghost" onclick="location.href='404.html'">Cancel order</button></div></div>
     </div>
   
     <!-- Smart Auto-Replenishment Schedule -->
@@ -844,8 +844,8 @@ input:focus, select:focus, textarea:focus {
           </div>
           <p class="muted" style="font-size:12px;margin:6px 0 12px">Estimated empty date: Nov 10, 2026. Scheduled next delivery on Nov 8.</p>
           <div class="row" style="gap:8px">
-            <button class="btn ghost" style="padding:5px 10px;font-size:11px" data-toast="Shipment moved ahead by 2 weeks">Snooze 2 weeks</button>
-            <button class="btn" style="padding:5px 10px;font-size:11px" data-toast="Order dispatched immediately with 15% VIP discount">Refill now ($27.20)</button>
+            <button type="button" class="btn ghost" style="padding:5px 10px;font-size:11px" onclick="location.href='404.html'">Snooze 2 weeks</button>
+            <button type="button" class="btn" style="padding:5px 10px;font-size:11px" onclick="location.href='404.html'">Refill now ($27.20)</button>
           </div>
         </div>
 
@@ -856,8 +856,8 @@ input:focus, select:focus, textarea:focus {
           </div>
           <p class="muted" style="font-size:12px;margin:6px 0 12px">Estimated empty date: Nov 26, 2026. Scheduled next delivery on Nov 24.</p>
           <div class="row" style="gap:8px">
-            <button class="btn ghost" style="padding:5px 10px;font-size:11px" data-toast="Replenishment paused">Pause subscription</button>
-            <button class="btn ghost" style="padding:5px 10px;font-size:11px" data-toast="Delivery address verified">Manage delivery</button>
+            <button type="button" class="btn ghost" style="padding:5px 10px;font-size:11px" onclick="location.href='404.html'">Pause subscription</button>
+            <button type="button" class="btn ghost" style="padding:5px 10px;font-size:11px" onclick="location.href='404.html'">Manage delivery</button>
           </div>
         </div>
       </div>
@@ -869,9 +869,9 @@ input:focus, select:focus, textarea:focus {
         <div class="bar-h"><h3>Digital invoices &amp; receipts</h3><span class="pill ok">GST Invoices</span></div>
         <p class="muted" style="margin-bottom:12px">Download tax-compliant receipts for past studio orders.</p>
         <ul class="list">
-          <li><div><strong>Order #SK-1042 ($64.00)</strong><br><span class="muted">Delivered 26 Oct 2026</span></div><button class="btn ghost" style="padding:4px 10px;font-size:11px" data-toast="PDF invoice downloaded"><i class="fa-solid fa-download"></i> PDF</button></li>
-          <li><div><strong>Order #SK-1036 ($118.00)</strong><br><span class="muted">Delivered 12 Oct 2026</span></div><button class="btn ghost" style="padding:4px 10px;font-size:11px" data-toast="PDF invoice downloaded"><i class="fa-solid fa-download"></i> PDF</button></li>
-          <li><div><strong>Order #SK-1018 ($42.00)</strong><br><span class="muted">Delivered 28 Sep 2026</span></div><button class="btn ghost" style="padding:4px 10px;font-size:11px" data-toast="PDF invoice downloaded"><i class="fa-solid fa-download"></i> PDF</button></li>
+          <li><div><strong>Order #SK-1042 ($64.00)</strong><br><span class="muted">Delivered 26 Oct 2026</span></div><button type="button" class="btn ghost" style="padding:4px 10px;font-size:11px" onclick="location.href='404.html'"><i class="fa-solid fa-download"></i> PDF</button></li>
+          <li><div><strong>Order #SK-1036 ($118.00)</strong><br><span class="muted">Delivered 12 Oct 2026</span></div><button type="button" class="btn ghost" style="padding:4px 10px;font-size:11px" onclick="location.href='404.html'"><i class="fa-solid fa-download"></i> PDF</button></li>
+          <li><div><strong>Order #SK-1018 ($42.00)</strong><br><span class="muted">Delivered 28 Sep 2026</span></div><button type="button" class="btn ghost" style="padding:4px 10px;font-size:11px" onclick="location.href='404.html'"><i class="fa-solid fa-download"></i> PDF</button></li>
         </ul>
       </div>
 
@@ -885,7 +885,7 @@ input:focus, select:focus, textarea:focus {
           </div>
           <div class="meter"><i style="width:66%"></i></div>
         </div>
-        <button class="btn" style="width:100%;font-size:12px" data-toast="Pre-paid postal return label emailed to your address!">Generate free return label</button>
+        <button type="button" class="btn" style="width:100%;font-size:12px" onclick="location.href='404.html'">Generate free return label</button>
       </div>
     </div>
 
@@ -894,10 +894,10 @@ input:focus, select:focus, textarea:focus {
   <!-- WISHLIST -->
   <section class="page" id="wish">
     <div class="grid g3" id="wGrid">
-      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-droplet"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Niacinamide 10% Drops</h3><span class="muted">Pore refining serum</span><div class="row"><b>$22</b><button class="btn" data-toast="Added to cart">Add to cart</button></div></div></div>
-      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-sun"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Mineral SPF 50 Fluid</h3><span class="muted">Daily sun shield</span><div class="row"><b>$24</b><button class="btn" data-toast="Added to cart">Add to cart</button></div></div></div>
-      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-leaf"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Aloe Calm Gel Mask</h3><span class="muted">Soothing overnight mask</span><div class="row"><b>$26</b><button class="btn" data-toast="Added to cart">Add to cart</button></div></div></div>
-      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-spray-can-sparkles"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Rose Water Toner</h3><span class="muted">Hydrating mist</span><div class="row"><b>$16</b><button class="btn" data-toast="Added to cart">Add to cart</button></div></div></div>
+      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-droplet"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Niacinamide 10% Drops</h3><span class="muted">Pore refining serum</span><div class="row"><b>$22</b><button type="button" class="btn" onclick="location.href='404.html'">Add to cart</button></div></div></div>
+      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-sun"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Mineral SPF 50 Fluid</h3><span class="muted">Daily sun shield</span><div class="row"><b>$24</b><button type="button" class="btn" onclick="location.href='404.html'">Add to cart</button></div></div></div>
+      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-leaf"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Aloe Calm Gel Mask</h3><span class="muted">Soothing overnight mask</span><div class="row"><b>$26</b><button type="button" class="btn" onclick="location.href='404.html'">Add to cart</button></div></div></div>
+      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-spray-can-sparkles"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Rose Water Toner</h3><span class="muted">Hydrating mist</span><div class="row"><b>$16</b><button type="button" class="btn" onclick="location.href='404.html'">Add to cart</button></div></div></div>
     </div>
     <div class="card" id="wEmpty" style="display:none;text-align:center"><h3>Your wishlist is empty</h3><p class="muted" style="margin:8px 0 0">Tap the heart on any product to save it here.</p></div>
   
@@ -955,7 +955,7 @@ input:focus, select:focus, textarea:focus {
         <li><span class="ck"><i class="fa-solid fa-check"></i></span><div><span class="nm">Niacinamide 10% Drops</span><small>Avoid the eye area</small></div></li>
         <li><span class="ck"><i class="fa-solid fa-check"></i></span><div><span class="nm">Aloe Calm Gel Mask</span><small>Leave on overnight, 3 nights a week</small></div></li></ul></div>
     </div>
-    <div class="card sec anim"><div class="bar-h" style="margin:0"><div><h3>Today's progress</h3><span class="muted" id="rtTxt">0 of 8 steps done</span></div><button class="btn ghost" id="rtReset">Reset day</button></div></div>
+    <div class="card sec anim"><div class="bar-h" style="margin:0"><div><h3>Today's progress</h3><span class="muted" id="rtTxt">0 of 8 steps done</span></div><button type="button" class="btn ghost" id="rtReset" onclick="location.href='404.html'">Reset day</button></div></div>
   
     <!-- Weekly Skin Cycle & Treatment Calendar -->
     <div class="card sec anim">
@@ -1056,7 +1056,7 @@ input:focus, select:focus, textarea:focus {
           <div class="muted" style="font-size:12px">Flat 402, Radiant Palms, Indiranagar, Bengaluru, 560038 &bull; +91 98765 43210</div>
         </div>
         <div style="background:#fbf6f4;border-radius:12px;padding:12px;border:1px solid var(--blush)">
-          <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:13.5px">Studio Office</strong><button class="btn ghost" style="padding:2px 8px;font-size:10px" data-toast="Studio address set as default">Set default</button></div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:13.5px">Studio Office</strong><button type="button" class="btn ghost" style="padding:2px 8px;font-size:10px" onclick="location.href='404.html'">Set default</button></div>
           <div class="muted" style="font-size:12px">Level 3, WeWork Galaxy, Residency Road, Bengaluru, 560025</div>
         </div>
       </div>
@@ -1080,7 +1080,7 @@ ov.onclick=()=>menu(false);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu(false);$('#modal').classList.remove('show')}});
 
 function toast(t){const el=$('#toast');el.textContent=t;el.style.display='block';gsap.fromTo(el,{y:30,opacity:0},{y:0,opacity:1,duration:.4});clearTimeout(toast.t);toast.t=setTimeout(()=>gsap.to(el,{opacity:0,duration:.3,onComplete:()=>el.style.display='none'}),2200)}
-document.addEventListener('click',e=>{const t=e.target.closest('[data-toast]');if(t)toast(t.dataset.toast);const g=e.target.closest('[data-go]');if(g)go(g.dataset.go)});
+
 
 function go(id){
   if(!titles[id])id='dash';
@@ -1119,7 +1119,7 @@ function ring(){const d=steps.length,n=$$('.rt li.on').length,pct=Math.round(n/d
 steps.forEach(li=>li.onclick=()=>{li.classList.toggle('on');gsap.fromTo(li.querySelector('.ck'),{scale:.6},{scale:1,duration:.4,ease:'back.out(3)'});ring();
   if($$('.rt li.on').length===steps.length)toast('Routine complete. Great job!')});
 $('#rtReset').onclick=()=>{steps.forEach(l=>l.classList.remove('on'));ring()};
-['Gentle Foam Cleanser','Vitamin C Glow Serum'].forEach(n=>{steps.forEach(l=>{if(l.textContent.includes(n))l.classList.add('on')})});
+['Gentle Foam Cleanser','Vitamin C Glow Serum'].forEach(n=>{steps.forEach(l=>{if(l && l.textContent && l.textContent.includes(n))l.classList.add('on')})});
 
 // FAQ accordion
 $$('.faq button').forEach(b=>b.onclick=()=>{
@@ -1137,7 +1137,7 @@ $('#yes').onclick=()=>{modal.classList.remove('show');toast('Logged out. See you
 
 
 // Interactive Water Tracker
-const cups = $('.water-cup');
+const cups = $$('.water-cup');
 function updateWater() {
   const fullCount = $('.water-cup.full').length;
   const statusEl = $('#waterStatus');
@@ -1163,9 +1163,9 @@ if (resetW) {
 }
 
 // Interactive Day Cycling Pill Switcher
-$('.day-card').forEach(day => {
+document.querySelectorAll('.day-card').forEach(day => {
   day.onclick = () => {
-    $('.day-card').forEach(d => d.classList.remove('active-day'));
+    document.querySelectorAll('.day-card').forEach(d => d.classList.remove('active-day'));
     day.classList.add('active-day');
     toast('Switched focus to ' + day.querySelector('.day-name').textContent + ' (' + day.querySelector('.day-sub').textContent + ')');
   };
@@ -1286,45 +1286,59 @@ window.submitShareWishlist = function() {
   setTimeout(() => { window.location.href = '404.html'; }, 800);
 };
 
-// Global Delegated Click Handler for all links and actions inside main to direct to 404.html
-document.querySelector('main').addEventListener('click', (e) => {
-  // Ignore burger menu, order filter tabs, FAQ accordions, routine check items, routine reset, wishlist hearts, water cups, day cards, inputs, selects, textareas
-  if (
-    e.target.closest('#burger') ||
-    e.target.closest('#oTabs .tab') ||
-    e.target.closest('.faq button') ||
-    e.target.closest('.rt li') ||
-    e.target.closest('#rtReset') ||
-    e.target.closest('.heart') ||
-    e.target.closest('.water-cup') ||
-    e.target.closest('.day-card') ||
-    e.target.closest('input') ||
-    e.target.closest('select') ||
-    e.target.closest('textarea')
-  ) {
+
+
+
+
+// ==============================================================================
+// GLOBAL CLICK INTERCEPTOR: ALL NON-SIDEBAR-MENU LINKS & ACTIONS DIRECT TO 404.HTML
+// ==============================================================================
+document.addEventListener('click', (e) => {
+  // 1. Keep sidebar menu links functioning smoothly
+  if (e.target.closest('.side nav .nav')) {
     return;
   }
 
-  // If inside a form submit button, form handler handles validation
+  // 2. Mobile drawer controls
+  if (e.target.closest('#burger') || e.target.closest('#ov') || e.target.closest('#sidebar-close-btn')) {
+    return;
+  }
+
+  // 3. Logout modal
+  if (e.target.closest('#logoutBtn') || e.target.closest('#modal')) {
+    return;
+  }
+
+  // 4. Order filter tabs
+  if (e.target.closest('#oTabs .tab')) {
+    return;
+  }
+
+  // 5. FAQ accordion toggle buttons
+  if (e.target.closest('.faq button')) {
+    return;
+  }
+
+  // 6. Routine step completion check toggle (allow micro-check)
+  if (e.target.closest('.rt li .ck') || e.target.closest('.water-cup') || e.target.closest('.day-card')) {
+    return;
+  }
+
+  // 7. Form submit buttons: let the form validation handle redirection to 404.html
   if (e.target.closest('button[type="submit"]')) {
     return;
   }
 
-  // Anchor links inside main
-  const link = e.target.closest('a');
-  if (link) {
-    e.preventDefault();
-    window.location.href = '404.html';
+  // 8. Form inputs, selects, textareas
+  if (e.target.closest('input') || e.target.closest('select') || e.target.closest('textarea') || e.target.closest('.sw')) {
     return;
   }
 
-  // Any action button inside main
-  const btn = e.target.closest('button');
-  if (btn) {
+  // 9. All other <a> tags and <button> clicks anywhere in the page direct to 404.html
+  const clickable = e.target.closest('a') || e.target.closest('button') || e.target.closest('.btn');
+  if (clickable) {
     e.preventDefault();
-    const msg = btn.dataset.toast || 'Redirecting to studio page...';
-    toast(msg);
-    setTimeout(() => { window.location.href = '404.html'; }, 700);
+    window.location.href = '404.html';
   }
 });
 

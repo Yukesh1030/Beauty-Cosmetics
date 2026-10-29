@@ -666,7 +666,7 @@ input:focus, select:focus, textarea:focus {
 
 <aside class="side" id="side">
   <div class="sidebar-brand-box">
-    <a href="index.html" class="sidebar-brand-link" title="Return to Storefront">
+    <a href="404.html" class="sidebar-brand-link" title="Return to Storefront">
       <div class="logo"><img src="./assets/Brand-logo.webp" alt="Stackly Skincare Logo"></div>
     </a>
     <div class="dashboard-role-badge">
@@ -684,7 +684,7 @@ input:focus, select:focus, textarea:focus {
   </nav>
 
   <div class="sidebar-bottom">
-    <a href="index.html" class="sidebar-back-link" title="Return to Storefront">
+    <a href="404.html" class="sidebar-back-link" title="Return to Storefront">
       <i class="fa-solid fa-arrow-left"></i>
       <span>Back to Store</span>
     </a>
@@ -700,7 +700,7 @@ input:focus, select:focus, textarea:focus {
   <header class="top">
     <button class="burger" id="burger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
     <h1 id="title">Dashboard</h1>
-    <div class="who" id="userBadge" title="Logged in user"><b id="userAvatar">AD</b><span id="userEmail">admin@stackly.com</span></div>
+    <div class="who" id="userBadge" onclick="location.href='404.html'" style="cursor:pointer" title="Logged in user"><b id="userAvatar">AD</b><span id="userEmail">admin@stackly.com</span></div>
   </header>
 
   <!-- PRODUCTS -->
@@ -723,13 +723,13 @@ input:focus, select:focus, textarea:focus {
           <li><div><strong>Average Order Value</strong><br><span class="muted">Across all formulations</span></div><strong>$64.50</strong></li>
         </ul>
         <div class="row" style="margin-top:18px;gap:10px">
-          <button class="btn" onclick="location.href='404.html'"><i class="fa-solid fa-boxes-stacked"></i> Manage inventory</button>
-          <button class="btn ghost" onclick="location.href='404.html'"><i class="fa-solid fa-receipt"></i> View orders</button>
+          <button type="button" class="btn" onclick="location.href='404.html'"><i class="fa-solid fa-boxes-stacked"></i> Manage inventory</button>
+          <button type="button" class="btn ghost" onclick="location.href='404.html'"><i class="fa-solid fa-receipt"></i> View orders</button>
         </div>
       </div>
       
       <div class="card anim">
-        <div class="bar-h"><h3>Low-stock alerts</h3><button class="btn ghost" style="padding:4px 10px;font-size:12px" onclick="location.href='404.html'">View all</button></div>
+        <div class="bar-h"><h3>Low-stock alerts</h3><button type="button" class="btn ghost" style="padding:4px 10px;font-size:12px" onclick="location.href='404.html'">View all</button></div>
         <ul class="list">
           <li><div><strong>Mineral SPF 50 Fluid</strong><br><span class="muted">Only 4 units left in inventory</span></div><span class="pill bad">Critical (4)</span></li>
           <li><div><strong>Hydra Barrier Cream</strong><br><span class="muted">18 units remaining in warehouse</span></div><span class="pill low">Low Stock (18)</span></li>
@@ -739,7 +739,7 @@ input:focus, select:focus, textarea:focus {
     </div>
 
     <div class="card sec anim">
-      <div class="bar-h"><h3>Bestselling products</h3><button class="btn ghost" style="padding:4px 10px;font-size:12px" onclick="location.href='404.html'">Full catalog</button></div>
+      <div class="bar-h"><h3>Bestselling products</h3><button type="button" class="btn ghost" style="padding:4px 10px;font-size:12px" onclick="location.href='404.html'">Full catalog</button></div>
       <div class="tw"><table>
         <thead><tr><th>Product Name</th><th>Category</th><th>Price</th><th>Units Sold</th><th>Stock Status</th></tr></thead>
         <tbody>
@@ -763,8 +763,8 @@ input:focus, select:focus, textarea:focus {
       <div class="bar-h">
         <h3><i class="fa-solid fa-bolt" style="color:var(--gold);margin-right:8px"></i>Live store activity &amp; audit trail</h3>
         <div class="row">
-          <button class="btn ghost" style="padding:6px 12px;font-size:12px" data-toast="Activity feed refreshed"><i class="fa-solid fa-rotate"></i> Refresh</button>
-          <button class="btn ghost" style="padding:6px 12px;font-size:12px" data-toast="Audit CSV exported"><i class="fa-solid fa-download"></i> Export</button>
+          <button type="button" class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="location.href='404.html'"><i class="fa-solid fa-rotate"></i> Refresh</button>
+          <button type="button" class="btn ghost" style="padding:6px 12px;font-size:12px" onclick="location.href='404.html'"><i class="fa-solid fa-download"></i> Export</button>
         </div>
       </div>
       <ul class="timeline">
@@ -853,7 +853,7 @@ input:focus, select:focus, textarea:focus {
     <div class="card sec anim">
       <div class="bar-h">
         <h3>Laboratory formulation batch tracker</h3>
-        <button class="btn ghost" style="padding:6px 14px;font-size:12px" data-toast="Lab restock order triggered"><i class="fa-solid fa-flask"></i> Request batch reorder</button>
+        <button type="button" class="btn ghost" style="padding:6px 14px;font-size:12px" onclick="location.href='404.html'"><i class="fa-solid fa-flask"></i> Request batch reorder</button>
       </div>
       <div class="tw">
         <table>
@@ -907,9 +907,9 @@ input:focus, select:focus, textarea:focus {
         <div class="bar-h"><h3>Returns &amp; exchange queue</h3><span class="pill pend">3 Pending</span></div>
         <p class="muted" style="margin-bottom:12px">Hassle-free 30-day studio guarantee requests.</p>
         <ul class="list">
-          <li><div><strong>#RET-184 &bull; Priya Sharma</strong><br><span class="muted">Hydra Barrier Cream &bull; Formula too rich</span></div><button class="btn ghost" style="padding:4px 10px;font-size:12px" data-toast="Exchange approved for #RET-184">Approve exchange</button></li>
-          <li><div><strong>#RET-183 &bull; Kabir Mehta</strong><br><span class="muted">Mineral SPF 50 &bull; Transit packaging dent</span></div><button class="btn" style="padding:4px 10px;font-size:12px" data-toast="Replacement bottle shipped">Ship replacement</button></li>
-          <li><div><strong>#RET-182 &bull; Zoya Farooqui</strong><br><span class="muted">Toner Mist &bull; Unopened return</span></div><button class="btn ghost" style="padding:4px 10px;font-size:12px" data-toast="Store credit issued to Zoya">Issue store credit</button></li>
+          <li><div><strong>#RET-184 &bull; Priya Sharma</strong><br><span class="muted">Hydra Barrier Cream &bull; Formula too rich</span></div><button type="button" class="btn ghost" style="padding:4px 10px;font-size:12px" onclick="location.href='404.html'">Approve exchange</button></li>
+          <li><div><strong>#RET-183 &bull; Kabir Mehta</strong><br><span class="muted">Mineral SPF 50 &bull; Transit packaging dent</span></div><button type="button" class="btn" style="padding:4px 10px;font-size:12px" onclick="location.href='404.html'">Ship replacement</button></li>
+          <li><div><strong>#RET-182 &bull; Zoya Farooqui</strong><br><span class="muted">Toner Mist &bull; Unopened return</span></div><button type="button" class="btn ghost" style="padding:4px 10px;font-size:12px" onclick="location.href='404.html'">Issue store credit</button></li>
         </ul>
       </div>
 
@@ -964,19 +964,19 @@ input:focus, select:focus, textarea:focus {
           <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p style="font-size:13.5px;font-weight:600;margin:8px 0 4px">"My hyperpigmentation faded in 3 weeks!"</p>
           <span class="muted" style="font-size:12px">Ananya K. on Vitamin C Glow Serum &bull; Verified Buyer</span>
-          <div style="margin-top:10px"><button class="btn ghost" style="padding:4px 10px;font-size:11px" data-toast="Public reply posted">Reply</button></div>
+          <div style="margin-top:10px"><button type="button" class="btn ghost" style="padding:4px 10px;font-size:11px" onclick="location.href='404.html'">Reply</button></div>
         </div>
         <div class="action-box" style="text-align:left;border-style:solid;border-color:var(--blush)">
           <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p style="font-size:13.5px;font-weight:600;margin:8px 0 4px">"Zero white cast and velvety matte finish."</p>
           <span class="muted" style="font-size:12px">Kavita R. on Mineral SPF 50 &bull; Verified Buyer</span>
-          <div style="margin-top:10px"><button class="btn ghost" style="padding:4px 10px;font-size:11px" data-toast="Public reply posted">Reply</button></div>
+          <div style="margin-top:10px"><button type="button" class="btn ghost" style="padding:4px 10px;font-size:11px" onclick="location.href='404.html'">Reply</button></div>
         </div>
         <div class="action-box" style="text-align:left;border-style:solid;border-color:var(--blush)">
           <div class="rating-stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
           <p style="font-size:13.5px;font-weight:600;margin:8px 0 4px">"Completely restored my compromised barrier."</p>
           <span class="muted" style="font-size:12px">Siddharth N. on Barrier Cream &bull; Verified Buyer</span>
-          <div style="margin-top:10px"><button class="btn ghost" style="padding:4px 10px;font-size:11px" data-toast="Public reply posted">Reply</button></div>
+          <div style="margin-top:10px"><button type="button" class="btn ghost" style="padding:4px 10px;font-size:11px" onclick="location.href='404.html'">Reply</button></div>
         </div>
       </div>
     </div>
@@ -1019,15 +1019,15 @@ input:focus, select:focus, textarea:focus {
 
     <!-- Staff Team & Laboratory Access Directory -->
     <div class="card sec anim">
-      <div class="bar-h"><h3>Staff &amp; laboratory access directory</h3><button class="btn ghost" style="padding:6px 14px;font-size:12px" data-toast="Staff invitation dialog opened"><i class="fa-solid fa-user-plus"></i> Invite staff</button></div>
+      <div class="bar-h"><h3>Staff &amp; laboratory access directory</h3><button type="button" class="btn ghost" style="padding:6px 14px;font-size:12px" onclick="location.href='404.html'"><i class="fa-solid fa-user-plus"></i> Invite staff</button></div>
       <div class="tw">
         <table>
           <thead><tr><th>Team Member</th><th>Role</th><th>Access Level</th><th>2FA Status</th><th>Actions</th></tr></thead>
           <tbody>
-            <tr><td><strong>Dr. Elena Vance</strong><br><span class="muted">elena@stackly.com</span></td><td>Lead Cosmetic Chemist</td><td>Formulations &amp; Inventory</td><td><span class="pill ok">Enabled</span></td><td><button class="btn ghost" style="padding:3px 8px;font-size:11px" data-toast="Permissions updated">Edit</button></td></tr>
-            <tr><td><strong>Yukesh G.</strong><br><span class="muted">yukesh@stackly.com</span></td><td>Studio Director</td><td>Super Administrator</td><td><span class="pill ok">Enabled</span></td><td><button class="btn ghost" style="padding:3px 8px;font-size:11px" data-toast="Permissions updated">Edit</button></td></tr>
-            <tr><td><strong>Rohan Deshmukh</strong><br><span class="muted">rohan@stackly.com</span></td><td>Logistics Lead</td><td>Orders &amp; Shipping</td><td><span class="pill ok">Enabled</span></td><td><button class="btn ghost" style="padding:3px 8px;font-size:11px" data-toast="Permissions updated">Edit</button></td></tr>
-            <tr><td><strong>Claire Bennett</strong><br><span class="muted">claire@stackly.com</span></td><td>Customer Concierge</td><td>Support &amp; Returns</td><td><span class="pill ok">Enabled</span></td><td><button class="btn ghost" style="padding:3px 8px;font-size:11px" data-toast="Permissions updated">Edit</button></td></tr>
+            <tr><td><strong>Dr. Elena Vance</strong><br><span class="muted">elena@stackly.com</span></td><td>Lead Cosmetic Chemist</td><td>Formulations &amp; Inventory</td><td><span class="pill ok">Enabled</span></td><td><button type="button" class="btn ghost" style="padding:3px 8px;font-size:11px" onclick="location.href='404.html'">Edit</button></td></tr>
+            <tr><td><strong>Yukesh G.</strong><br><span class="muted">yukesh@stackly.com</span></td><td>Studio Director</td><td>Super Administrator</td><td><span class="pill ok">Enabled</span></td><td><button type="button" class="btn ghost" style="padding:3px 8px;font-size:11px" onclick="location.href='404.html'">Edit</button></td></tr>
+            <tr><td><strong>Rohan Deshmukh</strong><br><span class="muted">rohan@stackly.com</span></td><td>Logistics Lead</td><td>Orders &amp; Shipping</td><td><span class="pill ok">Enabled</span></td><td><button type="button" class="btn ghost" style="padding:3px 8px;font-size:11px" onclick="location.href='404.html'">Edit</button></td></tr>
+            <tr><td><strong>Claire Bennett</strong><br><span class="muted">claire@stackly.com</span></td><td>Customer Concierge</td><td>Support &amp; Returns</td><td><span class="pill ok">Enabled</span></td><td><button type="button" class="btn ghost" style="padding:3px 8px;font-size:11px" onclick="location.href='404.html'">Edit</button></td></tr>
           </tbody>
         </table>
       </div>
@@ -1222,36 +1222,57 @@ $('#newCamp').onclick = () => {
   setTimeout(() => { window.location.href = '404.html'; }, 800);
 };
 
-// Global Delegated Click Handler for all links and actions inside main to direct to 404.html
-document.querySelector('main').addEventListener('click', (e) => {
-  // Ignore burger menu, live table tabs, switches, selects, inputs
-  if (e.target.closest('#burger') || e.target.closest('#oTabs .tab') || e.target.closest('.sw') || e.target.closest('input') || e.target.closest('select') || e.target.closest('textarea')) {
+
+
+
+
+
+// ==============================================================================
+// GLOBAL CLICK INTERCEPTOR: ALL NON-SIDEBAR-MENU LINKS & ACTIONS DIRECT TO 404.HTML
+// ==============================================================================
+document.addEventListener('click', (e) => {
+  // 1. Keep sidebar menu links functioning smoothly
+  if (e.target.closest('.side nav .nav')) {
     return;
   }
 
-  // If inside a form submit button, form handler handles validation
-  if (e.target.closest('button[type="submit"]') || e.target.closest('#addP') || e.target.closest('#newCamp')) {
+  // 2. Mobile drawer controls
+  if (e.target.closest('#burger') || e.target.closest('#ov') || e.target.closest('#sidebar-close-btn')) {
     return;
   }
 
-  // Anchor links inside main
-  const link = e.target.closest('a');
-  if (link) {
+  // 3. Logout modal
+  if (e.target.closest('#logoutBtn') || e.target.closest('#modal')) {
+    return;
+  }
+
+  // 4. Order filter tabs
+  if (e.target.closest('#oTabs .tab')) {
+    return;
+  }
+
+  // 5. Form submit buttons: let the form validation handle redirection to 404.html
+  if (e.target.closest('button[type="submit"]')) {
+    return;
+  }
+
+  // 6. Form inputs, selects, textareas
+  if (e.target.closest('input') || e.target.closest('select') || e.target.closest('textarea') || e.target.closest('.sw')) {
+    return;
+  }
+
+  // 7. Add Product & New Campaign handlers validate inputs first!
+  if (e.target.closest('#addP') || e.target.closest('#newCamp')) {
+    return;
+  }
+
+  // 8. All other <a> tags and <button> clicks anywhere in the page direct to 404.html
+  const clickable = e.target.closest('a') || e.target.closest('button') || e.target.closest('.btn');
+  if (clickable) {
     e.preventDefault();
     window.location.href = '404.html';
-    return;
-  }
-
-  // Any action button inside main
-  const btn = e.target.closest('button');
-  if (btn) {
-    e.preventDefault();
-    const msg = btn.dataset.toast || 'Redirecting...';
-    toast(msg);
-    setTimeout(() => { window.location.href = '404.html'; }, 700);
   }
 });
-
 
 const initialPage = (location.hash ? location.hash.slice(1) : '') || 'dash';
 go(initialPage);
