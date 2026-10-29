@@ -1,1504 +1,1335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Stackly Skincare Client Sanctuary Portal. Track orders, manage daily skincare routines, curate your wishlist, and access personalized rituals.">
-  <meta name="theme-color" content="#06121A">
-
-  <title>Client Sanctuary Portal | Stackly Skincare Studio</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/webp" href="assets/Brand-logo.webp">
-
-  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- FontAwesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
-
-  <style>
-    /* ==========================================================================
-       CLIENT DASHBOARD STYLES (Luxury Skincare Portal)
-       ========================================================================== */
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --color-navy: #06121A;
-      --color-sidebar: #06121A;
-      --color-coral: #F81D43;
-      --color-coral-hover: #D91033;
-      --color-nude: #EEDFDA;
-      --color-nude-light: #FAF5F2;
-      --color-green: #10B981;
-      --color-bg: #F8F6F4;
-      --color-card: #FFFFFF;
-      --color-text: #1A1817;
-      --color-text-muted: #64748B;
-      --color-border: #E8E2DE;
-      --radius-card: 20px;
-      --radius-pill: 999px;
-      --shadow-card: 0 4px 20px rgba(6, 18, 26, 0.05);
-      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    html, body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: var(--color-bg);
-      color: var(--color-text);
-      min-height: 100vh;
-      overflow-x: hidden;
-      width: 100%;
-    }
-
-    .client-layout {
-      display: flex;
-      min-height: 100vh;
-      width: 100%;
-      position: relative;
-    }
-
-    /* --------------------------------------------------------------------------
-       1. SIDEBAR (5 Menus)
-       -------------------------------------------------------------------------- */
-    .client-sidebar {
-      width: 260px;
-      background-color: var(--color-sidebar);
-      color: #D2DEE6;
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
-      border-right: 1px solid rgba(255, 255, 255, 0.06);
-      transition: var(--transition);
-      z-index: 100;
-    }
-
-    .sidebar-brand-box {
-      padding: 24px 22px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .sidebar-logo {
-      height: 34px;
-      width: auto;
-      object-fit: contain;
-    }
-
-    .sidebar-brand-badge {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      padding: 3px 8px;
-      border-radius: var(--radius-pill);
-      background-color: rgba(248, 29, 67, 0.15);
-      color: var(--color-coral);
-      border: 1px solid rgba(248, 29, 67, 0.3);
-      text-transform: uppercase;
-    }
-
-    .sidebar-menu-list {
-      list-style: none;
-      padding: 20px 14px;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      flex: 1;
-    }
-
-    .sidebar-menu-item {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 12px 16px;
-      border-radius: 12px;
-      color: #94A3B8;
-      font-weight: 600;
-      font-size: 0.92rem;
-      text-decoration: none;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .sidebar-menu-item i {
-      font-size: 1.1rem;
-      width: 22px;
-      text-align: center;
-      color: #94A3B8;
-      transition: var(--transition);
-    }
-
-    .sidebar-menu-item:hover {
-      color: #FFFFFF;
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .sidebar-menu-item.active {
-      background-color: var(--color-coral);
-      color: #FFFFFF;
-      box-shadow: 0 4px 14px rgba(248, 29, 67, 0.35);
-    }
-
-    .sidebar-menu-item.active i {
-      color: #FFFFFF;
-    }
-
-    .sidebar-bottom-box {
-      padding: 18px 16px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .btn-sidebar-store {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 12px;
-      background-color: rgba(255, 255, 255, 0.06);
-      color: #FFFFFF;
-      font-weight: 700;
-      font-size: 0.88rem;
-      text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: var(--transition);
-    }
-
-    .btn-sidebar-store:hover {
-      background-color: var(--color-coral);
-      border-color: var(--color-coral);
-    }
-
-    /* --------------------------------------------------------------------------
-       2. TOP BAR HEADER
-       -------------------------------------------------------------------------- */
-    .client-main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      min-width: 0;
-      overflow-x: hidden;
-    }
-
-    .client-topbar {
-      height: 72px;
-      background-color: #FFFFFF;
-      border-bottom: 1px solid var(--color-border);
-      padding: 0 32px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-    }
-
-    .topbar-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .btn-mobile-sidebar-toggle {
-      display: none;
-      background: none;
-      border: none;
-      font-size: 1.25rem;
-      color: var(--color-text);
-      cursor: pointer;
-      padding: 6px;
-    }
-
-    .welcome-pill {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--color-text);
-    }
-
-    .welcome-pill span {
-      color: var(--color-coral);
-    }
-
-    .topbar-right {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .rewards-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background-color: rgba(248, 29, 67, 0.08);
-      border: 1px solid rgba(248, 29, 67, 0.2);
-      border-radius: var(--radius-pill);
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: var(--color-coral);
-    }
-
-    .topbar-notification-btn {
-      position: relative;
-      background: none;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      color: #64748B;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .topbar-notification-btn:hover {
-      background-color: #F1F5F9;
-      color: var(--color-text);
-    }
-
-    .notification-dot {
-      position: absolute;
-      top: 9px;
-      right: 9px;
-      width: 8px;
-      height: 8px;
-      background-color: var(--color-coral);
-      border-radius: 50%;
-      border: 2px solid #FFFFFF;
-    }
-
-    .client-profile-pill {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 4px 12px 4px 6px;
-      border-radius: var(--radius-pill);
-      background-color: #F8FAFC;
-      border: 1px solid var(--color-border);
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .client-avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #F81D43 0%, #06121A 100%);
-      color: #FFFFFF;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      font-weight: 800;
-    }
-
-    .client-profile-name {
-      font-size: 0.85rem;
-      font-weight: 700;
-    }
-
-    /* --------------------------------------------------------------------------
-       3. CLIENT DASHBOARD CONTENT AREA
-       -------------------------------------------------------------------------- */
-    .client-content {
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 32px;
-      flex: 1;
-    }
-
-    .client-hero-banner {
-      background: linear-gradient(135deg, #06121A 0%, #0F2636 100%);
-      color: #FFFFFF;
-      border-radius: var(--radius-card);
-      padding: 36px 32px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 16px 40px rgba(6, 18, 26, 0.15);
-    }
-
-    .hero-banner-text h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.85rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .hero-banner-text p {
-      color: #B4C2CC;
-      font-size: 0.95rem;
-      max-width: 520px;
-      line-height: 1.6;
-    }
-
-    .hero-banner-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 12px 24px;
-      background-color: var(--color-coral);
-      color: #FFFFFF;
-      border-radius: var(--radius-pill);
-      font-weight: 700;
-      font-size: 0.92rem;
-      text-decoration: none;
-      box-shadow: 0 4px 16px rgba(248, 29, 67, 0.4);
-      transition: var(--transition);
-      flex-shrink: 0;
-    }
-
-    .hero-banner-cta:hover {
-      background-color: var(--color-coral-hover);
-      transform: translateY(-2px);
-    }
-
-    /* --------------------------------------------------------------------------
-       4. CLIENT KPI CARDS (TOTAL ORDERS, WISHLIST, ROUTINE PRODUCTS)
-       -------------------------------------------------------------------------- */
-    .client-kpi-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .client-kpi-card {
-      background: var(--color-card);
-      border-radius: var(--radius-card);
-      padding: 24px;
-      box-shadow: var(--shadow-card);
-      border: 1px solid var(--color-border);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: var(--transition);
-    }
-
-    .client-kpi-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 24px rgba(6, 18, 26, 0.08);
-      border-color: rgba(248, 29, 67, 0.3);
-    }
-
-    .client-kpi-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-
-    .client-kpi-label {
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: var(--color-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-    }
-
-    .client-kpi-icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-    }
-
-    .kpi-icon-orders { background-color: rgba(59, 130, 246, 0.1); color: #3B82F6; }
-    .kpi-icon-wishlist { background-color: rgba(248, 29, 67, 0.1); color: var(--color-coral); }
-    .kpi-icon-routine { background-color: rgba(16, 185, 129, 0.1); color: var(--color-green); }
-    .kpi-icon-points { background-color: rgba(245, 158, 11, 0.1); color: #D97706; }
-
-    .client-kpi-val {
-      font-size: 2.2rem;
-      font-weight: 800;
-      color: var(--color-text);
-      line-height: 1.1;
-      margin-bottom: 6px;
-    }
-
-    .client-kpi-sub {
-      font-size: 0.82rem;
-      color: var(--color-text-muted);
-    }
-
-    /* --------------------------------------------------------------------------
-       5. MORNING & EVENING SKINCARE ROUTINE CARDS
-       -------------------------------------------------------------------------- */
-    .routine-section-card {
-      background: var(--color-card);
-      border-radius: var(--radius-card);
-      padding: 32px;
-      box-shadow: var(--shadow-card);
-      border: 1px solid var(--color-border);
-    }
-
-    .section-title-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 24px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .section-heading-text {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--color-text);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .section-heading-text i {
-      color: var(--color-coral);
-    }
-
-    .routine-cards-2col {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .routine-box {
-      border: 1.5px solid var(--color-border);
-      border-radius: 16px;
-      padding: 24px;
-      background-color: var(--color-nude-light);
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .routine-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: 12px;
-    }
-
-    .routine-title-badge {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 1.05rem;
-    }
-
-    .routine-steps-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .routine-step-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #FFFFFF;
-      padding: 12px 14px;
-      border-radius: 10px;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .step-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .step-num {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background-color: var(--color-coral);
-      color: #FFFFFF;
-      font-size: 0.76rem;
-      font-weight: 800;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .step-name {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--color-text);
-    }
-
-    .step-tag {
-      font-size: 0.74rem;
-      color: #64748B;
-    }
-
-    /* --------------------------------------------------------------------------
-       6. RECENT ORDERS & TRACKING DEMONSTRATION
-       -------------------------------------------------------------------------- */
-    .orders-section-card {
-      background: var(--color-card);
-      border-radius: var(--radius-card);
-      padding: 32px;
-      box-shadow: var(--shadow-card);
-      border: 1px solid var(--color-border);
-    }
-
-    .order-card-item {
-      border: 1px solid var(--color-border);
-      border-radius: 16px;
-      padding: 24px;
-      margin-bottom: 16px;
-      background-color: #FFFFFF;
-      transition: var(--transition);
-    }
-
-    .order-card-item:hover {
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-      border-color: rgba(248, 29, 67, 0.2);
-    }
-
-    .order-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .order-id-badge {
-      font-weight: 800;
-      font-size: 1.05rem;
-      color: var(--color-navy);
-    }
-
-    .order-date-text {
-      font-size: 0.84rem;
-      color: #64748B;
-      margin-left: 8px;
-    }
-
-    .order-tracking-stepper {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: relative;
-      margin: 24px 0 16px;
-      padding: 0 10px;
-    }
-
-    .stepper-line {
-      position: absolute;
-      top: 14px;
-      left: 30px;
-      right: 30px;
-      height: 3px;
-      background-color: #E2E8F0;
-      z-index: 1;
-    }
-
-    .stepper-line-progress {
-      position: absolute;
-      top: 14px;
-      left: 30px;
-      width: 75%;
-      height: 3px;
-      background-color: var(--color-coral);
-      z-index: 2;
-    }
-
-    .stepper-node {
-      position: relative;
-      z-index: 3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .stepper-circle {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background-color: #FFFFFF;
-      border: 2px solid #CBD5E1;
-      color: #94A3B8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.78rem;
-      font-weight: 700;
-    }
-
-    .stepper-node.completed .stepper-circle {
-      background-color: var(--color-coral);
-      border-color: var(--color-coral);
-      color: #FFFFFF;
-    }
-
-    .stepper-node.active .stepper-circle {
-      border-color: var(--color-coral);
-      color: var(--color-coral);
-      box-shadow: 0 0 0 4px rgba(248, 29, 67, 0.15);
-    }
-
-    .stepper-title {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--color-text);
-      text-align: center;
-    }
-
-    /* --------------------------------------------------------------------------
-       7. WISHLIST GRID
-       -------------------------------------------------------------------------- */
-    .wishlist-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .wishlist-card {
-      background-color: #FFFFFF;
-      border-radius: 16px;
-      border: 1px solid var(--color-border);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: var(--transition);
-    }
-
-    .wishlist-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
-    }
-
-    .wishlist-thumb-wrap {
-      position: relative;
-      height: 160px;
-      background-color: #EEDFDA;
-    }
-
-    .wishlist-thumb {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .btn-remove-wishlist {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.9);
-      border: none;
-      color: #EF4444;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-      transition: var(--transition);
-    }
-
-    .btn-remove-wishlist:hover {
-      background-color: #EF4444;
-      color: #FFFFFF;
-    }
-
-    .wishlist-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      flex: 1;
-    }
-
-    .wishlist-name {
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: var(--color-text);
-    }
-
-    .wishlist-price {
-      font-weight: 800;
-      color: var(--color-coral);
-      font-size: 1rem;
-    }
-
-    .btn-add-cart {
-      margin-top: auto;
-      padding: 10px 14px;
-      border-radius: 10px;
-      background-color: #0F172A;
-      color: #FFFFFF;
-      border: none;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: var(--transition);
-    }
-
-    .btn-add-cart:hover {
-      background-color: var(--color-coral);
-    }
-
-    /* --------------------------------------------------------------------------
-       8. PERSONALIZED RECOMMENDATIONS BASED ON SKIN PREFERENCES
-       -------------------------------------------------------------------------- */
-    .pref-pills-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 20px;
-    }
-
-    .pref-pill {
-      padding: 8px 18px;
-      border-radius: var(--radius-pill);
-      background-color: #F1F5F9;
-      border: 1.5px solid var(--color-border);
-      color: var(--color-text);
-      font-size: 0.85rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: var(--transition);
-    }
-
-    .pref-pill.active {
-      background-color: var(--color-coral);
-      color: #FFFFFF;
-      border-color: var(--color-coral);
-      box-shadow: 0 4px 12px rgba(248, 29, 67, 0.25);
-    }
-
-    /* --------------------------------------------------------------------------
-       9. CLINICAL MEDICAL DISCLAIMER CALLOUT
-       -------------------------------------------------------------------------- */
-    .clinical-disclaimer-box {
-      background-color: #FFFBEB;
-      border: 1px solid #FCD34D;
-      border-radius: 14px;
-      padding: 18px 22px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      color: #92400E;
-      font-size: 0.86rem;
-      line-height: 1.6;
-    }
-
-    .clinical-disclaimer-box i {
-      font-size: 1.25rem;
-      color: #D97706;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    /* Toast */
-    .client-toast {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      background-color: var(--color-navy);
-      color: #FFFFFF;
-      padding: 14px 22px;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
-      z-index: 300;
-      transform: translateY(100px);
-      opacity: 0;
-      transition: var(--transition);
-    }
-
-    .client-toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
-    /* Mobile Responsive */
-    @media (max-width: 1100px) {
-      .client-kpi-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      .routine-cards-2col {
-        grid-template-columns: 1fr;
-      }
-      .wishlist-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 868px) {
-      .client-sidebar {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        transform: translateX(-100%);
-      }
-
-      .client-sidebar.mobile-open {
-        transform: translateX(0);
-      }
-
-      .btn-mobile-sidebar-toggle {
-        display: block;
-      }
-
-      .client-content {
-        padding: 20px 16px;
-      }
-
-      .client-hero-banner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 20px;
-        padding: 26px 20px;
-      }
-
-      .client-kpi-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .wishlist-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .stepper-title {
-        font-size: 0.68rem;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stackly - My Account</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blush:#EEDFDA;--navy:#06121A;--navy-dark:#040D13;--red:#F81D43;--gold:#E5B869;--white:#FFFFFF;--muted:#655E5B;--w:275px}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden;width:100%}
+body{font-family:'DM Sans',sans-serif;background:var(--blush);color:var(--navy);min-height:100vh}
+button,input,textarea,select{font:inherit}
+h1,h2,h3{font-family:'Fraunces',serif}
+/* ==========================================================================
+   ENHANCED VISIBLE & PROPERLY ALIGNED SIDEBAR STYLES (WITH GOLD ROLE BADGE)
+   ========================================================================== */
+.side {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: var(--w);
+  background: var(--navy);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px;
+  z-index: 50;
+  transition: transform .35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+.side::-webkit-scrollbar {
+  width: 5px;
+}
+.side::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+}
+
+/* BRAND HEADER BOX & LOGO */
+.sidebar-brand-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 20px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  text-align: center;
+  flex-shrink: 0;
+}
+.sidebar-brand-link {
+  display: block;
+  text-decoration: none;
+  transition: transform 0.25s ease;
+}
+.sidebar-brand-link:hover {
+  transform: scale(1.02);
+}
+.logo {
+  width: 175px;
+  height: 52px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* BOLD STYLING GOLD COLOR ROLE BADGE */
+.dashboard-role-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 6px 16px;
+  background: rgba(229, 184, 105, 0.12);
+  border: 1.5px solid rgba(229, 184, 105, 0.5);
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3), 0 0 12px rgba(229, 184, 105, 0.18);
+}
+.role-gold-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+  flex-shrink: 0;
+}
+.role-gold-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11.5px;
+  font-weight: 800; /* BOLD STYLING */
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold); /* GOLD COLOR FONT COLOR */
+  line-height: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+/* SIDEBAR NAVIGATION ITEMS */
+.side nav {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: #E2E8F0; /* High contrast visible text */
+  font-size: 14.5px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+.nav i {
+  width: 22px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--gold); /* Warm gold icon accent */
+  transition: all 0.22s ease;
+  flex-shrink: 0;
+}
+.nav span {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.nav:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateX(4px);
+}
+.nav:hover i {
+  color: #FFFFFF;
+  transform: scale(1.1);
+}
+.nav.active {
+  background: linear-gradient(135deg, #F81D43 0%, #D81436 100%);
+  color: #FFFFFF;
+  font-weight: 700;
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 18px rgba(248, 29, 67, 0.38);
+  transform: translateX(2px);
+}
+.nav.active i {
+  color: #FFFFFF;
+}
+
+/* SIDEBAR BOTTOM / FOOTER & LOGOUT */
+.sidebar-bottom {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-shrink: 0;
+  width: 100%;
+}
+.sidebar-back-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: transparent;
+  color: #94A3B8;
+  font-size: 13.5px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+.sidebar-back-link i {
+  width: 22px;
+  text-align: center;
+  font-size: 14px;
+  color: #64748B;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+.sidebar-back-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #FFFFFF;
+  transform: translateX(4px);
+}
+.sidebar-back-link:hover i {
+  color: var(--gold);
+}
+.out {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(248, 29, 67, 0.1);
+  border: 1px solid rgba(248, 29, 67, 0.3);
+  color: #FF8A9B;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+.out i {
+  width: 22px;
+  text-align: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.out:hover {
+  background: var(--red);
+  color: #FFFFFF;
+  border-color: var(--red);
+  box-shadow: 0 4px 16px rgba(248, 29, 67, 0.4);
+  transform: translateY(-2px);
+}
+.out:hover i {
+  color: #FFFFFF;
+}
+.main{margin-left:var(--w);padding:24px 28px 40px;overflow-x:hidden;min-width:0}
+.top{display:flex;align-items:center;gap:14px;margin-bottom:26px}
+.burger{display:none;width:44px;height:44px;border:0;border-radius:12px;background:var(--navy);color:#fff;cursor:pointer;align-items:center;justify-content:center;font-size:18px}
+.top h1{font-size:28px;flex:1}
+.who{display:flex;align-items:center;gap:10px;background:var(--white);padding:6px 14px 6px 6px;border-radius:40px;box-shadow:0 2px 8px rgba(6,18,26,.06);max-width:300px;flex-shrink:0}
+.who b{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--red),#d81436);color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px;letter-spacing:.5px;flex-shrink:0;box-shadow:0 2px 8px rgba(248,29,67,.35)}
+.who span{font-size:13px;font-weight:600;color:var(--navy);max-width:210px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:inline-block}
+.ov{position:fixed;inset:0;background:rgba(6,18,26,.55);opacity:0;pointer-events:none;transition:.3s;z-index:40}
+.ov.show{opacity:1;pointer-events:auto}
+.page{display:none}.page.active{display:block}
+.grid{display:grid;gap:18px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+
+.hero{background:var(--navy);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.hero h2{font-size:30px;margin-bottom:6px}.hero p{color:#bdb3af}
+.ring{position:relative;width:120px;height:120px}
+.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:24px}
+.stat{display:flex;align-items:center;gap:16px}
+.stat i{width:50px;height:50px;border-radius:14px;background:var(--blush);color:var(--red);display:grid;place-items:center;font-size:20px}
+.stat strong{font-size:26px;display:block;font-family:'Fraunces',serif}
+.muted,.stat span{color:var(--muted);font-size:14px}
+.sec{margin-top:22px}
+.bar-h{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.bar-h h3{font-size:20px}
+.btn{border:0;background:var(--red);color:#fff;padding:10px 18px;border-radius:10px;cursor:pointer;font-weight:700;transition:.2s}
+.btn:hover{background:var(--navy);transform:translateY(-2px)}
+.btn.ghost{background:var(--blush);color:var(--navy)}
+input[type=text],input[type=email],input[type=tel],select,textarea{padding:10px 14px;border:1.5px solid var(--blush);border-radius:10px;background:#fff;color:var(--navy);outline:0;width:100%}
+textarea{min-height:110px;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--red)}
+
+.ship{background:#e1ecf7;color:#1d5a99}.pend{background:#fff1d6;color:#9a6200}.done{background:#e3f3e8;color:#1f7a3d}
+.order{display:grid;gap:14px}
+.o-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.track{display:flex;justify-content:space-between;position:relative;margin:8px 0 4px}
+.track::before{content:"";position:absolute;top:13px;left:6%;right:6%;height:3px;background:var(--blush)}
+.track .fill{position:absolute;top:13px;left:6%;height:3px;background:var(--red);width:0}
+.step{position:relative;text-align:center;font-size:12px;color:var(--muted);flex:1}
+.step i{width:28px;height:28px;border-radius:50%;background:var(--blush);display:grid;place-items:center;margin:0 auto 6px;font-size:12px}
+.step.on i{background:var(--red);color:#fff}
+.tabs{display:flex;gap:8px;flex-wrap:wrap}
+.tab{border:0;padding:8px 16px;border-radius:20px;background:var(--blush);cursor:pointer;color:var(--navy);transition:.2s}
+.tab.active{background:var(--navy);color:#fff}
+.prod{padding:0;overflow:hidden;position:relative}
+.ph{height:150px;background:linear-gradient(135deg,var(--blush),#e0c9c2);display:grid;place-items:center;font-size:42px;color:var(--red)}
+.prod .in{padding:16px}
+.prod h3{font-size:17px;margin-bottom:4px}
+.heart{position:absolute;top:12px;right:12px;width:36px;height:36px;border:0;border-radius:50%;background:#fff;color:var(--red);cursor:pointer}
+.prod .row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.rt h3{font-size:18px}
+.rt ul{list-style:none;margin-top:10px}
+.rt li{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;cursor:pointer;transition:.2s}
+.rt li:hover{background:#fbf6f4}
+.rt li input{display:none}
+.rt li .ck{width:24px;height:24px;border-radius:50%;border:2px solid var(--blush);display:grid;place-items:center;color:#fff;font-size:11px;flex-shrink:0;transition:.25s}
+.rt li.on .ck{background:var(--red);border-color:var(--red)}
+.rt li.on .nm{text-decoration:line-through;color:var(--muted)}
+.rt small{display:block;color:var(--muted)}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.form label{font-size:13px;color:var(--muted);display:block;margin-bottom:5px}
+.faq{border-bottom:1px solid var(--blush)}
+.faq button{width:100%;background:none;border:0;padding:14px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;color:var(--navy);font-weight:500}
+.faq button i{transition:.3s}.faq.open button i{transform:rotate(180deg)}
+.faq div{height:0;overflow:hidden;color:var(--muted)}
+.faq div p{padding-bottom:14px}
+.modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(6,18,26,.6);z-index:100;padding:20px}
+.modal.show{display:grid}
+.box{background:#fff;border-radius:18px;padding:28px;max-width:380px;width:100%;text-align:center}
+.box h3{margin-bottom:8px}.box p{color:var(--muted);margin-bottom:20px}.box .btn{margin:0 4px}
+.toast{position:fixed;right:20px;bottom:20px;background:var(--navy);color:#fff;padding:14px 20px;border-radius:12px;z-index:120;display:none}
+@media(max-width:900px){.side{transform:translateX(-100%)}.side.open{transform:none}.main{margin-left:0;padding:16px}.burger{display:flex}.top h1{font-size:22px}.who span{display:none}.who{padding:6px}.hero h2{font-size:24px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Additional Responsive Layout Helpers & Section Components */
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.pill.gold{background:rgba(229,184,105,.18);color:#a87b20;border:1px solid rgba(229,184,105,.45)}
+.pill.purple{background:#f1ecf9;color:#5f3299}
+.timeline{list-style:none;position:relative;padding-left:24px;margin-top:12px}
+.timeline::before{content:"";position:absolute;top:8px;bottom:8px;left:7px;width:2px;background:var(--blush)}
+.timeline-item{position:relative;margin-bottom:18px}
+.timeline-item:last-child{margin-bottom:0}
+.timeline-dot{position:absolute;left:-24px;top:4px;width:16px;height:16px;border-radius:50%;background:var(--red);border:3px solid #fff;box-shadow:0 0 0 1.5px var(--red)}
+.timeline-dot.gold{background:var(--gold);box-shadow:0 0 0 1.5px var(--gold)}
+.timeline-dot.green{background:#1f7a3d;box-shadow:0 0 0 1.5px #1f7a3d}
+.timeline-time{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.timeline-title{font-size:14px;font-weight:600;color:var(--navy)}
+.timeline-desc{font-size:12.5px;color:var(--muted);margin-top:2px}
+.water-grid{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.water-cup{width:42px;height:52px;border:2px dashed var(--blush);border-radius:6px 6px 14px 14px;display:grid;place-items:center;color:var(--muted);cursor:pointer;transition:.25s;font-size:18px}
+.water-cup:hover{border-color:var(--red);transform:translateY(-2px)}
+.water-cup.full{background:linear-gradient(180deg,#60a5fa,#2563eb);border-color:#2563eb;color:#fff;box-shadow:0 4px 10px rgba(37,99,235,.3)}
+.day-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:10px;margin-top:14px}
+.day-card{background:var(--blush);padding:12px 10px;border-radius:12px;text-align:center;transition:.2s;cursor:pointer}
+.day-card:hover,.day-card.active-day{background:var(--navy);color:#fff}
+.day-card:hover .day-sub,.day-card.active-day .day-sub{color:#e2e8f0}
+.day-name{font-weight:700;font-size:13px;margin-bottom:4px}
+.day-sub{font-size:11px;color:var(--muted)}
+.rating-stars{color:#f59e0b;font-size:13px;display:flex;gap:3px}
+.tag-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:20px;font-size:11.5px;font-weight:600;background:rgba(6,18,26,.06);color:var(--navy)}
+.action-box{border:1.5px dashed var(--blush);border-radius:14px;padding:16px;text-align:center;transition:.2s}
+.action-box:hover{border-color:var(--red);background:#fff9f9}
+@media(max-width:600px){
+  .card{padding:16px}
+  .stat strong{font-size:22px}
+  .who{max-width:160px}
+}
+
+
+/* ==========================================================================
+   ELEVATED LUXURY ROUNDED ELEMENTS STYLING (CARDS, PILLS, TABLES, INPUTS, BTNS)
+   ========================================================================== */
+
+/* 1. CARDS: Elegant 22px curvature with soft ambient elevation */
+.card {
+  background: var(--white);
+  border-radius: 22px;
+  padding: 26px 28px;
+  border: 1px solid rgba(6, 18, 26, 0.06);
+  box-shadow: 0 4px 20px -2px rgba(6, 18, 26, 0.04), 0 1px 3px rgba(6, 18, 26, 0.02);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+  position: relative;
+}
+.card.sec {
+  margin-top: 24px;
+}
+.card:hover {
+  box-shadow: 0 8px 28px -4px rgba(6, 18, 26, 0.07), 0 2px 6px rgba(6, 18, 26, 0.03);
+}
+
+/* 2. PILL BADGES: Precision rounded pills with luxury tints & clean borders */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+  box-shadow: 0 1px 3px rgba(6, 18, 26, 0.04);
+  transition: all 0.2s ease;
+}
+.pill.ok, .pill.done {
+  background: #EAF7EE;
+  color: #1B6E32;
+  border: 1px solid rgba(27, 110, 50, 0.2);
+}
+.pill.gold {
+  background: rgba(229, 184, 105, 0.16);
+  color: #9A6F1A;
+  border: 1.5px solid rgba(229, 184, 105, 0.45);
+  box-shadow: 0 2px 8px rgba(229, 184, 105, 0.15);
+}
+.pill.low, .pill.pend {
+  background: #FFF8E6;
+  color: #B26B00;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+}
+.pill.bad, .pill.cancel {
+  background: #FEECEF;
+  color: #D31333;
+  border: 1px solid rgba(248, 29, 67, 0.25);
+}
+.pill.ship {
+  background: #EBF4FC;
+  color: #1765AD;
+  border: 1px solid rgba(23, 101, 173, 0.25);
+}
+.pill.purple {
+  background: #F4EEFB;
+  color: #6929C4;
+  border: 1px solid rgba(105, 41, 196, 0.25);
+}
+
+/* 3. TABLES: High-end rounded table container with generous cell breathing room */
+.tw {
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid rgba(6, 18, 26, 0.08);
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(6, 18, 26, 0.02);
+  margin-top: 14px;
+}
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 580px;
+}
+thead th {
+  background: #FBF7F5;
+  color: var(--muted);
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 14px 18px;
+  border-bottom: 1.5px solid rgba(6, 18, 26, 0.07);
+  text-align: left;
+}
+thead th:first-child {
+  border-top-left-radius: 16px;
+}
+thead th:last-child {
+  border-top-right-radius: 16px;
+}
+tbody td {
+  padding: 15px 18px;
+  border-bottom: 1px solid rgba(6, 18, 26, 0.05);
+  font-size: 13.5px;
+  color: var(--navy);
+  vertical-align: middle;
+  line-height: 1.5;
+  transition: background 0.15s ease;
+}
+tbody tr:last-child td {
+  border-bottom: 0;
+}
+tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 16px;
+}
+tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 16px;
+}
+tbody tr:hover td {
+  background: #FAF5F3;
+}
+
+/* 4. BUTTONS & ACTIONS: Soft rounded pill geometry with radiant feedback */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  background: linear-gradient(135deg, #F81D43 0%, #D81436 100%);
+  color: #fff;
+  padding: 11px 22px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.3px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px rgba(248, 29, 67, 0.26);
+  white-space: nowrap;
+}
+.btn:hover {
+  background: linear-gradient(135deg, #06121A 0%, #15222E 100%);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(6, 18, 26, 0.25);
+}
+.btn.ghost {
+  background: #F3EAE6;
+  color: var(--navy);
+  border: 1px solid rgba(6, 18, 26, 0.08);
+  box-shadow: none;
+}
+.btn.ghost:hover {
+  background: var(--navy);
+  color: #FFFFFF;
+  border-color: var(--navy);
+  box-shadow: 0 4px 14px rgba(6, 18, 26, 0.2);
+}
+
+/* 5. FORM INPUTS & SELECTS: Rounded 14px input fields */
+input[type=text], input[type=email], input[type=tel], input[type=number], select, textarea {
+  padding: 12px 18px;
+  border: 1.5px solid rgba(6, 18, 26, 0.12);
+  border-radius: 14px;
+  background: #FFFFFF;
+  color: var(--navy);
+  font-family: inherit;
+  font-size: 13.5px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  width: 100%;
+  box-shadow: inset 0 1px 2px rgba(6, 18, 26, 0.02);
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(248, 29, 67, 0.14);
+  background: #FFFFFF;
+}
+
+/* 6. SHARE INPUT BOX GROUP */
+.share-input-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.share-input-wrapper {
+  flex: 1;
+  min-width: 260px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.share-input-wrapper .share-icon {
+  position: absolute;
+  left: 16px;
+  color: var(--muted);
+  font-size: 14px;
+  pointer-events: none;
+}
+.share-input-wrapper input {
+  padding-left: 42px;
+  background: #FDFBF9;
+  border: 1.5px solid rgba(6, 18, 26, 0.1);
+  font-size: 13px;
+  color: var(--navy);
+  border-radius: 14px;
+}
+
+/* 7. ACTION BOXES & STAT SQUIRCLES */
+.action-box {
+  background: #FFFFFF;
+  border: 1px solid rgba(6, 18, 26, 0.08);
+  border-radius: 18px;
+  padding: 20px;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 8px rgba(6, 18, 26, 0.02);
+}
+.action-box:hover {
+  border-color: rgba(248, 29, 67, 0.35);
+  box-shadow: 0 6px 20px rgba(248, 29, 67, 0.08);
+  transform: translateY(-2px);
+}
+.stat i {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  background: #F5ECE8;
+  color: var(--red);
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(6, 18, 26, 0.04);
+}
+.stat.dark i {
+  background: linear-gradient(135deg, var(--red), #d81436);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(248, 29, 67, 0.35);
+}
+
+/* 8. FILTER TABS & PROGRESS METERS */
+.tabs {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tab {
+  border: 1px solid rgba(6, 18, 26, 0.08);
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: #F4EBE7;
+  cursor: pointer;
+  color: var(--navy);
+  font-weight: 600;
+  font-size: 12.5px;
+  transition: all 0.22s ease;
+}
+.tab:hover {
+  background: #EEDFDA;
+  transform: translateY(-1px);
+}
+.tab.active {
+  background: var(--navy);
+  color: #FFFFFF;
+  border-color: var(--navy);
+  box-shadow: 0 2px 8px rgba(6, 18, 26, 0.2);
+}
+.meter {
+  height: 9px;
+  background: #F3EAE6;
+  border-radius: 999px;
+  overflow: hidden;
+  min-width: 80px;
+}
+.meter i {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, #F81D43 0%, #FF6B81 100%);
+  border-radius: 999px;
+}
+
+/* 9. ROUTINE LIST ITEMS & CHECKCIRCLES */
+.rt li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+  margin-bottom: 6px;
+}
+.rt li:hover {
+  background: #FAF5F3;
+  border-color: rgba(6, 18, 26, 0.05);
+}
+.rt li .ck {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid rgba(6, 18, 26, 0.15);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 11px;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+.rt li.on .ck {
+  background: var(--red);
+  border-color: var(--red);
+  box-shadow: 0 2px 8px rgba(248, 29, 67, 0.35);
+}
+
+</style>
 </head>
 <body>
 
-  <div class="client-layout">
-    
-    <!-- ==============================================
-         1. SIDEBAR (5 Menus)
-         ============================================== -->
-    <aside class="client-sidebar" id="client-sidebar">
-      <div class="sidebar-brand-box">
-        <a href="index.html" title="Stackly Skincare Home">
-          <img src="assets/Brand-logo.webp" alt="Stackly Skincare Logo" class="sidebar-logo">
-        </a>
-        <span class="sidebar-brand-badge">CLIENT</span>
-      </div>
-
-      <nav class="sidebar-menu-list">
-        <!-- 1. Dashboard -->
-        <a class="sidebar-menu-item active" data-view="dashboard">
-          <i class="fa-solid fa-house"></i>
-          <span>Dashboard</span>
-        </a>
-
-        <!-- 2. My Orders -->
-        <a class="sidebar-menu-item" data-view="orders">
-          <i class="fa-solid fa-box"></i>
-          <span>My Orders</span>
-        </a>
-
-        <!-- 3. Wishlist -->
-        <a class="sidebar-menu-item" data-view="wishlist">
-          <i class="fa-solid fa-heart"></i>
-          <span>Wishlist</span>
-        </a>
-
-        <!-- 4. My Skincare Routine -->
-        <a class="sidebar-menu-item" data-view="routine">
-          <i class="fa-solid fa-spa"></i>
-          <span>My Skincare Routine</span>
-        </a>
-
-        <!-- 5. Profile & Support -->
-        <a class="sidebar-menu-item" data-view="profile">
-          <i class="fa-solid fa-user-gear"></i>
-          <span>Profile & Support</span>
-        </a>
-      </nav>
-
-      <div class="sidebar-bottom-box">
-        <a href="index.html" class="btn-sidebar-store">
-          <i class="fa-solid fa-arrow-left"></i>
-          <span>Back to Store</span>
-        </a>
-      </div>
-    </aside>
-
-    <!-- ==============================================
-         2. MAIN CLIENT PORTAL AREA
-         ============================================== -->
-    <div class="client-main">
-      
-      <!-- Top Bar -->
-      <header class="client-topbar">
-        <div class="topbar-left">
-          <button class="btn-mobile-sidebar-toggle" id="client-sidebar-toggle" aria-label="Toggle Navigation Sidebar">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-          <div class="welcome-pill">Welcome, <span id="client-name-display">Elena Rostova</span></div>
-        </div>
-
-        <div class="topbar-right">
-          <!-- Glow Points -->
-          <div class="rewards-pill">
-            <i class="fa-solid fa-sparkles"></i>
-            <span>850 Glow Points</span>
-          </div>
-
-          <!-- Notification Bell -->
-          <button class="topbar-notification-btn" id="client-notif-btn" aria-label="Notifications">
-            <i class="fa-regular fa-bell"></i>
-            <span class="notification-dot"></span>
-          </button>
-
-          <!-- Profile Pill -->
-          <div class="client-profile-pill">
-            <div class="client-avatar">ER</div>
-            <span class="client-profile-name">Elena</span>
-          </div>
-        </div>
-      </header>
-
-      <!-- Content Area -->
-      <main class="client-content">
-        
-        <!-- Welcome Hero Banner -->
-        <div class="client-hero-banner" id="hero-banner">
-          <div class="hero-banner-text">
-            <h2>Your personalized ritual awaits</h2>
-            <p>
-              Your skin barrier diagnostic is active. Discover morning & evening rituals crafted specifically for your lipid moisture goals.
-            </p>
-          </div>
-          <a href="Service.html" class="hero-banner-cta">
-            <i class="fa-solid fa-calendar-check"></i>
-            <span>Book Studio Session</span>
-          </a>
-        </div>
-
-        <!-- ==============================================
-             CLIENT OVERVIEW CARDS (TOTAL ORDERS, WISHLIST, ROUTINE)
-             ============================================== -->
-        <section class="client-kpi-grid" id="client-kpi-grid">
-          
-          <!-- KPI 1: TOTAL ORDERS -->
-          <div class="client-kpi-card">
-            <div class="client-kpi-top">
-              <span class="client-kpi-label">TOTAL ORDERS</span>
-              <div class="client-kpi-icon kpi-icon-orders">
-                <i class="fa-solid fa-bag-shopping"></i>
-              </div>
-            </div>
-            <div class="client-kpi-val counter-client" data-target="12">12</div>
-            <span class="client-kpi-sub">All delivered with carbon-neutral transit</span>
-          </div>
-
-          <!-- KPI 2: WISHLIST ITEMS -->
-          <div class="client-kpi-card">
-            <div class="client-kpi-top">
-              <span class="client-kpi-label">WISHLIST ITEMS</span>
-              <div class="client-kpi-icon kpi-icon-wishlist">
-                <i class="fa-solid fa-heart"></i>
-              </div>
-            </div>
-            <div class="client-kpi-val counter-client" data-target="5">5</div>
-            <span class="client-kpi-sub">Curated apothecary formulas</span>
-          </div>
-
-          <!-- KPI 3: ROUTINE PRODUCTS -->
-          <div class="client-kpi-card">
-            <div class="client-kpi-top">
-              <span class="client-kpi-label">ROUTINE PRODUCTS</span>
-              <div class="client-kpi-icon kpi-icon-routine">
-                <i class="fa-solid fa-leaf"></i>
-              </div>
-            </div>
-            <div class="client-kpi-val counter-client" data-target="4">4</div>
-            <span class="client-kpi-sub">AM & PM barrier active protocol</span>
-          </div>
-
-          <!-- KPI 4: NEXT REFILL -->
-          <div class="client-kpi-card">
-            <div class="client-kpi-top">
-              <span class="client-kpi-label">NEXT REFILL IN</span>
-              <div class="client-kpi-icon kpi-icon-points">
-                <i class="fa-solid fa-calendar-days"></i>
-              </div>
-            </div>
-            <div class="client-kpi-val">14 <span style="font-size: 1.1rem; font-weight: 600;">Days</span></div>
-            <span class="client-kpi-sub">The Dew Serum estimated at 25%</span>
-          </div>
-
-        </section>
-
-        <!-- ==============================================
-             MORNING & EVENING SKINCARE ROUTINES
-             ============================================== -->
-        <div class="routine-section-card">
-          <div class="section-title-wrap">
-            <h3 class="section-heading-text"><i class="fa-solid fa-sun"></i> Daily Skincare Protocol</h3>
-            <span style="font-size: 0.84rem; color: #64748B;">Personalized for Combination & Dehydrated Barrier</span>
-          </div>
-
-          <div class="routine-cards-2col">
-            
-            <!-- AM Routine -->
-            <div class="routine-box">
-              <div class="routine-header">
-                <div class="routine-title-badge">
-                  <i class="fa-solid fa-sun" style="color: #F59E0B;"></i>
-                  <span>Morning Ritual (AM)</span>
-                </div>
-                <span style="font-size: 0.78rem; font-weight: 700; color: #059669;">Hydration & Photoprotection</span>
-              </div>
-
-              <div class="routine-steps-list">
-                <div class="routine-step-row">
-                  <div class="step-left">
-                    <span class="step-num">1</span>
-                    <div>
-                      <div class="step-name">Gentle Botanical Polish</div>
-                      <div class="step-tag">Step 1: Bio-Ferment Cleanse</div>
-                    </div>
-                  </div>
-                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
-                </div>
-
-                <div class="routine-step-row">
-                  <div class="step-left">
-                    <span class="step-num">2</span>
-                    <div>
-                      <div class="step-name">The Dew Serum</div>
-                      <div class="step-tag">Step 2: Hyaluronic + Niacinamide</div>
-                    </div>
-                  </div>
-                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
-                </div>
-
-                <div class="routine-step-row">
-                  <div class="step-left">
-                    <span class="step-num">3</span>
-                    <div>
-                      <div class="step-name">Mineral Sheer Shield SPF 50</div>
-                      <div class="step-tag">Step 3: Zinc Photoprotection</div>
-                    </div>
-                  </div>
-                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- PM Routine -->
-            <div class="routine-box">
-              <div class="routine-header">
-                <div class="routine-title-badge">
-                  <i class="fa-solid fa-moon" style="color: #6366F1;"></i>
-                  <span>Evening Ritual (PM)</span>
-                </div>
-                <span style="font-size: 0.78rem; font-weight: 700; color: #8B5CF6;">Nocturnal Cellular Repair</span>
-              </div>
-
-              <div class="routine-steps-list">
-                <div class="routine-step-row">
-                  <div class="step-left">
-                    <span class="step-num">1</span>
-                    <div>
-                      <div class="step-name">Herbal Melt Cleansing Balm</div>
-                      <div class="step-tag">Step 1: Oil Impurity Dissolution</div>
-                    </div>
-                  </div>
-                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
-                </div>
-
-                <div class="routine-step-row">
-                  <div class="step-left">
-                    <span class="step-num">2</span>
-                    <div>
-                      <div class="step-name">Barrier Lipid Restoration Cream</div>
-                      <div class="step-tag">Step 2: 3:1:1 Phytoceramide Infusion</div>
-                    </div>
-                  </div>
-                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
-                </div>
-
-                <div class="routine-step-row">
-                  <div class="step-left">
-                    <span class="step-num">3</span>
-                    <div>
-                      <div class="step-name">Restorative Botanical Night Oil</div>
-                      <div class="step-tag">Step 3: Gua Sha Facial Sculpting</div>
-                    </div>
-                  </div>
-                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- ==============================================
-             RECENT ORDERS & ORDER TRACKING DEMONSTRATION
-             ============================================== -->
-        <div class="orders-section-card">
-          <div class="section-title-wrap">
-            <h3 class="section-heading-text"><i class="fa-solid fa-receipt"></i> Recent Studio Order</h3>
-            <span style="font-size: 0.84rem; color: var(--color-coral); font-weight: 700;">Live Dispatch Telemetry</span>
-          </div>
-
-          <div class="order-card-item">
-            <div class="order-card-top">
-              <div>
-                <span class="order-id-badge">Order #SK-8941</span>
-                <span class="order-date-text">• Placed Oct 26, 2026 • 2 Items • <strong>$184.00</strong></span>
-              </div>
-              <span class="status-badge status-processing" style="background-color: rgba(59, 130, 246, 0.12); color: #2563EB; padding: 6px 14px; border-radius: 999px; font-weight: 700; font-size: 0.8rem;">
-                <i class="fa-solid fa-truck-fast"></i> Out for Delivery
-              </span>
-            </div>
-
-            <!-- Stepper Progress Tracker -->
-            <div class="order-tracking-stepper">
-              <div class="stepper-line"></div>
-              <div class="stepper-line-progress"></div>
-
-              <!-- Node 1 -->
-              <div class="stepper-node completed">
-                <div class="stepper-circle"><i class="fa-solid fa-check"></i></div>
-                <span class="stepper-title">Order Placed</span>
-              </div>
-
-              <!-- Node 2 -->
-              <div class="stepper-node completed">
-                <div class="stepper-circle"><i class="fa-solid fa-check"></i></div>
-                <span class="stepper-title">Lab Formulating</span>
-              </div>
-
-              <!-- Node 3 -->
-              <div class="stepper-node completed">
-                <div class="stepper-circle"><i class="fa-solid fa-check"></i></div>
-                <span class="stepper-title">Dispatched</span>
-              </div>
-
-              <!-- Node 4 -->
-              <div class="stepper-node active">
-                <div class="stepper-circle"><i class="fa-solid fa-box-open"></i></div>
-                <span class="stepper-title">Arriving Today</span>
-              </div>
-            </div>
-
-            <p style="font-size: 0.86rem; color: #64748B; margin-top: 14px;">
-              Carrier: <strong>FedEx Climate-Neutral Courier</strong> • Tracking # <strong>FX-99201482-NY</strong>
-            </p>
-          </div>
-        </div>
-
-        <!-- ==============================================
-             SAVED PRODUCTS & WISHLIST
-             ============================================== -->
-        <div class="orders-section-card">
-          <div class="section-title-wrap">
-            <h3 class="section-heading-text"><i class="fa-solid fa-heart"></i> Saved In Wishlist</h3>
-            <span style="font-size: 0.84rem; color: #64748B;">5 formulas saved for your next skincare refill</span>
-          </div>
-
-          <div class="wishlist-grid" id="wishlist-grid">
-            
-            <!-- Item 1 -->
-            <div class="wishlist-card">
-              <div class="wishlist-thumb-wrap">
-                <img src="assets/unsplash_90ozvS4qMCk.webp" alt="The Dew Serum" class="wishlist-thumb">
-                <button class="btn-remove-wishlist" onclick="removeWishlistItem(this, 'The Dew Serum')" title="Remove from wishlist">
-                  <i class="fa-solid fa-trash-can"></i>
-                </button>
-              </div>
-              <div class="wishlist-body">
-                <h4 class="wishlist-name">The Dew Serum</h4>
-                <span class="wishlist-price">$88.00</span>
-                <button class="btn-add-cart" onclick="addToCart('The Dew Serum')">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  <span>Add to Bag</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="wishlist-card">
-              <div class="wishlist-thumb-wrap">
-                <img src="assets/unsplash_b2bXKspL5MY.webp" alt="Botanical Night Oil" class="wishlist-thumb">
-                <button class="btn-remove-wishlist" onclick="removeWishlistItem(this, 'Botanical Night Oil')" title="Remove from wishlist">
-                  <i class="fa-solid fa-trash-can"></i>
-                </button>
-              </div>
-              <div class="wishlist-body">
-                <h4 class="wishlist-name">Botanical Night Oil</h4>
-                <span class="wishlist-price">$110.00</span>
-                <button class="btn-add-cart" onclick="addToCart('Botanical Night Oil')">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  <span>Add to Bag</span>
-                </button>
-              </div>
-            </div>
-
-            <!-- Item 3 -->
-            <div class="wishlist-card">
-              <div class="wishlist-thumb-wrap">
-                <img src="assets/unsplash_NtsCm4Er-PI.webp" alt="Barrier Lipid Cream" class="wishlist-thumb">
-                <button class="btn-remove-wishlist" onclick="removeWishlistItem(this, 'Barrier Lipid Cream')" title="Remove from wishlist">
-                  <i class="fa-solid fa-trash-can"></i>
-                </button>
-              </div>
-              <div class="wishlist-body">
-                <h4 class="wishlist-name">Barrier Lipid Cream</h4>
-                <span class="wishlist-price">$96.00</span>
-                <button class="btn-add-cart" onclick="addToCart('Barrier Lipid Cream')">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  <span>Add to Bag</span>
-                </button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <!-- ==============================================
-             PERSONALIZED RECOMMENDATIONS (Interactive Pills)
-             ============================================== -->
-        <div class="orders-section-card">
-          <div class="section-title-wrap">
-            <h3 class="section-heading-text"><i class="fa-solid fa-wand-magic-sparkles"></i> Tailored Formula Suggestions</h3>
-            <span style="font-size: 0.84rem; color: #64748B;">Select a skin priority to explore botanical pairings</span>
-          </div>
-
-          <div class="pref-pills-row">
-            <button class="pref-pill active" onclick="switchPreference('Barrier Repair', this)">Barrier Repair</button>
-            <button class="pref-pill" onclick="switchPreference('Hydration Lock', this)">Hydration Lock</button>
-            <button class="pref-pill" onclick="switchPreference('Radiance & Glow', this)">Radiance & Glow</button>
-            <button class="pref-pill" onclick="switchPreference('Sensitive Calm', this)">Sensitive Calm</button>
-          </div>
-
-          <div id="recommendation-result" style="background-color: var(--color-nude-light); padding: 22px; border-radius: 14px; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: gap: 16px;">
-            <div>
-              <strong style="color: var(--color-navy); font-size: 1.05rem;" id="rec-title">Phyto-Ceramide Intensive Moisture Balm</strong>
-              <p style="color: #64748B; font-size: 0.88rem; margin-top: 4px;" id="rec-desc">
-                Engineered with cold-pressed oat lipids and bio-mimetic squalane to re-seal fragile stratum corneum boundaries within 7 days.
-              </p>
-            </div>
-            <button class="btn-add-cart" onclick="addToCart('Recommended Formula')" style="flex-shrink: 0;">
-              <i class="fa-solid fa-bag-shopping"></i>
-              <span>Explore Formula</span>
-            </button>
-          </div>
-        </div>
-
-        <!-- ==============================================
-             CLINICAL MEDICAL DISCLAIMER (User Explicit Rule)
-             ============================================== -->
-        <div class="clinical-disclaimer-box">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          <div>
-            <strong>Clinical & Medical Disclaimer:</strong>
-            Routine suggestions, ingredient information, and personalized formulas presented on this portal are designed strictly for cosmetic skin care and holistic self-care purposes. They do not constitute medical dermatological diagnoses, prescriptions, or treatments for skin diseases. If you experience persistent chronic conditions, consult a board-certified dermatologist.
-          </div>
-        </div>
-
-      </main>
-
+<aside class="side" id="side">
+  <div class="sidebar-brand-box">
+    <a href="ClientDashboard.html" class="sidebar-brand-link" title="Return to Storefront">
+      <div class="logo"><img src="./assets/Brand-logo.webp" alt="Stackly Skincare Logo"></div>
+    </a>
+    <div class="dashboard-role-badge">
+      <span class="role-gold-dot"></span>
+      <span class="role-gold-text">CLIENT DASHBOARD</span>
     </div>
   </div>
+  
+  <nav>
+    <button class="nav active" data-page="dash"><i class="fa-solid fa-house"></i><span>Dashboard</span></button>
+    <button class="nav" data-page="orders"><i class="fa-solid fa-box-open"></i><span>My Orders</span></button>
+    <button class="nav" data-page="wish"><i class="fa-solid fa-heart"></i><span>Wishlist</span></button>
+    <button class="nav" data-page="routine"><i class="fa-solid fa-spa"></i><span>My Skincare Routine</span></button>
+    <button class="nav" data-page="profile"><i class="fa-solid fa-user-gear"></i><span>Profile &amp; Support</span></button>
+  </nav>
 
-  <!-- Toast Notification -->
-  <div class="client-toast" id="client-toast">
-    <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
-    <span id="client-toast-text">Action completed successfully</span>
+  <div class="sidebar-bottom">
+    <a href="index.html" class="sidebar-back-link" title="Return to Storefront">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>Back to Store</span>
+    </a>
+    <button class="out" id="logoutBtn">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>Log Out</span>
+    </button>
   </div>
+</aside>
+<div class="ov" id="ov"></div>
 
-  <!-- GSAP Animation -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<main class="main">
+  <header class="top">
+    <button class="burger" id="burger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    <h1 id="title">Dashboard</h1>
+    <div class="who" id="userBadge" title="Logged in user"><b id="userAvatar">AK</b><span id="userEmail">client@stackly.com</span></div>
+  </header>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      'use strict';
+  <!-- DASHBOARD -->
+  <section class="page active" id="dash">
+    <div class="card hero anim">
+      <div><h2 id="greetingName">Good morning, Ananya</h2><p>Your skin streak is 6 days. Finish today's routine to make it 7.</p>
+        <button class="btn" style="margin-top:16px" data-go="routine">Open today's routine</button></div>
+      <div class="ring"><svg width="120" height="120"><circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="10"/><circle id="ringC" cx="60" cy="60" r="52" fill="none" stroke="#F81D43" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="326.7"/></svg><b id="ringT">0%</b></div>
+    </div>
+    <div class="grid g4 sec">
+      <div class="card stat anim"><i class="fa-solid fa-box"></i><div><strong data-count="12">0</strong><span>Total orders</span></div></div>
+      <div class="card stat anim"><i class="fa-solid fa-truck"></i><div><strong data-count="1">0</strong><span>On the way</span></div></div>
+      <div class="card stat anim"><i class="fa-solid fa-heart"></i><div><strong id="wCount">4</strong><span>Wishlist items</span></div></div>
+      <div class="card stat anim"><i class="fa-solid fa-gem"></i><div><strong data-count="480">0</strong><span>Glow points</span></div></div>
+    </div>
+    <div class="grid g2 sec">
+      <div class="card anim"><h3 style="margin-bottom:12px">Latest order</h3>
+        <p><b>#SK-1042</b> <span class="pill ship">Shipped</span></p>
+        <p class="muted" style="margin:6px 0 14px">Vitamin C Glow Serum, Gentle Foam Cleanser</p>
+        <button class="btn ghost" data-go="orders">Track order</button></div>
+      <div class="card anim"><h3 style="margin-bottom:12px">Skin tip of the day</h3>
+        <p class="muted">Apply sunscreen as the last step of your morning routine, and reapply every two hours outdoors. Even on cloudy days, UV still reaches your skin.</p></div>
+    </div>
+  
+    <!-- Personalized Formulation Recommendations -->
+    <div class="card sec anim">
+      <div class="bar-h">
+        <h3>Curated for your skin barrier profile</h3>
+        <span class="pill gold"><i class="fa-solid fa-sparkles" style="margin-right:4px"></i>AI Skin Match 98%</span>
+      </div>
+      <p class="muted" style="margin-bottom:14px">Based on your combination skin focus: active hydration, non-comedogenic SPF and calming botanicals.</p>
+      <div class="grid g3">
+        <div class="action-box" style="text-align:left;border-style:solid;border-color:var(--blush)">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="pill ok">Day Ritual</span>
+            <strong style="color:var(--red);font-size:16px">$32</strong>
+          </div>
+          <h4 style="margin:10px 0 4px;font-size:15px">Vitamin C 15% Glow Serum</h4>
+          <p class="muted" style="font-size:12px;margin-bottom:12px">Pure ethyl ascorbic acid with ferulic shield. Brightens tone in 14 days.</p>
+          <button class="btn" style="width:100%;font-size:12px;padding:8px" data-toast="Added to bag with 15% VIP discount">Add to bag &bull; $32</button>
+        </div>
 
-      // 1. Load User Session from Login
-      const savedUser = localStorage.getItem('stackly_auth_user');
-      if (savedUser) {
-        try {
-          const userObj = JSON.parse(savedUser);
-          if (userObj.name) {
-            document.getElementById('client-name-display').textContent = userObj.name;
-          }
-        } catch (e) {}
-      }
+        <div class="action-box" style="text-align:left;border-style:solid;border-color:var(--blush)">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="pill purple">Night Ritual</span>
+            <strong style="color:var(--red);font-size:16px">$28</strong>
+          </div>
+          <h4 style="margin:10px 0 4px;font-size:15px">Hydra Barrier Recovery Balm</h4>
+          <p class="muted" style="font-size:12px;margin-bottom:12px">5 Essential ceramides + centella asiatica. Deep overnight repair.</p>
+          <button class="btn" style="width:100%;font-size:12px;padding:8px" data-toast="Added to bag with 15% VIP discount">Add to bag &bull; $28</button>
+        </div>
 
-      // 2. GSAP Entrance Animation
+        <div class="action-box" style="text-align:left;border-style:solid;border-color:var(--blush)">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span class="pill gold">Daily Shield</span>
+            <strong style="color:var(--red);font-size:16px">$24</strong>
+          </div>
+          <h4 style="margin:10px 0 4px;font-size:15px">Mineral SPF 50 Fluid</h4>
+          <p class="muted" style="font-size:12px;margin-bottom:12px">Ultra-sheer zinc mineral veil with zero white cast and peptide glow.</p>
+          <button class="btn" style="width:100%;font-size:12px;padding:8px" data-toast="Added to bag with 15% VIP discount">Add to bag &bull; $24</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Glow Loyalty Rewards & VIP Perks -->
+    <div class="grid g2 sec anim">
+      <div class="card">
+        <div class="bar-h"><h3>Glow rewards club</h3><span class="pill gold">Gold Member</span></div>
+        <p class="muted" style="margin-bottom:12px">Earn 1 Glow Point for every $1 spent. Redeem for studio credit or complimentary lab minis.</p>
+        <div style="background:var(--blush);border-radius:12px;padding:14px;margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;font-weight:700;font-size:13px;margin-bottom:6px">
+            <span>Current Balance: 480 Points</span>
+            <span style="color:var(--red)">20 pts to Platinum</span>
+          </div>
+          <div class="meter"><i style="width:96%"></i></div>
+        </div>
+        <div class="row" style="gap:10px">
+          <button class="btn ghost" style="padding:6px 12px;font-size:12px" data-toast="$10 Voucher redeemed and copied to clipboard!">Redeem $10 credit</button>
+          <button class="btn ghost" style="padding:6px 12px;font-size:12px" data-toast="Free Deluxe Sample added to your next shipment!">Redeem deluxe sample</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="bar-h"><h3>Seasonal UV &amp; environmental index</h3><span class="pill ok">Live Bengaluru</span></div>
+        <p class="muted" style="margin-bottom:12px">Tailor your morning ritual to real-time atmospheric conditions.</p>
+        <ul class="list">
+          <li><div><strong>UV Index Today: 7 (High)</strong><br><span class="muted">Reapply mineral sunscreen every 2 hours outdoors</span></div><span class="pill bad">High UV</span></li>
+          <li><div><strong>Humidity: 68% (Optimal)</strong><br><span class="muted">Ideal for hyaluronic acid hydration binding</span></div><span class="pill ok">Optimal</span></li>
+          <li><div><strong>Pollution AQI: 58 (Moderate)</strong><br><span class="muted">Double cleansing recommended this evening</span></div><span class="pill low">Double Cleanse</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ORDERS -->
+  <section class="page" id="orders">
+    <div class="tabs anim" id="oTabs" style="margin-bottom:18px">
+      <button class="tab active" data-s="all">All</button><button class="tab" data-s="ship">Shipped</button><button class="tab" data-s="done">Delivered</button><button class="tab" data-s="pend">Pending</button></div>
+    <div class="grid" id="oList">
+      <div class="card order anim" data-s="ship">
+        <div class="o-top"><div><b>#SK-1042</b><br><span class="muted">Placed 24 Oct 2026 · $64</span></div><span class="pill ship">Shipped</span></div>
+        <div class="track"><span class="fill" data-w="62%"></span>
+          <div class="step on"><i class="fa-solid fa-check"></i>Placed</div><div class="step on"><i class="fa-solid fa-box"></i>Packed</div><div class="step on"><i class="fa-solid fa-truck"></i>Shipped</div><div class="step"><i class="fa-solid fa-house"></i>Delivered</div></div>
+        <p class="muted">Vitamin C Glow Serum, Gentle Foam Cleanser · Arriving Nov 1</p></div>
+      <div class="card order anim" data-s="done">
+        <div class="o-top"><div><b>#SK-0998</b><br><span class="muted">Placed 02 Oct 2026 · $52</span></div><span class="pill done">Delivered</span></div>
+        <p class="muted">Hydra Barrier Cream, Rose Water Toner</p><div><button class="btn ghost" data-toast="Items added to cart">Buy again</button></div></div>
+      <div class="card order anim" data-s="done">
+        <div class="o-top"><div><b>#SK-0951</b><br><span class="muted">Placed 11 Sep 2026 · $24</span></div><span class="pill done">Delivered</span></div>
+        <p class="muted">Mineral SPF 50 Fluid</p><div><button class="btn ghost" data-toast="Items added to cart">Buy again</button></div></div>
+      <div class="card order anim" data-s="pend">
+        <div class="o-top"><div><b>#SK-1050</b><br><span class="muted">Placed today · $22</span></div><span class="pill pend">Pending</span></div>
+        <p class="muted">Niacinamide 10% Drops</p><div><button class="btn ghost" data-toast="Order cancellation requested">Cancel order</button></div></div>
+    </div>
+  
+    <!-- Smart Auto-Replenishment Schedule -->
+    <div class="card sec anim">
+      <div class="bar-h">
+        <h3>Smart formulation replenishment</h3>
+        <span class="pill ok">15% Subscriber Savings</span>
+      </div>
+      <p class="muted" style="margin-bottom:14px">Never run out of your essential active ritual. Auto-calculated based on daily usage.</p>
+      <div class="grid g2">
+        <div class="action-box" style="text-align:left;border-style:solid;border-color:var(--blush)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong>Vitamin C 15% Glow Serum</strong>
+            <span class="pill low">~12 Days Left</span>
+          </div>
+          <p class="muted" style="font-size:12px;margin:6px 0 12px">Estimated empty date: Nov 10, 2026. Scheduled next delivery on Nov 8.</p>
+          <div class="row" style="gap:8px">
+            <button class="btn ghost" style="padding:5px 10px;font-size:11px" data-toast="Shipment moved ahead by 2 weeks">Snooze 2 weeks</button>
+            <button class="btn" style="padding:5px 10px;font-size:11px" data-toast="Order dispatched immediately with 15% VIP discount">Refill now ($27.20)</button>
+          </div>
+        </div>
+
+        <div class="action-box" style="text-align:left;border-style:solid;border-color:var(--blush)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong>Gentle Foam Cleanser</strong>
+            <span class="pill ok">~28 Days Left</span>
+          </div>
+          <p class="muted" style="font-size:12px;margin:6px 0 12px">Estimated empty date: Nov 26, 2026. Scheduled next delivery on Nov 24.</p>
+          <div class="row" style="gap:8px">
+            <button class="btn ghost" style="padding:5px 10px;font-size:11px" data-toast="Replenishment paused">Pause subscription</button>
+            <button class="btn ghost" style="padding:5px 10px;font-size:11px" data-toast="Delivery address verified">Manage delivery</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Digital Receipts & Eco-Return Label Hub -->
+    <div class="grid g2 sec anim">
+      <div class="card">
+        <div class="bar-h"><h3>Digital invoices &amp; receipts</h3><span class="pill ok">GST Invoices</span></div>
+        <p class="muted" style="margin-bottom:12px">Download tax-compliant receipts for past studio orders.</p>
+        <ul class="list">
+          <li><div><strong>Order #SK-1042 ($64.00)</strong><br><span class="muted">Delivered 26 Oct 2026</span></div><button class="btn ghost" style="padding:4px 10px;font-size:11px" data-toast="PDF invoice downloaded"><i class="fa-solid fa-download"></i> PDF</button></li>
+          <li><div><strong>Order #SK-1036 ($118.00)</strong><br><span class="muted">Delivered 12 Oct 2026</span></div><button class="btn ghost" style="padding:4px 10px;font-size:11px" data-toast="PDF invoice downloaded"><i class="fa-solid fa-download"></i> PDF</button></li>
+          <li><div><strong>Order #SK-1018 ($42.00)</strong><br><span class="muted">Delivered 28 Sep 2026</span></div><button class="btn ghost" style="padding:4px 10px;font-size:11px" data-toast="PDF invoice downloaded"><i class="fa-solid fa-download"></i> PDF</button></li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="bar-h"><h3>Studio glass recycling program</h3><span class="pill gold">$15 Credit</span></div>
+        <p class="muted" style="margin-bottom:14px">Return 3 empty amber glass bottles for sterilization and receive $15 credit towards your next refill.</p>
+        <div style="background:var(--blush);border-radius:12px;padding:14px;margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;font-weight:700;font-size:13px;margin-bottom:6px">
+            <span>Bottles Returned: 2 of 3</span>
+            <span style="color:#1f7a3d">1 more for $15!</span>
+          </div>
+          <div class="meter"><i style="width:66%"></i></div>
+        </div>
+        <button class="btn" style="width:100%;font-size:12px" data-toast="Pre-paid postal return label emailed to your address!">Generate free return label</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- WISHLIST -->
+  <section class="page" id="wish">
+    <div class="grid g3" id="wGrid">
+      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-droplet"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Niacinamide 10% Drops</h3><span class="muted">Pore refining serum</span><div class="row"><b>$22</b><button class="btn" data-toast="Added to cart">Add to cart</button></div></div></div>
+      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-sun"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Mineral SPF 50 Fluid</h3><span class="muted">Daily sun shield</span><div class="row"><b>$24</b><button class="btn" data-toast="Added to cart">Add to cart</button></div></div></div>
+      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-leaf"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Aloe Calm Gel Mask</h3><span class="muted">Soothing overnight mask</span><div class="row"><b>$26</b><button class="btn" data-toast="Added to cart">Add to cart</button></div></div></div>
+      <div class="card prod anim"><div class="ph"><i class="fa-solid fa-spray-can-sparkles"></i></div><button class="heart" title="Remove"><i class="fa-solid fa-heart"></i></button><div class="in"><h3>Rose Water Toner</h3><span class="muted">Hydrating mist</span><div class="row"><b>$16</b><button class="btn" data-toast="Added to cart">Add to cart</button></div></div></div>
+    </div>
+    <div class="card" id="wEmpty" style="display:none;text-align:center"><h3>Your wishlist is empty</h3><p class="muted" style="margin:8px 0 0">Tap the heart on any product to save it here.</p></div>
+  
+    <!-- Shareable Ritual & Social Gifting -->
+    <div class="card sec anim">
+      <div class="bar-h">
+        <h3>Share your curated skincare ritual</h3>
+        <span class="pill ok">Private Link</span>
+      </div>
+      <p class="muted" style="margin-bottom:12px">Share your favorite formulations with friends, family or your esthetician.</p>
+      <form id="wishlistShareForm" onsubmit="event.preventDefault(); submitShareWishlist();">
+        <div class="share-input-group">
+          <div class="share-input-wrapper">
+            <i class="fa-solid fa-link share-icon"></i>
+            <input type="text" id="wishShareInput" value="https://stackly.skincare/ritual/ananya-glow" readonly required>
+          </div>
+          <button type="submit" class="btn"><i class="fa-solid fa-copy"></i> Copy ritual link</button>
+          <button type="button" class="btn ghost" onclick="location.href='404.html'"><i class="fa-brands fa-whatsapp"></i> WhatsApp share</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Active Ingredients Comparison Matrix -->
+    <div class="card sec anim">
+      <div class="bar-h">
+        <h3>Wishlist formulation comparison matrix</h3>
+        <span class="pill gold">Quick Guide</span>
+      </div>
+      <div class="tw">
+        <table>
+          <thead><tr><th>Product Name</th><th>Key Active</th><th>Target Goal</th><th>Ideal Application</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Niacinamide 10% Drops</strong></td><td>Zinc PCA + Niacinamide</td><td>Pore refining &amp; sebum control</td><td>AM / PM after toner</td><td>$22</td></tr>
+            <tr><td><strong>Mineral SPF 50 Fluid</strong></td><td>Non-nano Zinc Oxide</td><td>UVA/UVB broad protection</td><td>AM final step</td><td>$24</td></tr>
+            <tr><td><strong>Aloe Calm Gel Mask</strong></td><td>99% Cold-Pressed Aloe</td><td>Post-sun soothing &amp; redness</td><td>2-3x Weekly (PM)</td><td>$20</td></tr>
+            <tr><td><strong>Rose Water Botanical Toner</strong></td><td>Organic Damask Rose</td><td>Hydration balance &amp; prep</td><td>AM / PM after cleansing</td><td>$16</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ROUTINE -->
+  <section class="page" id="routine">
+    <div class="grid g2">
+      <div class="card rt anim"><h3><i class="fa-solid fa-sun" style="color:var(--red)"></i> Morning routine</h3>
+        <ul><li><span class="ck"><i class="fa-solid fa-check"></i></span><div><span class="nm">Gentle Foam Cleanser</span><small>60 seconds, lukewarm water</small></div></li>
+        <li><span class="ck"><i class="fa-solid fa-check"></i></span><div><span class="nm">Vitamin C Glow Serum</span><small>3 drops on damp skin</small></div></li>
+        <li><span class="ck"><i class="fa-solid fa-check"></i></span><div><span class="nm">Hydra Barrier Cream</span><small>Pea-sized amount</small></div></li>
+        <li><span class="ck"><i class="fa-solid fa-check"></i></span><div><span class="nm">Mineral SPF 50 Fluid</span><small>Two finger lengths</small></div></li></ul></div>
+      <div class="card rt anim"><h3><i class="fa-solid fa-moon" style="color:var(--red)"></i> Night routine</h3>
+        <ul><li><span class="ck"><i class="fa-solid fa-check"></i></span><div><span class="nm">Double cleanse</span><small>Oil first, then foam</small></div></li>
+        <li><span class="ck"><i class="fa-solid fa-check"></i></span><div><span class="nm">Rose Water Toner</span><small>Pat in with clean hands</small></div></li>
+        <li><span class="ck"><i class="fa-solid fa-check"></i></span><div><span class="nm">Niacinamide 10% Drops</span><small>Avoid the eye area</small></div></li>
+        <li><span class="ck"><i class="fa-solid fa-check"></i></span><div><span class="nm">Aloe Calm Gel Mask</span><small>Leave on overnight, 3 nights a week</small></div></li></ul></div>
+    </div>
+    <div class="card sec anim"><div class="bar-h" style="margin:0"><div><h3>Today's progress</h3><span class="muted" id="rtTxt">0 of 8 steps done</span></div><button class="btn ghost" id="rtReset">Reset day</button></div></div>
+  
+    <!-- Weekly Skin Cycle & Treatment Calendar -->
+    <div class="card sec anim">
+      <div class="bar-h">
+        <h3>Weekly skin cycling &amp; active treatment schedule</h3>
+        <span class="pill ok">Optimized Protocol</span>
+      </div>
+      <p class="muted" style="margin-bottom:10px">Prevent barrier fatigue by rotating active treatments across the week.</p>
+      <div class="day-grid">
+        <div class="day-card active-day"><div class="day-name">Mon</div><div class="day-sub">Hydration Prep</div></div>
+        <div class="day-card"><div class="day-name">Tue</div><div class="day-sub">BHA Clarify</div></div>
+        <div class="day-card"><div class="day-name">Wed</div><div class="day-sub">Barrier Rest</div></div>
+        <div class="day-card"><div class="day-name">Thu</div><div class="day-sub">Retinol Renew</div></div>
+        <div class="day-card"><div class="day-name">Fri</div><div class="day-sub">Peptide Firm</div></div>
+        <div class="day-card"><div class="day-name">Sat</div><div class="day-sub">Sheet Mask</div></div>
+        <div class="day-card"><div class="day-name">Sun</div><div class="day-sub">Skin Rest</div></div>
+      </div>
+    </div>
+
+    <!-- Daily Hydration & Water Intake Tracker -->
+    <div class="grid g2 sec anim">
+      <div class="card">
+        <div class="bar-h"><h3>Daily water intake tracker</h3><span class="pill ok" id="waterStatus">6 of 8 Glasses</span></div>
+        <p class="muted" style="margin-bottom:8px">Hydrated skin starts from within. Tap to log each glass (250ml).</p>
+        <div class="water-grid" id="waterCups">
+          <div class="water-cup full" title="Glass 1"><i class="fa-solid fa-glass-water"></i></div>
+          <div class="water-cup full" title="Glass 2"><i class="fa-solid fa-glass-water"></i></div>
+          <div class="water-cup full" title="Glass 3"><i class="fa-solid fa-glass-water"></i></div>
+          <div class="water-cup full" title="Glass 4"><i class="fa-solid fa-glass-water"></i></div>
+          <div class="water-cup full" title="Glass 5"><i class="fa-solid fa-glass-water"></i></div>
+          <div class="water-cup full" title="Glass 6"><i class="fa-solid fa-glass-water"></i></div>
+          <div class="water-cup" title="Glass 7"><i class="fa-solid fa-glass-water"></i></div>
+          <div class="water-cup" title="Glass 8"><i class="fa-solid fa-glass-water"></i></div>
+        </div>
+        <div style="margin-top:14px"><button class="btn ghost" style="padding:5px 12px;font-size:11.5px" id="resetWater"><i class="fa-solid fa-rotate-left"></i> Reset daily water log</button></div>
+      </div>
+
+      <div class="card">
+        <div class="bar-h"><h3>Active synergy &amp; conflict checker</h3><span class="pill gold">Derm Rules</span></div>
+        <p class="muted" style="margin-bottom:12px">Essential rules for layering potent cosmetic actives safely.</p>
+        <ul class="list">
+          <li><div><strong style="color:#1f7a3d"><i class="fa-solid fa-check"></i> Vitamin C + Mineral SPF 50</strong><br><span class="muted">Synergistic antioxidant protection against photoaging</span></div><span class="pill ok">Power Duo</span></li>
+          <li><div><strong style="color:#1f7a3d"><i class="fa-solid fa-check"></i> Hyaluronic Acid + Ceramides</strong><br><span class="muted">Locks surface moisture deep into epidermal lipid layers</span></div><span class="pill ok">Safe Blend</span></li>
+          <li><div><strong style="color:var(--red)"><i class="fa-solid fa-triangle-exclamation"></i> Retinol + Pure AHA/BHA</strong><br><span class="muted">Avoid in same routine; alternate on separate nights</span></div><span class="pill bad">Alternate</span></li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- PROFILE -->
+  <section class="page" id="profile">
+    <div class="grid g2">
+      <div class="card anim"><h3 style="margin-bottom:16px">My profile</h3>
+        <form id="clientProfileForm" onsubmit="event.preventDefault(); submitClientProfile();">
+          <div class="form">
+            <div><label>Full name *</label><input type="text" id="profName" value="Ananya Krishnan" required minlength="2"></div>
+            <div><label>Email *</label><input type="email" id="profEmail" value="ananya@example.com" required></div>
+            <div><label>Phone *</label><input type="tel" id="profPhone" value="+91 98765 43210" required></div>
+            <div><label>Skin type *</label><select id="profSkinType" required><option value="Combination">Combination</option><option value="Oily">Oily</option><option value="Dry">Dry</option><option value="Sensitive">Sensitive</option></select></div>
+          </div>
+          <button type="submit" class="btn" style="margin-top:16px">Save changes</button>
+        </form>
+      </div>
+      <div class="card anim"><h3 style="margin-bottom:8px">Help centre</h3>
+        <div class="faq"><button>How long does delivery take?<i class="fa-solid fa-chevron-down"></i></button><div><p>Orders arrive in 3 to 5 business days across India.</p></div></div>
+        <div class="faq"><button>Can I return an opened product?<i class="fa-solid fa-chevron-down"></i></button><div><p>Yes, within 14 days if you had a reaction. Contact support with a photo.</p></div></div>
+        <div class="faq"><button>How do I use Glow points?<i class="fa-solid fa-chevron-down"></i></button><div><p>Redeem points at checkout. 100 points equals $1 off.</p></div></div>
+      </div>
+    </div>
+    <div class="card sec anim"><h3 style="margin-bottom:12px">Contact support</h3>
+      <form id="clientSupportForm" onsubmit="event.preventDefault(); submitClientSupport();">
+        <div class="form">
+          <div><label>Topic *</label><select id="supportTopic" required><option value="Order issue">Order issue</option><option value="Product advice">Product advice</option><option value="Account">Account</option></select></div>
+          <div style="grid-column:1/-1"><label>Message *</label><textarea id="msg" placeholder="Tell us what happened..." required minlength="5"></textarea></div>
+        </div>
+        <button type="submit" class="btn" style="margin-top:14px" id="send">Send message</button>
+      </form>
+    </div>
+  
+    <!-- Skin Diagnostic & Clinical Profile -->
+    <div class="grid g2 sec anim">
+      <div class="card">
+        <div class="bar-h"><h3>Personal skin diagnostic profile</h3><span class="pill ok">Score: 94/100</span></div>
+        <p class="muted" style="margin-bottom:14px">Formulated for your verified clinical skin assessment.</p>
+        <ul class="list">
+          <li><div><strong>Identified Skin Type</strong><br><span class="muted">Sensitive Combination &bull; T-zone oiliness with dry cheeks</span></div><span class="pill ok">Combination</span></li>
+          <li><div><strong>Primary Focus Area</strong><br><span class="muted">Epidermal barrier repair &bull; Post-sun hyperpigmentation</span></div><span class="pill gold">Barrier Care</span></li>
+          <li><div><strong>Sensitivity Tolerance Index</strong><br><span class="muted">Fragrance-free &bull; Hypoallergenic formulations only</span></div><span class="pill purple">Sensitive Safe</span></li>
+        </ul>
+        <button class="btn ghost" style="margin-top:14px;width:100%;font-size:12px" data-toast="Skin diagnostic quiz launched in new modal!"><i class="fa-solid fa-stethoscope"></i> Retake 2-minute diagnostic quiz</button>
+      </div>
+
+      <div class="card">
+        <div class="bar-h"><h3>Saved delivery addresses</h3><button class="btn ghost" style="padding:4px 10px;font-size:11px" data-toast="Address form opened"><i class="fa-solid fa-plus"></i> Add new</button></div>
+        <div style="background:#fbf6f4;border-radius:12px;padding:12px;margin-bottom:10px;border:1px solid var(--blush)">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:13.5px">Home &bull; Primary</strong><span class="pill ok" style="padding:2px 8px;font-size:10px">Default</span></div>
+          <div class="muted" style="font-size:12px">Flat 402, Radiant Palms, Indiranagar, Bengaluru, 560038 &bull; +91 98765 43210</div>
+        </div>
+        <div style="background:#fbf6f4;border-radius:12px;padding:12px;border:1px solid var(--blush)">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px"><strong style="font-size:13.5px">Studio Office</strong><button class="btn ghost" style="padding:2px 8px;font-size:10px" data-toast="Studio address set as default">Set default</button></div>
+          <div class="muted" style="font-size:12px">Level 3, WeWork Galaxy, Residency Road, Bengaluru, 560025</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<div class="modal" id="modal"><div class="box"><h3>Log out?</h3><p>Your routine progress for today stays saved on this device.</p>
+  <button class="btn ghost" id="no">Stay</button><button class="btn" id="yes">Log out</button></div></div>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const titles={dash:'Dashboard',orders:'My Orders',wish:'Wishlist',routine:'My Skincare Routine',profile:'Profile & Support'};
+const side=$('#side'),ov=$('#ov');
+function menu(o){side.classList.toggle('open',o);ov.classList.toggle('show',o)}
+$('#burger').onclick=()=>menu(!side.classList.contains('open'));
+ov.onclick=()=>menu(false);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu(false);$('#modal').classList.remove('show')}});
+
+function toast(t){const el=$('#toast');el.textContent=t;el.style.display='block';gsap.fromTo(el,{y:30,opacity:0},{y:0,opacity:1,duration:.4});clearTimeout(toast.t);toast.t=setTimeout(()=>gsap.to(el,{opacity:0,duration:.3,onComplete:()=>el.style.display='none'}),2200)}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-toast]');if(t)toast(t.dataset.toast);const g=e.target.closest('[data-go]');if(g)go(g.dataset.go)});
+
+function go(id){
+  if(!titles[id])id='dash';
+  $$('.nav').forEach(n=>n.classList.toggle('active',n.dataset.page===id));
+  $$('.page').forEach(p=>p.classList.toggle('active',p.id===id));
+  $('#title').textContent=titles[id];
+  history.replaceState(null,'','#'+id);
+  const p=$('#'+id);
+  gsap.fromTo(p.querySelectorAll('.anim'),{y:22,opacity:0},{y:0,opacity:1,duration:.5,stagger:.07,ease:'power2.out',clearProps:'all'});
+  p.querySelectorAll('[data-count]').forEach(el=>{const o={v:0},t=+el.dataset.count;gsap.to(o,{v:t,duration:1.2,ease:'power2.out',onUpdate:()=>el.textContent=Math.round(o.v)})});
+  p.querySelectorAll('.fill').forEach(f=>gsap.fromTo(f,{width:0},{width:f.dataset.w,duration:1,delay:.4,ease:'power2.out'}));
+  if(id==='dash')ring();
+  menu(false);window.scrollTo({top:0,behavior:'smooth'});
+}
+$$('.nav').forEach(n=>n.onclick=()=>go(n.dataset.page));
+
+// Orders filter
+$$('#oTabs .tab').forEach(t=>t.onclick=()=>{
+  $$('#oTabs .tab').forEach(x=>x.classList.toggle('active',x===t));
+  $$('#oList .order').forEach(c=>{const s=t.dataset.s==='all'||c.dataset.s===t.dataset.s;c.style.display=s?'':'none';if(s)gsap.fromTo(c,{opacity:0,y:14},{opacity:1,y:0,duration:.4})});
+});
+
+// Wishlist
+$('#wGrid').addEventListener('click',e=>{
+  const h=e.target.closest('.heart');if(!h)return;
+  const c=h.closest('.prod');
+  gsap.to(c,{scale:.85,opacity:0,duration:.35,onComplete:()=>{c.remove();const n=$$('#wGrid .prod').length;$('#wCount').textContent=n;$('#wEmpty').style.display=n?'none':'block';toast('Removed from wishlist')}});
+});
+
+// Routine
+const steps=$$('.rt li');
+function ring(){const d=steps.length,n=$$('.rt li.on').length,pct=Math.round(n/d*100),o={v:parseInt($('#ringT').textContent)||0};
+  gsap.to('#ringC',{strokeDashoffset:326.7*(1-pct/100),duration:1,ease:'power2.out'});
+  gsap.to(o,{v:pct,duration:1,onUpdate:()=>$('#ringT').textContent=Math.round(o.v)+'%'});
+  $('#rtTxt').textContent=n+' of '+d+' steps done'}
+steps.forEach(li=>li.onclick=()=>{li.classList.toggle('on');gsap.fromTo(li.querySelector('.ck'),{scale:.6},{scale:1,duration:.4,ease:'back.out(3)'});ring();
+  if($$('.rt li.on').length===steps.length)toast('Routine complete. Great job!')});
+$('#rtReset').onclick=()=>{steps.forEach(l=>l.classList.remove('on'));ring()};
+['Gentle Foam Cleanser','Vitamin C Glow Serum'].forEach(n=>{steps.forEach(l=>{if(l.textContent.includes(n))l.classList.add('on')})});
+
+// FAQ accordion
+$$('.faq button').forEach(b=>b.onclick=()=>{
+  const f=b.parentElement,d=b.nextElementSibling,open=f.classList.contains('open');
+  $$('.faq.open').forEach(x=>{x.classList.remove('open');gsap.to(x.querySelector('div'),{height:0,duration:.3})});
+  if(!open){f.classList.add('open');gsap.to(d,{height:'auto',duration:.35})}
+});
+
+
+// Logout
+const modal=$('#modal');
+$('#logoutBtn').onclick=()=>{modal.classList.add('show');gsap.from('.box',{scale:.85,opacity:0,duration:.35,ease:'back.out(1.6)'})};
+$('#no').onclick=()=>modal.classList.remove('show');
+$('#yes').onclick=()=>{modal.classList.remove('show');toast('Logged out. See you soon!');setTimeout(()=>{ location.href='Login.html'; }, 800);};
+
+
+// Interactive Water Tracker
+const cups = $('.water-cup');
+function updateWater() {
+  const fullCount = $('.water-cup.full').length;
+  const statusEl = $('#waterStatus');
+  if (statusEl) statusEl.textContent = fullCount + ' of 8 Glasses';
+}
+cups.forEach(cup => {
+  cup.onclick = () => {
+    cup.classList.toggle('full');
+    gsap.fromTo(cup, { scale: 0.8 }, { scale: 1, duration: 0.35, ease: 'back.out(2)' });
+    updateWater();
+    if ($('.water-cup.full').length === 8) {
+      toast('Hydration goal achieved! 2 Litres completed today!');
+    }
+  };
+});
+const resetW = $('#resetWater');
+if (resetW) {
+  resetW.onclick = () => {
+    cups.forEach(c => c.classList.remove('full'));
+    updateWater();
+    toast('Daily water log reset');
+  };
+}
+
+// Interactive Day Cycling Pill Switcher
+$('.day-card').forEach(day => {
+  day.onclick = () => {
+    $('.day-card').forEach(d => d.classList.remove('active-day'));
+    day.classList.add('active-day');
+    toast('Switched focus to ' + day.querySelector('.day-name').textContent + ' (' + day.querySelector('.day-sub').textContent + ')');
+  };
+});
+
+gsap.fromTo('.side .nav, .side .out, .sidebar-back-link',{x:-20,opacity:0},{x:0,opacity:1,duration:.5,stagger:.05,ease:'power2.out',clearProps:'all'});
+
+// Sync dynamic logged-in user email into top-right badge
+function syncUserEmail() {
+  let email = '';
+  try {
+    const raw = localStorage.getItem('stackly_auth_user') || sessionStorage.getItem('stackly_auth_user');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.email) email = parsed.email.trim();
+    }
+  } catch(e) {}
+  if (!email) {
+    email = localStorage.getItem('stackly_user_email') || sessionStorage.getItem('stackly_user_email') || '';
+  }
+  if (!email) email = 'client@stackly.com';
+
+  const emailEl = $('#userEmail');
+  const avatarEl = $('#userAvatar');
+  const badgeEl = $('#userBadge');
+
+  if (emailEl) {
+    emailEl.textContent = email;
+    emailEl.title = email;
+  }
+  if (badgeEl) {
+    badgeEl.title = 'Logged in as ' + email;
+  }
+  if (avatarEl && email) {
+    const cleanPrefix = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '');
+    const initials = cleanPrefix.length >= 2 ? cleanPrefix.slice(0, 2).toUpperCase() : (cleanPrefix.toUpperCase() || 'CL');
+    avatarEl.textContent = initials;
+  }
+
+  // Also personalize dashboard hero greeting & profile email input
+  const greetEl = $('#greetingName');
+  if (greetEl && email) {
+    const rawName = email.split('@')[0].split(/[._-]/)[0];
+    const capitalized = rawName.charAt(0).toUpperCase() + rawName.slice(1);
+    greetEl.textContent = 'Good morning, ' + capitalized;
+  }
+  const profEmail = $('#profEmail');
+  if (profEmail && email) {
+    profEmail.value = email;
+  }
+}
+syncUserEmail();
+
+
+// ==============================================================================
+// FORM VALIDATIONS & 404 REDIRECTIONS FOR CLIENT DASHBOARD
+// ==============================================================================
+window.submitClientProfile = function() {
+  const nameEl = document.getElementById('profName');
+  const emailEl = document.getElementById('profEmail');
+  const phoneEl = document.getElementById('profPhone');
+  const name = nameEl ? nameEl.value.trim() : '';
+  const email = emailEl ? emailEl.value.trim() : '';
+  const phone = phoneEl ? phoneEl.value.trim() : '';
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^[+]?[\d\s-]{8,}$/;
+
+  if (!name || name.length < 2) {
+    toast('Please enter a valid full name (minimum 2 characters).');
+    if (nameEl) nameEl.focus();
+    return;
+  }
+  if (!email || !emailRegex.test(email)) {
+    toast('Please enter a valid email address.');
+    if (emailEl) emailEl.focus();
+    return;
+  }
+  if (!phone || !phoneRegex.test(phone)) {
+    toast('Please enter a valid contact phone number (minimum 8 digits).');
+    if (phoneEl) phoneEl.focus();
+    return;
+  }
+
+  toast('Profile validated & updated! Redirecting to studio page...');
+  setTimeout(() => { window.location.href = '404.html'; }, 800);
+};
+
+window.submitClientSupport = function() {
+  const msgEl = document.getElementById('msg');
+  const msg = msgEl ? msgEl.value.trim() : '';
+
+  if (!msg || msg.length < 5) {
+    toast('Please enter a detailed message (minimum 5 characters).');
+    if (msgEl) {
+      msgEl.focus();
       if (typeof gsap !== 'undefined') {
-        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-        tl.from('#client-sidebar', {
-          x: -30,
-          opacity: 0,
-          duration: 0.6
-        })
-        .from('#hero-banner', {
-          opacity: 0,
-          y: 20,
-          duration: 0.7
-        }, '-=0.3')
-        .from('.client-kpi-card', {
-          opacity: 0,
-          y: 20,
-          duration: 0.5,
-          stagger: 0.1
-        }, '-=0.3')
-        .from('.routine-section-card, .orders-section-card', {
-          opacity: 0,
-          y: 20,
-          duration: 0.6,
-          stagger: 0.15
-        }, '-=0.2');
-
-        // Counters
-        document.querySelectorAll('.counter-client').forEach(el => {
-          const target = parseFloat(el.getAttribute('data-target'));
-          gsap.fromTo(el, { innerText: 0 }, {
-            innerText: target,
-            duration: 1.5,
-            snap: { innerText: 1 },
-            ease: 'power2.out'
-          });
-        });
+        gsap.fromTo(msgEl, { x: -8 }, { x: 0, duration: 0.4, ease: 'elastic.out(1, 0.3)' });
       }
+    }
+    return;
+  }
 
-      // 3. Mobile Sidebar Toggle
-      const sidebarToggleBtn = document.getElementById('client-sidebar-toggle');
-      const sidebar = document.getElementById('client-sidebar');
+  toast('Support ticket validated & logged! Redirecting to concierge...');
+  setTimeout(() => { window.location.href = '404.html'; }, 800);
+};
 
-      if (sidebarToggleBtn && sidebar) {
-        sidebarToggleBtn.addEventListener('click', () => {
-          sidebar.classList.toggle('mobile-open');
-        });
+window.submitShareWishlist = function() {
+  const inputEl = document.getElementById('wishShareInput');
+  const url = inputEl ? inputEl.value.trim() : '';
+  if (!url) {
+    toast('Ritual link is missing.');
+    return;
+  }
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).catch(() => {});
+  }
+  toast('Ritual link verified & copied! Redirecting to share portal...');
+  setTimeout(() => { window.location.href = '404.html'; }, 800);
+};
 
-        document.addEventListener('click', (e) => {
-          if (window.innerWidth <= 868 && !sidebar.contains(e.target) && e.target !== sidebarToggleBtn && !sidebarToggleBtn.contains(e.target)) {
-            sidebar.classList.remove('mobile-open');
-          }
-        });
-      }
+// Global Delegated Click Handler for all links and actions inside main to direct to 404.html
+document.querySelector('main').addEventListener('click', (e) => {
+  // Ignore burger menu, order filter tabs, FAQ accordions, routine check items, routine reset, wishlist hearts, water cups, day cards, inputs, selects, textareas
+  if (
+    e.target.closest('#burger') ||
+    e.target.closest('#oTabs .tab') ||
+    e.target.closest('.faq button') ||
+    e.target.closest('.rt li') ||
+    e.target.closest('#rtReset') ||
+    e.target.closest('.heart') ||
+    e.target.closest('.water-cup') ||
+    e.target.closest('.day-card') ||
+    e.target.closest('input') ||
+    e.target.closest('select') ||
+    e.target.closest('textarea')
+  ) {
+    return;
+  }
 
-      // 4. Toast Helper
-      const toast = document.getElementById('client-toast');
-      const toastText = document.getElementById('client-toast-text');
+  // If inside a form submit button, form handler handles validation
+  if (e.target.closest('button[type="submit"]')) {
+    return;
+  }
 
-      window.showToast = function(msg) {
-        if (!toast) return;
-        toastText.textContent = msg;
-        toast.classList.add('show');
-        setTimeout(() => toast.classList.remove('show'), 2400);
-      };
+  // Anchor links inside main
+  const link = e.target.closest('a');
+  if (link) {
+    e.preventDefault();
+    window.location.href = '404.html';
+    return;
+  }
 
-      // 5. Sidebar Tabs
-      const menuItems = document.querySelectorAll('.sidebar-menu-item');
-      menuItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-          e.preventDefault();
-          menuItems.forEach(i => i.classList.remove('active'));
-          item.classList.add('active');
-          const name = item.querySelector('span').textContent;
-          showToast(`Switched view to ${name}`);
-        });
-      });
+  // Any action button inside main
+  const btn = e.target.closest('button');
+  if (btn) {
+    e.preventDefault();
+    const msg = btn.dataset.toast || 'Redirecting to studio page...';
+    toast(msg);
+    setTimeout(() => { window.location.href = '404.html'; }, 700);
+  }
+});
 
-      // 6. Wishlist Actions
-      window.removeWishlistItem = function(btn, title) {
-        const card = btn.closest('.wishlist-card');
-        if (card) {
-          card.style.opacity = '0';
-          card.style.transform = 'scale(0.9)';
-          setTimeout(() => {
-            card.remove();
-            showToast(`"${title}" removed from your wishlist.`);
-          }, 250);
-        }
-      };
-
-      window.addToCart = function(title) {
-        showToast(`"${title}" added to your shopping bag.`);
-      };
-
-      // 7. Personalized Recommendation Switcher
-      const recData = {
-        'Barrier Repair': {
-          title: 'Phyto-Ceramide Intensive Moisture Balm',
-          desc: 'Engineered with cold-pressed oat lipids and bio-mimetic squalane to re-seal fragile stratum corneum boundaries.'
-        },
-        'Hydration Lock': {
-          title: 'The Dew Serum: Quad-Hyaluronic Complex',
-          desc: 'Four molecular weights of hyaluronic acid delivering deep dermal moisture reservoirs with zero stickiness.'
-        },
-        'Radiance & Glow': {
-          title: 'Vitamin C Radiance Bio-Ferment',
-          desc: 'Stabilized THD ascorbate blended with organic pomegranate enzymes for clear, unhurried morning luminosity.'
-        },
-        'Sensitive Calm': {
-          title: 'Centella & Blue Tansy Soothing Elixir',
-          desc: 'Anti-inflammatory azulene botanicals formulated to diffuse capillary redness and thermal heat sensations.'
-        }
-      };
-
-      window.switchPreference = function(category, pillEl) {
-        document.querySelectorAll('.pref-pill').forEach(p => p.classList.remove('active'));
-        pillEl.classList.add('active');
-
-        const data = recData[category] || recData['Barrier Repair'];
-        const titleEl = document.getElementById('rec-title');
-        const descEl = document.getElementById('rec-desc');
-
-        if (titleEl && descEl) {
-          if (typeof gsap !== 'undefined') {
-            gsap.fromTo('#recommendation-result', { opacity: 0.4 }, { opacity: 1, duration: 0.35 });
-          }
-          titleEl.textContent = data.title;
-          descEl.textContent = data.desc;
-        }
-
-        showToast(`Recommendations updated for ${category}.`);
-      };
-
-    });
-  </script>
-
+const initialPage = (location.hash ? location.hash.slice(1) : '') || 'dash';
+go(initialPage);
+</script>
 </body>
 </html>
-

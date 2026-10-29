@@ -703,6 +703,8 @@
             role: role,
             loginTime: new Date().toISOString()
           }));
+          localStorage.setItem('stackly_user_email', email);
+          sessionStorage.setItem('stackly_user_email', email);
 
           // Visual loading state
           submitBtn.disabled = true;
