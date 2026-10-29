@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Create a new account at Stackly Skincare. Access personalized rituals, order tracking, and clean beauty rewards.">
+  <meta name="theme-color" content="#06121A">
+
+  <title>Create an Account | Stackly Skincare Studio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Brand-logo.webp">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+
+  <style>
+    /* ==========================================================================
+       SIGNUP SCREEN STYLING (Matching User UI Mockup)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      min-height: 100vh;
+      width: 100%;
+      background-color: #F8F9FA;
+      color: #0F172A;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient Background Composition */
+    .auth-bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+      background: #FFFFFF;
+    }
+
+    .auth-bg-shape {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 64%;
+      height: 100%;
+      background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+      clip-path: polygon(0 0, 100% 0, 82% 100%, 0% 100%);
+      opacity: 0.85;
+    }
+
+    .auth-glow-bottom {
+      position: absolute;
+      bottom: -120px;
+      left: -100px;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(114, 226, 174, 0.22) 0%, rgba(114, 226, 174, 0) 70%);
+      filter: blur(40px);
+    }
+
+    .auth-glow-top {
+      position: absolute;
+      top: -100px;
+      right: -80px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(114, 226, 174, 0.16) 0%, rgba(114, 226, 174, 0) 70%);
+      filter: blur(40px);
+    }
+
+    /* Top Bar Navigation (Back to Home & Logo) */
+    .auth-top-bar {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 24px 36px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .btn-back-home {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #0F172A;
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+
+    .btn-back-home:hover {
+      color: #F81D43;
+      transform: translateX(-4px);
+    }
+
+    .auth-brand-logo {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* Main Container */
+    .auth-main-container {
+      position: relative;
+      z-index: 5;
+      min-height: calc(100vh - 90px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px 24px 48px;
+    }
+
+    /* Signup Card */
+    .auth-card {
+      width: 100%;
+      max-width: 440px;
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 40px 36px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+      position: relative;
+    }
+
+    .auth-card-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .auth-card-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .auth-card-subtitle {
+      font-size: 0.92rem;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    /* Form Fields */
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .auth-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .auth-label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #0F172A;
+      letter-spacing: -0.01em;
+    }
+
+    .auth-input-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      width: 100%;
+    }
+
+    .auth-input-icon {
+      position: absolute;
+      left: 16px;
+      font-size: 0.95rem;
+      color: #94A3B8;
+      pointer-events: none;
+    }
+
+    .auth-input,
+    .auth-select {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px 0 46px;
+      background-color: #FFFFFF;
+      border: 1.5px solid #E2E8F0;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.94rem;
+      color: #0F172A;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+
+    .auth-input::placeholder {
+      color: #94A3B8;
+      font-weight: 400;
+    }
+
+    .auth-input:focus,
+    .auth-select:focus {
+      border-color: #0F172A;
+      box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+    }
+
+    .auth-select {
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .auth-select-arrow {
+      position: absolute;
+      right: 16px;
+      font-size: 0.85rem;
+      color: #94A3B8;
+      pointer-events: none;
+    }
+
+    .auth-password-toggle {
+      position: absolute;
+      right: 14px;
+      background: none;
+      border: none;
+      color: #94A3B8;
+      font-size: 1rem;
+      cursor: pointer;
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.2s ease;
+    }
+
+    .auth-password-toggle:hover {
+      color: #0F172A;
+    }
+
+    /* Submit Button */
+    .btn-auth-submit {
+      width: 100%;
+      height: 48px;
+      background-color: #000000;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+      margin-top: 6px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-auth-submit:hover {
+      background-color: #1E293B;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-auth-submit:active {
+      transform: translateY(0);
+    }
+
+    /* Footer Switch Link */
+    .auth-card-footer {
+      text-align: center;
+      margin-top: 24px;
+      font-size: 0.88rem;
+      color: #64748B;
+    }
+
+    .auth-switch-link {
+      color: #0F172A;
+      font-weight: 800;
+      text-decoration: none;
+      transition: color 0.2s ease;
+      margin-left: 4px;
+    }
+
+    .auth-switch-link:hover {
+      color: #F81D43;
+      text-decoration: underline;
+    }
+
+    /* Toast Notification */
+    .auth-toast {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background-color: #0F172A;
+      color: #FFFFFF;
+      padding: 14px 24px;
+      border-radius: var(--radius-pill, 999px);
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+      z-index: 1000;
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    }
+
+    .auth-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    .auth-toast.toast-error {
+      background-color: #EF4444;
+    }
+
+    .auth-toast.toast-success {
+      background-color: #10B981;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 640px) {
+      .auth-top-bar {
+        padding: 18px 20px;
+      }
+
+      .auth-card {
+        padding: 34px 22px;
+        border-radius: 20px;
+      }
+
+      .auth-card-title {
+        font-size: 1.55rem;
+      }
+
+      .auth-bg-shape {
+        width: 100%;
+        clip-path: polygon(0 0, 100% 0, 100% 40%, 0% 55%);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Decorative Background -->
+  <div class="auth-bg-layer" aria-hidden="true">
+    <div class="auth-bg-shape"></div>
+    <div class="auth-glow-bottom"></div>
+    <div class="auth-glow-top"></div>
+  </div>
+
+  <!-- Top Bar: Back to Home & Stackly Logo -->
+  <header class="auth-top-bar">
+    <a href="index.html" class="btn-back-home" id="btn-back-home">
+      <i class="fa-solid fa-arrow-left"></i>
+      <span>Back to Home</span>
+    </a>
+
+    <a href="index.html" aria-label="Stackly Skincare Home">
+      <img src="assets/Brand-logo.webp" alt="Stackly Skincare Logo" class="auth-brand-logo" id="auth-logo">
+    </a>
+  </header>
+
+  <!-- Main Signup Card Area -->
+  <main class="auth-main-container">
+    <div class="auth-card" id="signup-card">
+      
+      <!-- Card Title & Subtitle -->
+      <div class="auth-card-header">
+        <h1 class="auth-card-title">Create an Account</h1>
+        <p class="auth-card-subtitle">Join Stackly today</p>
+      </div>
+
+      <!-- Signup Form -->
+      <form id="signup-form" class="auth-form" novalidate>
+        
+        <!-- Sign Up As Dropdown -->
+        <div class="auth-field-group">
+          <label for="signup-role" class="auth-label">Sign Up As</label>
+          <div class="auth-input-wrap">
+            <i class="fa-solid fa-user auth-input-icon"></i>
+            <select id="signup-role" class="auth-select" required>
+              <option value="Client" selected>Client</option>
+              <option value="Admin">Admin</option>
+            </select>
+            <i class="fa-solid fa-chevron-down auth-select-arrow"></i>
+          </div>
+        </div>
+
+        <!-- Full Name -->
+        <div class="auth-field-group">
+          <label for="signup-name" class="auth-label">Full Name</label>
+          <div class="auth-input-wrap">
+            <i class="fa-regular fa-user auth-input-icon"></i>
+            <input type="text" id="signup-name" class="auth-input" placeholder="John Doe" required autocomplete="name">
+          </div>
+        </div>
+
+        <!-- Email Address -->
+        <div class="auth-field-group">
+          <label for="signup-email" class="auth-label">Email Address</label>
+          <div class="auth-input-wrap">
+            <i class="fa-regular fa-envelope auth-input-icon"></i>
+            <input type="email" id="signup-email" class="auth-input" placeholder="user@example.com" required autocomplete="email">
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="auth-field-group">
+          <label for="signup-password" class="auth-label">Password</label>
+          <div class="auth-input-wrap">
+            <i class="fa-solid fa-lock auth-input-icon"></i>
+            <input type="password" id="signup-password" class="auth-input" placeholder="••••••••" required autocomplete="new-password">
+            <button type="button" class="auth-password-toggle" id="toggle-password" aria-label="Toggle password visibility">
+              <i class="fa-regular fa-eye" id="eye-icon"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-auth-submit" id="btn-submit">
+          <span>Sign Up</span>
+        </button>
+
+      </form>
+
+      <!-- Bottom Switch Link -->
+      <div class="auth-card-footer">
+        <span>Already have an account?</span>
+        <a href="Login.html" class="auth-switch-link">Login here</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Toast Notification Feedback -->
+  <div id="auth-toast" class="auth-toast" role="alert" aria-live="polite">
+    <i class="fa-solid fa-circle-info" id="toast-icon"></i>
+    <span id="toast-message">Notification message</span>
+  </div>
+
+  <!-- GSAP Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      'use strict';
+
+      // 1. GSAP Entrance Animation
+      if (typeof gsap !== 'undefined') {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+        tl.from('#btn-back-home', {
+          opacity: 0,
+          x: -20,
+          duration: 0.6,
+          delay: 0.1
+        })
+        .from('#auth-logo', {
+          opacity: 0,
+          x: 20,
+          duration: 0.6
+        }, '-=0.5')
+        .from('#signup-card', {
+          opacity: 0,
+          scale: 0.94,
+          y: 25,
+          duration: 0.75
+        }, '-=0.4')
+        .from('.auth-field-group, #btn-submit, .auth-card-footer', {
+          opacity: 0,
+          y: 14,
+          duration: 0.5,
+          stagger: 0.08
+        }, '-=0.3');
+      }
+
+      // 2. Toggle Password Visibility
+      const togglePasswordBtn = document.getElementById('toggle-password');
+      const passwordInput = document.getElementById('signup-password');
+      const eyeIcon = document.getElementById('eye-icon');
+
+      if (togglePasswordBtn && passwordInput && eyeIcon) {
+        togglePasswordBtn.addEventListener('click', () => {
+          const isPassword = passwordInput.type === 'password';
+          passwordInput.type = isPassword ? 'text' : 'password';
+          eyeIcon.classList.toggle('fa-eye', !isPassword);
+          eyeIcon.classList.toggle('fa-eye-slash', isPassword);
+        });
+      }
+
+      // 3. Toast Helper Function
+      const toast = document.getElementById('auth-toast');
+      const toastMessage = document.getElementById('toast-message');
+      const toastIcon = document.getElementById('toast-icon');
+
+      function showToast(message, type = 'info') {
+        if (!toast) return;
+        toastMessage.textContent = message;
+        toast.className = 'auth-toast';
+        toast.classList.add(type === 'error' ? 'toast-error' : 'toast-success', 'show');
+
+        toastIcon.className = type === 'error' 
+          ? 'fa-solid fa-circle-exclamation' 
+          : 'fa-solid fa-circle-check';
+
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2600);
+      }
+
+      // 4. Form Validation & Redirection to Login Page
+      const signupForm = document.getElementById('signup-form');
+      const roleSelect = document.getElementById('signup-role');
+      const nameInput = document.getElementById('signup-name');
+      const emailInput = document.getElementById('signup-email');
+      const submitBtn = document.getElementById('btn-submit');
+
+      if (signupForm) {
+        signupForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          const role = roleSelect.value;
+          const name = nameInput.value.trim();
+          const email = emailInput.value.trim();
+          const password = passwordInput.value;
+
+          // Strict Validation
+          if (!name || name.length < 2) {
+            showToast('Please enter your full name.', 'error');
+            nameInput.focus();
+            return;
+          }
+
+          if (!email) {
+            showToast('Please enter your email address.', 'error');
+            emailInput.focus();
+            return;
+          }
+
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(email)) {
+            showToast('Please enter a valid email address.', 'error');
+            emailInput.focus();
+            return;
+          }
+
+          if (!password || password.length < 6) {
+            showToast('Password must be at least 6 characters long.', 'error');
+            passwordInput.focus();
+            return;
+          }
+
+          // Register in localStorage demo database
+          localStorage.setItem('stackly_registered_user', JSON.stringify({
+            name: name,
+            email: email,
+            role: role,
+            createdAt: new Date().toISOString()
+          }));
+
+          // Visual loading state
+          submitBtn.disabled = true;
+          submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Creating account...</span>';
+
+          showToast('Account created successfully! Redirecting to login...', 'success');
+
+          // Redirect to Login.html after field validation
+          setTimeout(() => {
+            window.location.href = 'Login.html';
+          }, 1100);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Page not found — Stackly Skincare Sanctuary.">
+  <meta name="theme-color" content="#06121A">
+
+  <title>404 — Page Not Found | Stackly Skincare</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Brand-logo.webp">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* Dedicated 404 Page Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .page-404-body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: var(--color-bg-nude, #EEDFDA);
+      overflow-x: hidden;
+      position: relative;
+      font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif);
+      color: #1A1817;
+    }
+
+    .page-404-header {
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      z-index: 20;
+    }
+
+    .page-404-logo {
+      height: 38px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+    }
+
+    .page-404-main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .page-404-card {
+      max-width: 660px;
+      width: 100%;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      border-radius: 32px;
+      padding: 50px 36px 44px;
+      box-shadow: 0 24px 64px rgba(6, 18, 26, 0.08);
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .number-404 {
+      font-family: var(--font-serif, 'Playfair Display', serif);
+      font-size: clamp(4.5rem, 13vw, 8rem);
+      font-weight: 700;
+      line-height: 1;
+      color: #06121A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .number-404 .digit-leaf {
+      display: inline-block;
+      width: 0.72em;
+      height: 0.72em;
+      background: radial-gradient(circle at 35% 35%, #FF4D75 0%, #F81D43 55%, #A80020 100%);
+      border-radius: 50%;
+      box-shadow: 0 12px 28px rgba(248, 29, 67, 0.42);
+      animation: floatBadge 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatBadge {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        transform: translateY(-8px) scale(1.04);
+      }
+    }
+
+    .title-404 {
+      font-family: var(--font-serif, 'Playfair Display', serif);
+      font-size: clamp(1.8rem, 4vw, 2.35rem);
+      font-weight: 700;
+      color: #1A1817;
+      margin-bottom: 14px;
+      line-height: 1.25;
+    }
+
+    .desc-404 {
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: #5C5552;
+      max-width: 490px;
+      margin: 0 auto 32px;
+    }
+
+    /* ----------------------------------------------------
+       404 ACTION BUTTONS — Bulletproof Visibility & Styling
+       ---------------------------------------------------- */
+    .actions-404 {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 16px !important;
+      flex-wrap: wrap !important;
+      margin: 0 auto 32px !important;
+      width: 100% !important;
+      position: relative !important;
+      z-index: 20 !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    .btn-404 {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      padding: 14px 30px !important;
+      font-family: var(--font-sans, 'Plus Jakarta Sans', sans-serif) !important;
+      font-size: 0.96rem !important;
+      font-weight: 700 !important;
+      border-radius: 999px !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      line-height: 1 !important;
+      outline: none !important;
+      box-sizing: border-box !important;
+      position: relative !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      transition: transform 0.22s ease, background-color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+    }
+
+    /* Back Button: High contrast white pill with dark border */
+    .btn-404.btn-back,
+    #btn-back {
+      background-color: #FFFFFF !important;
+      color: #06121A !important;
+      border: 1.5px solid #06121A !important;
+      box-shadow: 0 4px 14px rgba(6, 18, 26, 0.08) !important;
+    }
+
+    .btn-404.btn-back:hover,
+    #btn-back:hover {
+      background-color: #06121A !important;
+      color: #FFFFFF !important;
+      border-color: #06121A !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 22px rgba(6, 18, 26, 0.18) !important;
+    }
+
+    .btn-404.btn-back:active,
+    #btn-back:active {
+      transform: translateY(0) !important;
+    }
+
+    /* Back to Home Button: Radiant Coral pill */
+    .btn-404.btn-home,
+    .btn-404.btn-coral,
+    #btn-home {
+      background-color: #F81D43 !important;
+      color: #FFFFFF !important;
+      border: 1.5px solid #F81D43 !important;
+      box-shadow: 0 8px 24px rgba(248, 29, 67, 0.35) !important;
+    }
+
+    .btn-404.btn-home:hover,
+    .btn-404.btn-coral:hover,
+    #btn-home:hover {
+      background-color: #D91033 !important;
+      border-color: #D91033 !important;
+      color: #FFFFFF !important;
+      transform: translateY(-2px) !important;
+      box-shadow: 0 12px 30px rgba(248, 29, 67, 0.48) !important;
+    }
+
+    .btn-404.btn-home:active,
+    .btn-404.btn-coral:active,
+    #btn-home:active {
+      transform: translateY(0) !important;
+    }
+
+    .btn-404 i {
+      font-size: 0.95rem !important;
+      line-height: 1 !important;
+      display: inline-block !important;
+    }
+
+    .btn-404 span {
+      line-height: 1 !important;
+      display: inline-block !important;
+    }
+
+    /* Quick Links */
+    .quick-links-404 {
+      border-top: 1px solid rgba(26, 24, 23, 0.1);
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: #5C5552;
+    }
+
+    .quick-links-404 .sep {
+      color: #9C9490;
+      user-select: none;
+      font-size: 0.85rem;
+    }
+
+    .quick-links-404 a {
+      color: #1A1817;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .quick-links-404 a:hover {
+      color: #F81D43;
+    }
+
+    .page-404-footer {
+      padding: 20px 24px;
+      text-align: center;
+      font-size: 0.82rem;
+      color: #7A726E;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (max-width: 640px) {
+      .page-404-header {
+        padding: 16px 20px;
+      }
+
+      .page-404-card {
+        padding: 38px 22px 32px;
+        border-radius: 24px;
+      }
+
+      .actions-404 {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 12px !important;
+      }
+
+      .btn-404 {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+    }
+  </style>
+</head>
+<body class="page-404-body">
+
+  <!-- Top Simple Bar -->
+  <header class="page-404-header">
+    <a href="index.html" aria-label="Stackly Home">
+      <img src="assets/Brand-logo.webp" alt="Stackly Skincare Logo" class="page-404-logo">
+    </a>
+    <a href="index.html" class="btn btn-outline" style="padding: 9px 20px; font-size: 0.85rem; font-weight: 600; border-radius: 999px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid rgba(6,18,26,0.2); color: #06121A; background: #FFFFFF;">
+      <i class="fa-solid fa-house"></i>
+      <span>Storefront</span>
+    </a>
+  </header>
+
+  <!-- Main Content Card -->
+  <main class="page-404-main">
+    <div class="page-404-card" id="card-404">
+      
+      <div class="number-404" id="num-404">
+        <span>4</span>
+        <span class="digit-leaf" title="Dew drop"></span>
+        <span>4</span>
+      </div>
+
+      <h1 class="title-404" id="title-404">Lost in the Sanctuary?</h1>
+      
+      <p class="desc-404" id="desc-404">
+        The skincare ritual or page you are looking for has been relocated, archived, or does not exist in our studio catalogue.
+      </p>
+
+      <!-- 404 Action Buttons -->
+      <div class="actions-404" id="actions-404">
+        <!-- Back Button -->
+        <button type="button" onclick="handleGoBack()" class="btn-404 btn-back" id="btn-back" aria-label="Go Back to Previous Page">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back</span>
+        </button>
+
+        <!-- Back to Home Button -->
+        <a href="index.html" class="btn-404 btn-home btn-coral" id="btn-home" aria-label="Go Back to Storefront Home">
+          <i class="fa-solid fa-house"></i>
+          <span>Back to Home</span>
+        </a>
+      </div>
+
+      <div class="quick-links-404" id="links-404">
+        <span>Explore instead:</span>
+        <a href="Service.html">Service Menu</a>
+        <span class="sep">&bull;</span>
+        <a href="About.html">Our Philosophy</a>
+        <span class="sep">&bull;</span>
+        <a href="Blog.html">Skincare Journal</a>
+        <span class="sep">&bull;</span>
+        <a href="Contact.html">Studio Concierge</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer Notice -->
+  <footer class="page-404-footer">
+    &copy; 2026 STACKLY SKIN CARE. All rights reserved. Crafted with clean intention.
+  </footer>
+
+  <!-- GSAP Animation Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script>
+    // Safe Back Navigation Function
+    function handleGoBack() {
+      if (window.history.length > 1) {
+        window.history.back();
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+
+    // GSAP Entrance Animations with clearProps safety
+    document.addEventListener('DOMContentLoaded', () => {
+      try {
+        if (typeof gsap !== 'undefined') {
+          const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+          tl.from('#card-404', {
+            opacity: 0,
+            scale: 0.94,
+            y: 20,
+            duration: 0.7,
+            delay: 0.1,
+            clearProps: 'transform,scale'
+          })
+          .from('#num-404 span', {
+            opacity: 0,
+            y: -25,
+            duration: 0.6,
+            stagger: 0.12,
+            clearProps: 'transform'
+          }, '-=0.35')
+          .from('#title-404', {
+            opacity: 0,
+            y: 18,
+            duration: 0.55,
+            clearProps: 'transform'
+          }, '-=0.3')
+          .from('#desc-404', {
+            opacity: 0,
+            y: 14,
+            duration: 0.5,
+            clearProps: 'transform'
+          }, '-=0.25')
+          .fromTo('#actions-404 .btn-404', 
+            { opacity: 0, y: 15 },
+            { opacity: 1, y: 0, duration: 0.5, stagger: 0.12, clearProps: 'all' },
+            '-=0.2'
+          )
+          .fromTo('#links-404', 
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.5, clearProps: 'all' },
+            '-=0.2'
+          );
+        }
+      } catch (err) {
+        console.warn('GSAP animation skipped:', err);
+      }
+    });
+  </script>
+
+</body>
+</html>

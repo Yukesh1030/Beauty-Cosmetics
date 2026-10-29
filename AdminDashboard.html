@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly Skincare Studio Administrator Dashboard. Store overview, inventory management, order processing, and analytics.">
+  <meta name="theme-color" content="#06121A">
+
+  <title>Admin Dashboard | Stackly Skincare Studio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Brand-logo.webp">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+
+  <style>
+    /* ==========================================================================
+       ADMIN DASHBOARD STYLES (Storefront Management)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-navy: #06121A;
+      --color-navy-dark: #040D13;
+      --color-sidebar: #0A1C28;
+      --color-coral: #F81D43;
+      --color-coral-hover: #D91033;
+      --color-green: #10B981;
+      --color-amber: #F59E0B;
+      --color-blue: #3B82F6;
+      --color-purple: #8B5CF6;
+      --color-bg: #F4F6F8;
+      --color-card: #FFFFFF;
+      --color-text: #0F172A;
+      --color-text-muted: #64748B;
+      --color-border: #E2E8F0;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+      --shadow-hover: 0 12px 28px rgba(15, 23, 42, 0.08);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html, body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* Dashboard Layout Grid */
+    .dashboard-layout {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+    }
+
+    /* --------------------------------------------------------------------------
+       1. COMPACT SIDEBAR
+       -------------------------------------------------------------------------- */
+    .dashboard-sidebar {
+      width: 260px;
+      background-color: var(--color-sidebar);
+      color: #D2DEE6;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      transition: var(--transition);
+      z-index: 100;
+    }
+
+    .sidebar-brand-box {
+      padding: 24px 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .sidebar-logo {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .sidebar-brand-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background-color: rgba(248, 29, 67, 0.15);
+      color: var(--color-coral);
+      border: 1px solid rgba(248, 29, 67, 0.3);
+      text-transform: uppercase;
+    }
+
+    .sidebar-menu-list {
+      list-style: none;
+      padding: 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .sidebar-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: #94A3B8;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .sidebar-menu-item i {
+      font-size: 1.1rem;
+      width: 22px;
+      text-align: center;
+      color: #94A3B8;
+      transition: var(--transition);
+    }
+
+    .sidebar-menu-item:hover {
+      color: #FFFFFF;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .sidebar-menu-item.active {
+      background-color: var(--color-coral);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(248, 29, 67, 0.35);
+    }
+
+    .sidebar-menu-item.active i {
+      color: #FFFFFF;
+    }
+
+    .sidebar-bottom-box {
+      padding: 18px 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-sidebar-store {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.06);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+    }
+
+    .btn-sidebar-store:hover {
+      background-color: var(--color-coral);
+      border-color: var(--color-coral);
+    }
+
+    /* --------------------------------------------------------------------------
+       2. MAIN CONTENT AREA & TOP BAR
+       -------------------------------------------------------------------------- */
+    .dashboard-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow-x: hidden;
+    }
+
+    /* Top Bar Header */
+    .dashboard-topbar {
+      height: 72px;
+      background-color: #FFFFFF;
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-mobile-sidebar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--color-text);
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .topbar-search-box {
+      position: relative;
+      width: 320px;
+      display: flex;
+      align-items: center;
+    }
+
+    .topbar-search-box i {
+      position: absolute;
+      left: 14px;
+      color: #94A3B8;
+      font-size: 0.9rem;
+    }
+
+    .topbar-search-input {
+      width: 100%;
+      height: 40px;
+      padding: 0 14px 0 40px;
+      border-radius: 10px;
+      border: 1.5px solid var(--color-border);
+      background-color: #F8FAFC;
+      font-size: 0.88rem;
+      color: var(--color-text);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .topbar-search-input:focus {
+      border-color: var(--color-text);
+      background-color: #FFFFFF;
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .btn-refresh-data {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background-color: #F1F5F9;
+      border: 1px solid var(--color-border);
+      border-radius: 9px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--color-text);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .btn-refresh-data:hover {
+      background-color: #E2E8F0;
+    }
+
+    .topbar-notification-btn {
+      position: relative;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #64748B;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .topbar-notification-btn:hover {
+      background-color: #F1F5F9;
+      color: var(--color-text);
+    }
+
+    .notification-dot {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-coral);
+      border-radius: 50%;
+      border: 2px solid #FFFFFF;
+    }
+
+    .admin-profile-pill {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 5px 12px 5px 6px;
+      border-radius: 999px;
+      background-color: #F8FAFC;
+      border: 1px solid var(--color-border);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .admin-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: var(--color-coral);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .admin-profile-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .admin-profile-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .admin-profile-role {
+      font-size: 0.72rem;
+      color: var(--color-coral);
+      font-weight: 600;
+    }
+
+    /* --------------------------------------------------------------------------
+       3. DASHBOARD CONTENT CONTAINER
+       -------------------------------------------------------------------------- */
+    .dashboard-content {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      flex: 1;
+    }
+
+    /* Section Header */
+    .dashboard-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .dashboard-page-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--color-text);
+    }
+
+    .dashboard-page-subtitle {
+      font-size: 0.88rem;
+      color: var(--color-text-muted);
+      margin-top: 4px;
+    }
+
+    .dashboard-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-admin-action {
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: var(--transition);
+      border: none;
+    }
+
+    .btn-admin-primary {
+      background-color: var(--color-coral);
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(248, 29, 67, 0.25);
+    }
+
+    .btn-admin-primary:hover {
+      background-color: var(--color-coral-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-admin-outline {
+      background-color: #FFFFFF;
+      border: 1.5px solid var(--color-border);
+      color: var(--color-text);
+    }
+
+    .btn-admin-outline:hover {
+      background-color: #F8FAFC;
+      border-color: #CBD5E1;
+    }
+
+    /* --------------------------------------------------------------------------
+       4. OVERVIEW KPI CARDS (TOTAL ORDERS, PRODUCTS, PENDING, REVENUE)
+       -------------------------------------------------------------------------- */
+    .kpi-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .kpi-card {
+      background: var(--color-card);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-3px);
+    }
+
+    .kpi-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    .kpi-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .kpi-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.15rem;
+    }
+
+    .kpi-icon-orders { background-color: rgba(59, 130, 246, 0.1); color: var(--color-blue); }
+    .kpi-icon-products { background-color: rgba(16, 185, 129, 0.1); color: var(--color-green); }
+    .kpi-icon-pending { background-color: rgba(245, 158, 11, 0.1); color: var(--color-amber); }
+    .kpi-icon-revenue { background-color: rgba(248, 29, 67, 0.1); color: var(--color-coral); }
+
+    .kpi-value {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--color-text);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .kpi-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-radius: 6px;
+      padding: 3px 8px;
+      width: fit-content;
+    }
+
+    .kpi-badge-up { background-color: rgba(16, 185, 129, 0.12); color: #059669; }
+    .kpi-badge-warn { background-color: rgba(245, 158, 11, 0.12); color: #D97706; }
+    .kpi-badge-neutral { background-color: #F1F5F9; color: #64748B; }
+
+    /* --------------------------------------------------------------------------
+       5. CHARTS & INVENTORY PANELS ROW
+       -------------------------------------------------------------------------- */
+    .dashboard-panels-2col {
+      display: grid;
+      grid-template-columns: 1.6fr 1.1fr;
+      gap: 24px;
+    }
+
+    .dashboard-panel-card {
+      background: var(--color-card);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .panel-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+    }
+
+    .panel-title {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .panel-title i {
+      color: var(--color-coral);
+    }
+
+    .panel-subtext {
+      font-size: 0.84rem;
+      color: var(--color-text-muted);
+    }
+
+    /* Revenue Animated Chart Display */
+    .chart-container {
+      width: 100%;
+      height: 220px;
+      display: flex;
+      align-items: flex-end;
+      gap: 24px;
+      padding: 20px 0 10px;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .chart-bar-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .chart-bar-outer {
+      width: 100%;
+      max-width: 38px;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      background-color: #F1F5F9;
+      border-radius: 8px 8px 4px 4px;
+      overflow: hidden;
+    }
+
+    .chart-bar-fill {
+      width: 100%;
+      background: linear-gradient(180deg, #F81D43 0%, #06121A 100%);
+      border-radius: 8px 8px 4px 4px;
+      transition: height 1s ease;
+    }
+
+    .chart-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #94A3B8;
+    }
+
+    .chart-legend-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      font-size: 0.84rem;
+    }
+
+    /* Bestsellers List */
+    .bestsellers-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .bestseller-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background-color: #F8FAFC;
+      border-radius: 12px;
+      border: 1px solid var(--color-border);
+      transition: var(--transition);
+    }
+
+    .bestseller-item:hover {
+      background-color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border-color: #CBD5E1;
+    }
+
+    .bestseller-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .bestseller-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .bestseller-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--color-text);
+    }
+
+    .bestseller-category {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+    }
+
+    .bestseller-units {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--color-coral);
+    }
+
+    /* --------------------------------------------------------------------------
+       6. RECENT ORDERS TABLE PANEL
+       -------------------------------------------------------------------------- */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .dashboard-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.88rem;
+    }
+
+    .dashboard-table th {
+      padding: 14px 16px;
+      font-weight: 700;
+      color: #64748B;
+      border-bottom: 2px solid var(--color-border);
+      text-transform: uppercase;
+      font-size: 0.74rem;
+      letter-spacing: 0.6px;
+      background-color: #F8FAFC;
+    }
+
+    .dashboard-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--color-border);
+      color: var(--color-text);
+      vertical-align: middle;
+    }
+
+    .dashboard-table tr:hover td {
+      background-color: #F8FAFC;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: capitalize;
+    }
+
+    .status-delivered { background-color: rgba(16, 185, 129, 0.12); color: #059669; }
+    .status-processing { background-color: rgba(59, 130, 246, 0.12); color: #2563EB; }
+    .status-pending { background-color: rgba(245, 158, 11, 0.12); color: #D97706; }
+    .status-cancelled { background-color: rgba(239, 68, 68, 0.12); color: #DC2626; }
+
+    .btn-table-action {
+      padding: 6px 12px;
+      background: none;
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      color: var(--color-text);
+      transition: var(--transition);
+    }
+
+    .btn-table-action:hover {
+      background-color: var(--color-coral);
+      color: #FFFFFF;
+      border-color: var(--color-coral);
+    }
+
+    /* Low Stock Alerts Banner */
+    .alerts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .alert-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-radius: 12px;
+      background-color: #FEF2F2;
+      border: 1px solid #FCA5A5;
+      color: #991B1B;
+    }
+
+    .alert-item-warn {
+      background-color: #FFFBEB;
+      border-color: #FCD34D;
+      color: #92400E;
+    }
+
+    .alert-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+
+    .btn-reorder {
+      padding: 6px 14px;
+      background-color: #FFFFFF;
+      border: 1px solid currentColor;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      color: inherit;
+    }
+
+    .btn-reorder:hover {
+      background-color: var(--color-coral);
+      color: #FFFFFF;
+      border-color: var(--color-coral);
+    }
+
+    /* Modal for Add Product */
+    .admin-modal {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(6, 18, 26, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .admin-modal.show {
+      display: flex;
+    }
+
+    .admin-modal-card {
+      background: #FFFFFF;
+      border-radius: 20px;
+      padding: 32px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--color-text);
+    }
+
+    .btn-modal-close {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: #94A3B8;
+      cursor: pointer;
+    }
+
+    .modal-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .modal-input {
+      width: 100%;
+      height: 44px;
+      padding: 0 14px;
+      border: 1.5px solid var(--color-border);
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .modal-input:focus {
+      border-color: var(--color-coral);
+    }
+
+    /* Toast Notification */
+    .admin-toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background-color: var(--color-navy);
+      color: #FFFFFF;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+      z-index: 300;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .admin-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Mobile Responsive Breakpoints */
+    @media (max-width: 1100px) {
+      .kpi-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .dashboard-panels-2col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 868px) {
+      .dashboard-sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+      }
+
+      .dashboard-sidebar.mobile-open {
+        transform: translateX(0);
+      }
+
+      .btn-mobile-sidebar-toggle {
+        display: block;
+      }
+
+      .dashboard-content {
+        padding: 20px 16px;
+      }
+
+      .topbar-search-box {
+        display: none;
+      }
+
+      .kpi-cards-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    
+    <!-- ==============================================
+         1. SIDEBAR (5 Menus)
+         ============================================== -->
+    <aside class="dashboard-sidebar" id="sidebar">
+      <div class="sidebar-brand-box">
+        <a href="index.html" title="Stackly Home">
+          <img src="assets/Brand-logo.webp" alt="Stackly Skincare Logo" class="sidebar-logo">
+        </a>
+        <span class="sidebar-brand-badge">ADMIN</span>
+      </div>
+
+      <nav class="sidebar-menu-list">
+        <!-- 1. Dashboard -->
+        <a class="sidebar-menu-item active" data-tab="dashboard">
+          <i class="fa-solid fa-chart-line"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <!-- 2. Products & Inventory -->
+        <a class="sidebar-menu-item" data-tab="products">
+          <i class="fa-solid fa-box-archive"></i>
+          <span>Products & Inventory</span>
+        </a>
+
+        <!-- 3. Orders & Customers -->
+        <a class="sidebar-menu-item" data-tab="orders">
+          <i class="fa-solid fa-receipt"></i>
+          <span>Orders & Customers</span>
+        </a>
+
+        <!-- 4. Sales & Marketing -->
+        <a class="sidebar-menu-item" data-tab="sales">
+          <i class="fa-solid fa-bullhorn"></i>
+          <span>Sales & Marketing</span>
+        </a>
+
+        <!-- 5. Settings -->
+        <a class="sidebar-menu-item" data-tab="settings">
+          <i class="fa-solid fa-gear"></i>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom-box">
+        <a href="index.html" class="btn-sidebar-store">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Store</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ==============================================
+         2. MAIN DASHBOARD CONTENT
+         ============================================== -->
+    <div class="dashboard-main">
+      
+      <!-- Top Bar -->
+      <header class="dashboard-topbar">
+        <div class="topbar-left">
+          <button class="btn-mobile-sidebar-toggle" id="sidebar-toggle" aria-label="Toggle Navigation Sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="topbar-search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" class="topbar-search-input" id="admin-search-input" placeholder="Search orders, products, clients...">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Refresh Button -->
+          <button class="btn-refresh-data" id="btn-refresh">
+            <i class="fa-solid fa-arrows-rotate" id="refresh-icon"></i>
+            <span>Refresh</span>
+          </button>
+
+          <!-- Notifications -->
+          <button class="topbar-notification-btn" id="btn-notifications" aria-label="View notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-dot"></span>
+          </button>
+
+          <!-- Admin Profile -->
+          <div class="admin-profile-pill">
+            <div class="admin-avatar">AY</div>
+            <div class="admin-profile-info">
+              <span class="admin-profile-name" id="admin-user-display">Admin Yukesh</span>
+              <span class="admin-profile-role">Super Admin</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <main class="dashboard-content">
+        
+        <!-- Header Row -->
+        <div class="dashboard-header-row">
+          <div>
+            <h1 class="dashboard-page-title" id="page-title">Store Overview</h1>
+            <p class="dashboard-page-subtitle">Real-time clinical skincare operations & sales intelligence</p>
+          </div>
+
+          <div class="dashboard-header-actions">
+            <button class="btn-admin-action btn-admin-outline" id="btn-export-report">
+              <i class="fa-solid fa-download"></i>
+              <span>Export Report</span>
+            </button>
+            <button class="btn-admin-action btn-admin-primary" id="btn-add-product">
+              <i class="fa-solid fa-plus"></i>
+              <span>Add Product</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             KPI CARDS (TOTAL ORDERS, PRODUCTS, PENDING, REVENUE)
+             ============================================== -->
+        <section class="kpi-cards-grid" id="kpi-grid">
+          
+          <!-- KPI 1: TOTAL ORDERS -->
+          <div class="kpi-card">
+            <div class="kpi-top-row">
+              <span class="kpi-label">TOTAL ORDERS</span>
+              <div class="kpi-icon-wrap kpi-icon-orders">
+                <i class="fa-solid fa-bag-shopping"></i>
+              </div>
+            </div>
+            <div class="kpi-value counter-num" data-target="328">328</div>
+            <span class="kpi-badge kpi-badge-up">
+              <i class="fa-solid fa-arrow-trend-up"></i>
+              +14.8% vs last month
+            </span>
+          </div>
+
+          <!-- KPI 2: PRODUCTS -->
+          <div class="kpi-card">
+            <div class="kpi-top-row">
+              <span class="kpi-label">PRODUCTS</span>
+              <div class="kpi-icon-wrap kpi-icon-products">
+                <i class="fa-solid fa-leaf"></i>
+              </div>
+            </div>
+            <div class="kpi-value counter-num" data-target="86">86</div>
+            <span class="kpi-badge kpi-badge-neutral">
+              4 active botanical tiers
+            </span>
+          </div>
+
+          <!-- KPI 3: PENDING ORDERS -->
+          <div class="kpi-card">
+            <div class="kpi-top-row">
+              <span class="kpi-label">PENDING ORDERS</span>
+              <div class="kpi-icon-wrap kpi-icon-pending">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+            </div>
+            <div class="kpi-value counter-num" data-target="14">14</div>
+            <span class="kpi-badge kpi-badge-warn">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              Awaiting dispensary check
+            </span>
+          </div>
+
+          <!-- KPI 4: TOTAL REVENUE -->
+          <div class="kpi-card">
+            <div class="kpi-top-row">
+              <span class="kpi-label">MONTHLY REVENUE</span>
+              <div class="kpi-icon-wrap kpi-icon-revenue">
+                <i class="fa-solid fa-dollar-sign"></i>
+              </div>
+            </div>
+            <div class="kpi-value">$<span class="counter-num" data-target="48920">48,920</span></div>
+            <span class="kpi-badge kpi-badge-up">
+              <i class="fa-solid fa-arrow-trend-up"></i>
+              +18.4% studio expansion
+            </span>
+          </div>
+
+        </section>
+
+        <!-- ==============================================
+             CHART & BESTSELLERS ROW
+             ============================================== -->
+        <div class="dashboard-panels-2col">
+          
+          <!-- Revenue Trend Chart -->
+          <div class="dashboard-panel-card">
+            <div class="panel-header-row">
+              <div>
+                <h3 class="panel-title"><i class="fa-solid fa-chart-simple"></i> Revenue Trend (Oct 2026)</h3>
+                <span class="panel-subtext">Weekly studio apothecary & online sales progression</span>
+              </div>
+              <span class="kpi-badge kpi-badge-up">+24% vs Sep</span>
+            </div>
+
+            <div class="chart-container">
+              <div class="chart-bar-group">
+                <div class="chart-bar-outer"><div class="chart-bar-fill" style="height: 48%;"></div></div>
+                <span class="chart-label">W1</span>
+              </div>
+              <div class="chart-bar-group">
+                <div class="chart-bar-outer"><div class="chart-bar-fill" style="height: 65%;"></div></div>
+                <span class="chart-label">W2</span>
+              </div>
+              <div class="chart-bar-group">
+                <div class="chart-bar-outer"><div class="chart-bar-fill" style="height: 58%;"></div></div>
+                <span class="chart-label">W3</span>
+              </div>
+              <div class="chart-bar-group">
+                <div class="chart-bar-outer"><div class="chart-bar-fill" style="height: 88%;"></div></div>
+                <span class="chart-label">W4</span>
+              </div>
+              <div class="chart-bar-group">
+                <div class="chart-bar-outer"><div class="chart-bar-fill" style="height: 100%;"></div></div>
+                <span class="chart-label">W5</span>
+              </div>
+            </div>
+
+            <div class="chart-legend-row">
+              <span style="color: #64748B;">Total weekly shipments: <strong>328 packages</strong></span>
+              <span style="color: var(--color-coral); font-weight: 700;">Peak day: Saturday ($12,480)</span>
+            </div>
+          </div>
+
+          <!-- Bestselling Skincare Products -->
+          <div class="dashboard-panel-card">
+            <div class="panel-header-row">
+              <div>
+                <h3 class="panel-title"><i class="fa-solid fa-crown"></i> Bestselling Formulas</h3>
+                <span class="panel-subtext">Top client-requested formulations</span>
+              </div>
+              <a href="#" class="btn-table-action" style="text-decoration: none;">View All</a>
+            </div>
+
+            <div class="bestsellers-list">
+              <div class="bestseller-item">
+                <div class="bestseller-info">
+                  <img src="assets/unsplash_90ozvS4qMCk.webp" alt="The Dew Serum" class="bestseller-thumb">
+                  <div>
+                    <div class="bestseller-name">The Dew Serum</div>
+                    <div class="bestseller-category">Cellular Hydration • $88.00</div>
+                  </div>
+                </div>
+                <span class="bestseller-units">214 Sold</span>
+              </div>
+
+              <div class="bestseller-item">
+                <div class="bestseller-info">
+                  <img src="assets/unsplash_NtsCm4Er-PI.webp" alt="Barrier Lipid Cream" class="bestseller-thumb">
+                  <div>
+                    <div class="bestseller-name">Barrier Lipid Cream</div>
+                    <div class="bestseller-category">Phytoceramides • $96.00</div>
+                  </div>
+                </div>
+                <span class="bestseller-units">182 Sold</span>
+              </div>
+
+              <div class="bestseller-item">
+                <div class="bestseller-info">
+                  <img src="assets/unsplash_b2bXKspL5MY.webp" alt="Botanical Night Oil" class="bestseller-thumb">
+                  <div>
+                    <div class="bestseller-name">Botanical Night Oil</div>
+                    <div class="bestseller-category">Nocturnal Repair • $110.00</div>
+                  </div>
+                </div>
+                <span class="bestseller-units">156 Sold</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ==============================================
+             LOW-STOCK DISPENSARY ALERTS
+             ============================================== -->
+        <div class="dashboard-panel-card">
+          <div class="panel-header-row">
+            <div>
+              <h3 class="panel-title"><i class="fa-solid fa-bell"></i> Dispensary Stock Alerts</h3>
+              <span class="panel-subtext">Automated inventory triggers requiring apothecary lab replenishment</span>
+            </div>
+          </div>
+
+          <div class="alerts-list">
+            <div class="alert-item">
+              <div class="alert-left">
+                <i class="fa-solid fa-circle-exclamation"></i>
+                <span><strong>Critical Stock:</strong> Phytoceramide Intensive Balm has only <strong>4 units</strong> remaining in SoHo Dispensary.</span>
+              </div>
+              <button class="btn-reorder" onclick="triggerReorder('Phytoceramide Intensive Balm')">Reorder Lab Batch</button>
+            </div>
+
+            <div class="alert-item alert-item-warn">
+              <div class="alert-left">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span><strong>Low Stock:</strong> Vitamin C Radiance Ferment has <strong>7 units</strong> remaining in Beverly Hills Hub.</span>
+              </div>
+              <button class="btn-reorder" onclick="triggerReorder('Vitamin C Radiance Ferment')">Reorder Lab Batch</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             RECENT ORDERS MANAGEMENT TABLE
+             ============================================== -->
+        <div class="dashboard-panel-card">
+          <div class="panel-header-row">
+            <div>
+              <h3 class="panel-title"><i class="fa-solid fa-table-list"></i> Recent Studio Orders</h3>
+              <span class="panel-subtext">Manage client orders, statuses, and delivery verification</span>
+            </div>
+            <span style="font-size: 0.84rem; color: #64748B;">Click status pill to toggle order progression</span>
+          </div>
+
+          <div class="table-responsive">
+            <table class="dashboard-table" id="orders-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Client</th>
+                  <th>Formulations</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="orders-table-body">
+                <tr>
+                  <td><strong>#SK-8941</strong></td>
+                  <td>Elena Rostova</td>
+                  <td>The Dew Serum (x1), Barrier Cream (x1)</td>
+                  <td>Oct 28, 2026</td>
+                  <td><strong>$184.00</strong></td>
+                  <td>
+                    <span class="status-badge status-delivered" onclick="toggleOrderStatus(this)">Delivered</span>
+                  </td>
+                  <td>
+                    <button class="btn-table-action" onclick="viewOrderDetails('SK-8941')">Inspect</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#SK-8940</strong></td>
+                  <td>Marcus Vance</td>
+                  <td>Bridal Glow Package Voucher</td>
+                  <td>Oct 28, 2026</td>
+                  <td><strong>$320.00</strong></td>
+                  <td>
+                    <span class="status-badge status-processing" onclick="toggleOrderStatus(this)">Processing</span>
+                  </td>
+                  <td>
+                    <button class="btn-table-action" onclick="viewOrderDetails('SK-8940')">Inspect</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#SK-8939</strong></td>
+                  <td>Clara Bennett</td>
+                  <td>Bio-Enzyme Oxygen Polish (x2)</td>
+                  <td>Oct 27, 2026</td>
+                  <td><strong>$148.00</strong></td>
+                  <td>
+                    <span class="status-badge status-pending" onclick="toggleOrderStatus(this)">Pending</span>
+                  </td>
+                  <td>
+                    <button class="btn-table-action" onclick="viewOrderDetails('SK-8939')">Inspect</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#SK-8938</strong></td>
+                  <td>Sophia Thorne</td>
+                  <td>HydraGlow Infusion Appointment</td>
+                  <td>Oct 27, 2026</td>
+                  <td><strong>$190.00</strong></td>
+                  <td>
+                    <span class="status-badge status-delivered" onclick="toggleOrderStatus(this)">Delivered</span>
+                  </td>
+                  <td>
+                    <button class="btn-table-action" onclick="viewOrderDetails('SK-8938')">Inspect</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>#SK-8937</strong></td>
+                  <td>David Chen</td>
+                  <td>Botanical Night Oil (x1)</td>
+                  <td>Oct 26, 2026</td>
+                  <td><strong>$110.00</strong></td>
+                  <td>
+                    <span class="status-badge status-delivered" onclick="toggleOrderStatus(this)">Delivered</span>
+                  </td>
+                  <td>
+                    <button class="btn-table-action" onclick="viewOrderDetails('SK-8937')">Inspect</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Modal: Add New Product Form -->
+  <div class="admin-modal" id="add-product-modal" role="dialog" aria-modal="true">
+    <div class="admin-modal-card">
+      <div class="modal-header-row">
+        <h3 class="modal-title">Add New Skincare Product</h3>
+        <button class="btn-modal-close" id="modal-close-btn">&times;</button>
+      </div>
+
+      <form id="new-product-form" class="modal-form">
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 700;">Product Title</label>
+          <input type="text" id="prod-title" class="modal-input" placeholder="E.g. Squalane Hydrating Essence" required>
+        </div>
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 700;">Category</label>
+          <select id="prod-category" class="modal-input">
+            <option>Cellular Serums</option>
+            <option>Lipid Creams</option>
+            <option>Oxygen Polish</option>
+            <option>Studio Rituals</option>
+          </select>
+        </div>
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 700;">Price (USD)</label>
+          <input type="number" id="prod-price" class="modal-input" placeholder="85.00" step="0.01" required>
+        </div>
+        <div>
+          <label style="font-size: 0.85rem; font-weight: 700;">Starting Stock Units</label>
+          <input type="number" id="prod-stock" class="modal-input" placeholder="50" required>
+        </div>
+
+        <button type="submit" class="btn-admin-action btn-admin-primary" style="margin-top: 10px; width: 100%; justify-content: center;">
+          <i class="fa-solid fa-check"></i>
+          <span>Save to Catalog</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="admin-toast" id="admin-toast">
+    <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
+    <span id="admin-toast-text">Toast alert message</span>
+  </div>
+
+  <!-- GSAP Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      'use strict';
+
+      // 1. Load User Session
+      const savedUser = localStorage.getItem('stackly_auth_user');
+      if (savedUser) {
+        try {
+          const userObj = JSON.parse(savedUser);
+          if (userObj.name) {
+            document.getElementById('admin-user-display').textContent = userObj.name;
+          }
+        } catch (e) {}
+      }
+
+      // 2. GSAP Entrance Animation for KPI and Cards
+      if (typeof gsap !== 'undefined') {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+        tl.from('.dashboard-sidebar', {
+          x: -40,
+          opacity: 0,
+          duration: 0.6
+        })
+        .from('.kpi-card', {
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          stagger: 0.1
+        }, '-=0.3')
+        .from('.dashboard-panel-card', {
+          opacity: 0,
+          y: 25,
+          duration: 0.7,
+          stagger: 0.12
+        }, '-=0.4');
+
+        // Number count animation
+        document.querySelectorAll('.counter-num').forEach(el => {
+          const target = parseFloat(el.getAttribute('data-target'));
+          gsap.fromTo(el, { innerText: 0 }, {
+            innerText: target,
+            duration: 1.6,
+            snap: { innerText: 1 },
+            ease: 'power2.out',
+            onUpdate: function() {
+              el.innerText = Math.round(this.targets()[0].innerText).toLocaleString();
+            }
+          });
+        });
+      }
+
+      // 3. Mobile Sidebar Toggle
+      const sidebarToggleBtn = document.getElementById('sidebar-toggle');
+      const sidebar = document.getElementById('sidebar');
+
+      if (sidebarToggleBtn && sidebar) {
+        sidebarToggleBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('mobile-open');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+          if (window.innerWidth <= 868 && !sidebar.contains(e.target) && e.target !== sidebarToggleBtn && !sidebarToggleBtn.contains(e.target)) {
+            sidebar.classList.remove('mobile-open');
+          }
+        });
+      }
+
+      // 4. Sidebar Tabs Switching
+      const menuItems = document.querySelectorAll('.sidebar-menu-item');
+      const pageTitle = document.getElementById('page-title');
+
+      menuItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          menuItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+
+          const tabName = item.querySelector('span').textContent;
+          pageTitle.textContent = tabName;
+          showToast(`Switched view to ${tabName}`);
+        });
+      });
+
+      // 5. Toast Helper
+      const toast = document.getElementById('admin-toast');
+      const toastText = document.getElementById('admin-toast-text');
+
+      window.showToast = function(msg) {
+        if (!toast) return;
+        toastText.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2600);
+      };
+
+      // 6. Refresh Button
+      const btnRefresh = document.getElementById('btn-refresh');
+      const refreshIcon = document.getElementById('refresh-icon');
+
+      if (btnRefresh && refreshIcon) {
+        btnRefresh.addEventListener('click', () => {
+          refreshIcon.classList.add('fa-spin');
+          setTimeout(() => {
+            refreshIcon.classList.remove('fa-spin');
+            showToast('Storefront telemetry refreshed. All metrics current.');
+          }, 700);
+        });
+      }
+
+      // 7. Interactive Order Status Toggle
+      window.toggleOrderStatus = function(badgeEl) {
+        const currentText = badgeEl.textContent.trim().toLowerCase();
+        if (currentText === 'pending') {
+          badgeEl.textContent = 'Processing';
+          badgeEl.className = 'status-badge status-processing';
+        } else if (currentText === 'processing') {
+          badgeEl.textContent = 'Delivered';
+          badgeEl.className = 'status-badge status-delivered';
+        } else {
+          badgeEl.textContent = 'Pending';
+          badgeEl.className = 'status-badge status-pending';
+        }
+        showToast('Order status updated in live dispensary queue.');
+      };
+
+      // 8. Low Stock Reorder Action
+      window.triggerReorder = function(productName) {
+        showToast(`Dispensary batch request issued for ${productName}.`);
+      };
+
+      // 9. Inspect Order Action
+      window.viewOrderDetails = function(orderId) {
+        showToast(`Inspecting clinical package dispatch file #${orderId}.`);
+      };
+
+      // 10. Add Product Modal
+      const addProdModal = document.getElementById('add-product-modal');
+      const btnOpenModal = document.getElementById('btn-add-product');
+      const btnCloseModal = document.getElementById('modal-close-btn');
+      const newProdForm = document.getElementById('new-product-form');
+
+      if (btnOpenModal && addProdModal) {
+        btnOpenModal.addEventListener('click', () => addProdModal.classList.add('show'));
+      }
+      if (btnCloseModal && addProdModal) {
+        btnCloseModal.addEventListener('click', () => addProdModal.classList.remove('show'));
+      }
+      if (newProdForm) {
+        newProdForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const title = document.getElementById('prod-title').value;
+          const price = document.getElementById('prod-price').value;
+          addProdModal.classList.remove('show');
+          newProdForm.reset();
+          showToast(`Formula "${title}" ($${price}) added to store catalog.`);
+        });
+      }
+
+      // 11. Search Filter Table
+      const searchInput = document.getElementById('admin-search-input');
+      const tableRows = document.querySelectorAll('#orders-table-body tr');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          const query = e.target.value.toLowerCase();
+          tableRows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(query) ? '' : 'none';
+          });
+        });
+      }
+
+      // 12. Export Report Action
+      const btnExport = document.getElementById('btn-export-report');
+      if (btnExport) {
+        btnExport.addEventListener('click', () => {
+          showToast('Generating quarterly audit report in CSV format...');
+        });
+      }
+
+    });
+  </script>
+
+</body>
+</html>
+

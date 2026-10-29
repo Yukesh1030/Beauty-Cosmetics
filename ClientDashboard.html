@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stackly Skincare Client Sanctuary Portal. Track orders, manage daily skincare routines, curate your wishlist, and access personalized rituals.">
+  <meta name="theme-color" content="#06121A">
+
+  <title>Client Sanctuary Portal | Stackly Skincare Studio</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/webp" href="assets/Brand-logo.webp">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Playfair Display -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+
+  <style>
+    /* ==========================================================================
+       CLIENT DASHBOARD STYLES (Luxury Skincare Portal)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --color-navy: #06121A;
+      --color-sidebar: #06121A;
+      --color-coral: #F81D43;
+      --color-coral-hover: #D91033;
+      --color-nude: #EEDFDA;
+      --color-nude-light: #FAF5F2;
+      --color-green: #10B981;
+      --color-bg: #F8F6F4;
+      --color-card: #FFFFFF;
+      --color-text: #1A1817;
+      --color-text-muted: #64748B;
+      --color-border: #E8E2DE;
+      --radius-card: 20px;
+      --radius-pill: 999px;
+      --shadow-card: 0 4px 20px rgba(6, 18, 26, 0.05);
+      --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html, body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .client-layout {
+      display: flex;
+      min-height: 100vh;
+      width: 100%;
+      position: relative;
+    }
+
+    /* --------------------------------------------------------------------------
+       1. SIDEBAR (5 Menus)
+       -------------------------------------------------------------------------- */
+    .client-sidebar {
+      width: 260px;
+      background-color: var(--color-sidebar);
+      color: #D2DEE6;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      border-right: 1px solid rgba(255, 255, 255, 0.06);
+      transition: var(--transition);
+      z-index: 100;
+    }
+
+    .sidebar-brand-box {
+      padding: 24px 22px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .sidebar-logo {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .sidebar-brand-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      background-color: rgba(248, 29, 67, 0.15);
+      color: var(--color-coral);
+      border: 1px solid rgba(248, 29, 67, 0.3);
+      text-transform: uppercase;
+    }
+
+    .sidebar-menu-list {
+      list-style: none;
+      padding: 20px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .sidebar-menu-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 16px;
+      border-radius: 12px;
+      color: #94A3B8;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .sidebar-menu-item i {
+      font-size: 1.1rem;
+      width: 22px;
+      text-align: center;
+      color: #94A3B8;
+      transition: var(--transition);
+    }
+
+    .sidebar-menu-item:hover {
+      color: #FFFFFF;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .sidebar-menu-item.active {
+      background-color: var(--color-coral);
+      color: #FFFFFF;
+      box-shadow: 0 4px 14px rgba(248, 29, 67, 0.35);
+    }
+
+    .sidebar-menu-item.active i {
+      color: #FFFFFF;
+    }
+
+    .sidebar-bottom-box {
+      padding: 18px 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .btn-sidebar-store {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background-color: rgba(255, 255, 255, 0.06);
+      color: #FFFFFF;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+    }
+
+    .btn-sidebar-store:hover {
+      background-color: var(--color-coral);
+      border-color: var(--color-coral);
+    }
+
+    /* --------------------------------------------------------------------------
+       2. TOP BAR HEADER
+       -------------------------------------------------------------------------- */
+    .client-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      overflow-x: hidden;
+    }
+
+    .client-topbar {
+      height: 72px;
+      background-color: #FFFFFF;
+      border-bottom: 1px solid var(--color-border);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+
+    .topbar-left {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-mobile-sidebar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--color-text);
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .welcome-pill {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .welcome-pill span {
+      color: var(--color-coral);
+    }
+
+    .topbar-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .rewards-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background-color: rgba(248, 29, 67, 0.08);
+      border: 1px solid rgba(248, 29, 67, 0.2);
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--color-coral);
+    }
+
+    .topbar-notification-btn {
+      position: relative;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: #64748B;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .topbar-notification-btn:hover {
+      background-color: #F1F5F9;
+      color: var(--color-text);
+    }
+
+    .notification-dot {
+      position: absolute;
+      top: 9px;
+      right: 9px;
+      width: 8px;
+      height: 8px;
+      background-color: var(--color-coral);
+      border-radius: 50%;
+      border: 2px solid #FFFFFF;
+    }
+
+    .client-profile-pill {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 12px 4px 6px;
+      border-radius: var(--radius-pill);
+      background-color: #F8FAFC;
+      border: 1px solid var(--color-border);
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .client-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #F81D43 0%, #06121A 100%);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .client-profile-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* --------------------------------------------------------------------------
+       3. CLIENT DASHBOARD CONTENT AREA
+       -------------------------------------------------------------------------- */
+    .client-content {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      flex: 1;
+    }
+
+    .client-hero-banner {
+      background: linear-gradient(135deg, #06121A 0%, #0F2636 100%);
+      color: #FFFFFF;
+      border-radius: var(--radius-card);
+      padding: 36px 32px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 16px 40px rgba(6, 18, 26, 0.15);
+    }
+
+    .hero-banner-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.85rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .hero-banner-text p {
+      color: #B4C2CC;
+      font-size: 0.95rem;
+      max-width: 520px;
+      line-height: 1.6;
+    }
+
+    .hero-banner-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 24px;
+      background-color: var(--color-coral);
+      color: #FFFFFF;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(248, 29, 67, 0.4);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .hero-banner-cta:hover {
+      background-color: var(--color-coral-hover);
+      transform: translateY(-2px);
+    }
+
+    /* --------------------------------------------------------------------------
+       4. CLIENT KPI CARDS (TOTAL ORDERS, WISHLIST, ROUTINE PRODUCTS)
+       -------------------------------------------------------------------------- */
+    .client-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .client-kpi-card {
+      background: var(--color-card);
+      border-radius: var(--radius-card);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: var(--transition);
+    }
+
+    .client-kpi-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(6, 18, 26, 0.08);
+      border-color: rgba(248, 29, 67, 0.3);
+    }
+
+    .client-kpi-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .client-kpi-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--color-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .client-kpi-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+    }
+
+    .kpi-icon-orders { background-color: rgba(59, 130, 246, 0.1); color: #3B82F6; }
+    .kpi-icon-wishlist { background-color: rgba(248, 29, 67, 0.1); color: var(--color-coral); }
+    .kpi-icon-routine { background-color: rgba(16, 185, 129, 0.1); color: var(--color-green); }
+    .kpi-icon-points { background-color: rgba(245, 158, 11, 0.1); color: #D97706; }
+
+    .client-kpi-val {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--color-text);
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .client-kpi-sub {
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+    }
+
+    /* --------------------------------------------------------------------------
+       5. MORNING & EVENING SKINCARE ROUTINE CARDS
+       -------------------------------------------------------------------------- */
+    .routine-section-card {
+      background: var(--color-card);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-border);
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .section-heading-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-heading-text i {
+      color: var(--color-coral);
+    }
+
+    .routine-cards-2col {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .routine-box {
+      border: 1.5px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      background-color: var(--color-nude-light);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .routine-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 12px;
+    }
+
+    .routine-title-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .routine-steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .routine-step-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FFFFFF;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .step-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .step-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background-color: var(--color-coral);
+      color: #FFFFFF;
+      font-size: 0.76rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-name {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .step-tag {
+      font-size: 0.74rem;
+      color: #64748B;
+    }
+
+    /* --------------------------------------------------------------------------
+       6. RECENT ORDERS & TRACKING DEMONSTRATION
+       -------------------------------------------------------------------------- */
+    .orders-section-card {
+      background: var(--color-card);
+      border-radius: var(--radius-card);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      border: 1px solid var(--color-border);
+    }
+
+    .order-card-item {
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      background-color: #FFFFFF;
+      transition: var(--transition);
+    }
+
+    .order-card-item:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+      border-color: rgba(248, 29, 67, 0.2);
+    }
+
+    .order-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .order-id-badge {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--color-navy);
+    }
+
+    .order-date-text {
+      font-size: 0.84rem;
+      color: #64748B;
+      margin-left: 8px;
+    }
+
+    .order-tracking-stepper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      margin: 24px 0 16px;
+      padding: 0 10px;
+    }
+
+    .stepper-line {
+      position: absolute;
+      top: 14px;
+      left: 30px;
+      right: 30px;
+      height: 3px;
+      background-color: #E2E8F0;
+      z-index: 1;
+    }
+
+    .stepper-line-progress {
+      position: absolute;
+      top: 14px;
+      left: 30px;
+      width: 75%;
+      height: 3px;
+      background-color: var(--color-coral);
+      z-index: 2;
+    }
+
+    .stepper-node {
+      position: relative;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .stepper-circle {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #FFFFFF;
+      border: 2px solid #CBD5E1;
+      color: #94A3B8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .stepper-node.completed .stepper-circle {
+      background-color: var(--color-coral);
+      border-color: var(--color-coral);
+      color: #FFFFFF;
+    }
+
+    .stepper-node.active .stepper-circle {
+      border-color: var(--color-coral);
+      color: var(--color-coral);
+      box-shadow: 0 0 0 4px rgba(248, 29, 67, 0.15);
+    }
+
+    .stepper-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--color-text);
+      text-align: center;
+    }
+
+    /* --------------------------------------------------------------------------
+       7. WISHLIST GRID
+       -------------------------------------------------------------------------- */
+    .wishlist-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .wishlist-card {
+      background-color: #FFFFFF;
+      border-radius: 16px;
+      border: 1px solid var(--color-border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .wishlist-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .wishlist-thumb-wrap {
+      position: relative;
+      height: 160px;
+      background-color: #EEDFDA;
+    }
+
+    .wishlist-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .btn-remove-wishlist {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.9);
+      border: none;
+      color: #EF4444;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      transition: var(--transition);
+    }
+
+    .btn-remove-wishlist:hover {
+      background-color: #EF4444;
+      color: #FFFFFF;
+    }
+
+    .wishlist-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1;
+    }
+
+    .wishlist-name {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--color-text);
+    }
+
+    .wishlist-price {
+      font-weight: 800;
+      color: var(--color-coral);
+      font-size: 1rem;
+    }
+
+    .btn-add-cart {
+      margin-top: auto;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background-color: #0F172A;
+      color: #FFFFFF;
+      border: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .btn-add-cart:hover {
+      background-color: var(--color-coral);
+    }
+
+    /* --------------------------------------------------------------------------
+       8. PERSONALIZED RECOMMENDATIONS BASED ON SKIN PREFERENCES
+       -------------------------------------------------------------------------- */
+    .pref-pills-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .pref-pill {
+      padding: 8px 18px;
+      border-radius: var(--radius-pill);
+      background-color: #F1F5F9;
+      border: 1.5px solid var(--color-border);
+      color: var(--color-text);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .pref-pill.active {
+      background-color: var(--color-coral);
+      color: #FFFFFF;
+      border-color: var(--color-coral);
+      box-shadow: 0 4px 12px rgba(248, 29, 67, 0.25);
+    }
+
+    /* --------------------------------------------------------------------------
+       9. CLINICAL MEDICAL DISCLAIMER CALLOUT
+       -------------------------------------------------------------------------- */
+    .clinical-disclaimer-box {
+      background-color: #FFFBEB;
+      border: 1px solid #FCD34D;
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      color: #92400E;
+      font-size: 0.86rem;
+      line-height: 1.6;
+    }
+
+    .clinical-disclaimer-box i {
+      font-size: 1.25rem;
+      color: #D97706;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* Toast */
+    .client-toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background-color: var(--color-navy);
+      color: #FFFFFF;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+      z-index: 300;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .client-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 1100px) {
+      .client-kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .routine-cards-2col {
+        grid-template-columns: 1fr;
+      }
+      .wishlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 868px) {
+      .client-sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        transform: translateX(-100%);
+      }
+
+      .client-sidebar.mobile-open {
+        transform: translateX(0);
+      }
+
+      .btn-mobile-sidebar-toggle {
+        display: block;
+      }
+
+      .client-content {
+        padding: 20px 16px;
+      }
+
+      .client-hero-banner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 26px 20px;
+      }
+
+      .client-kpi-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wishlist-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stepper-title {
+        font-size: 0.68rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="client-layout">
+    
+    <!-- ==============================================
+         1. SIDEBAR (5 Menus)
+         ============================================== -->
+    <aside class="client-sidebar" id="client-sidebar">
+      <div class="sidebar-brand-box">
+        <a href="index.html" title="Stackly Skincare Home">
+          <img src="assets/Brand-logo.webp" alt="Stackly Skincare Logo" class="sidebar-logo">
+        </a>
+        <span class="sidebar-brand-badge">CLIENT</span>
+      </div>
+
+      <nav class="sidebar-menu-list">
+        <!-- 1. Dashboard -->
+        <a class="sidebar-menu-item active" data-view="dashboard">
+          <i class="fa-solid fa-house"></i>
+          <span>Dashboard</span>
+        </a>
+
+        <!-- 2. My Orders -->
+        <a class="sidebar-menu-item" data-view="orders">
+          <i class="fa-solid fa-box"></i>
+          <span>My Orders</span>
+        </a>
+
+        <!-- 3. Wishlist -->
+        <a class="sidebar-menu-item" data-view="wishlist">
+          <i class="fa-solid fa-heart"></i>
+          <span>Wishlist</span>
+        </a>
+
+        <!-- 4. My Skincare Routine -->
+        <a class="sidebar-menu-item" data-view="routine">
+          <i class="fa-solid fa-spa"></i>
+          <span>My Skincare Routine</span>
+        </a>
+
+        <!-- 5. Profile & Support -->
+        <a class="sidebar-menu-item" data-view="profile">
+          <i class="fa-solid fa-user-gear"></i>
+          <span>Profile & Support</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom-box">
+        <a href="index.html" class="btn-sidebar-store">
+          <i class="fa-solid fa-arrow-left"></i>
+          <span>Back to Store</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- ==============================================
+         2. MAIN CLIENT PORTAL AREA
+         ============================================== -->
+    <div class="client-main">
+      
+      <!-- Top Bar -->
+      <header class="client-topbar">
+        <div class="topbar-left">
+          <button class="btn-mobile-sidebar-toggle" id="client-sidebar-toggle" aria-label="Toggle Navigation Sidebar">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="welcome-pill">Welcome, <span id="client-name-display">Elena Rostova</span></div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Glow Points -->
+          <div class="rewards-pill">
+            <i class="fa-solid fa-sparkles"></i>
+            <span>850 Glow Points</span>
+          </div>
+
+          <!-- Notification Bell -->
+          <button class="topbar-notification-btn" id="client-notif-btn" aria-label="Notifications">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notification-dot"></span>
+          </button>
+
+          <!-- Profile Pill -->
+          <div class="client-profile-pill">
+            <div class="client-avatar">ER</div>
+            <span class="client-profile-name">Elena</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Content Area -->
+      <main class="client-content">
+        
+        <!-- Welcome Hero Banner -->
+        <div class="client-hero-banner" id="hero-banner">
+          <div class="hero-banner-text">
+            <h2>Your personalized ritual awaits</h2>
+            <p>
+              Your skin barrier diagnostic is active. Discover morning & evening rituals crafted specifically for your lipid moisture goals.
+            </p>
+          </div>
+          <a href="Service.html" class="hero-banner-cta">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span>Book Studio Session</span>
+          </a>
+        </div>
+
+        <!-- ==============================================
+             CLIENT OVERVIEW CARDS (TOTAL ORDERS, WISHLIST, ROUTINE)
+             ============================================== -->
+        <section class="client-kpi-grid" id="client-kpi-grid">
+          
+          <!-- KPI 1: TOTAL ORDERS -->
+          <div class="client-kpi-card">
+            <div class="client-kpi-top">
+              <span class="client-kpi-label">TOTAL ORDERS</span>
+              <div class="client-kpi-icon kpi-icon-orders">
+                <i class="fa-solid fa-bag-shopping"></i>
+              </div>
+            </div>
+            <div class="client-kpi-val counter-client" data-target="12">12</div>
+            <span class="client-kpi-sub">All delivered with carbon-neutral transit</span>
+          </div>
+
+          <!-- KPI 2: WISHLIST ITEMS -->
+          <div class="client-kpi-card">
+            <div class="client-kpi-top">
+              <span class="client-kpi-label">WISHLIST ITEMS</span>
+              <div class="client-kpi-icon kpi-icon-wishlist">
+                <i class="fa-solid fa-heart"></i>
+              </div>
+            </div>
+            <div class="client-kpi-val counter-client" data-target="5">5</div>
+            <span class="client-kpi-sub">Curated apothecary formulas</span>
+          </div>
+
+          <!-- KPI 3: ROUTINE PRODUCTS -->
+          <div class="client-kpi-card">
+            <div class="client-kpi-top">
+              <span class="client-kpi-label">ROUTINE PRODUCTS</span>
+              <div class="client-kpi-icon kpi-icon-routine">
+                <i class="fa-solid fa-leaf"></i>
+              </div>
+            </div>
+            <div class="client-kpi-val counter-client" data-target="4">4</div>
+            <span class="client-kpi-sub">AM & PM barrier active protocol</span>
+          </div>
+
+          <!-- KPI 4: NEXT REFILL -->
+          <div class="client-kpi-card">
+            <div class="client-kpi-top">
+              <span class="client-kpi-label">NEXT REFILL IN</span>
+              <div class="client-kpi-icon kpi-icon-points">
+                <i class="fa-solid fa-calendar-days"></i>
+              </div>
+            </div>
+            <div class="client-kpi-val">14 <span style="font-size: 1.1rem; font-weight: 600;">Days</span></div>
+            <span class="client-kpi-sub">The Dew Serum estimated at 25%</span>
+          </div>
+
+        </section>
+
+        <!-- ==============================================
+             MORNING & EVENING SKINCARE ROUTINES
+             ============================================== -->
+        <div class="routine-section-card">
+          <div class="section-title-wrap">
+            <h3 class="section-heading-text"><i class="fa-solid fa-sun"></i> Daily Skincare Protocol</h3>
+            <span style="font-size: 0.84rem; color: #64748B;">Personalized for Combination & Dehydrated Barrier</span>
+          </div>
+
+          <div class="routine-cards-2col">
+            
+            <!-- AM Routine -->
+            <div class="routine-box">
+              <div class="routine-header">
+                <div class="routine-title-badge">
+                  <i class="fa-solid fa-sun" style="color: #F59E0B;"></i>
+                  <span>Morning Ritual (AM)</span>
+                </div>
+                <span style="font-size: 0.78rem; font-weight: 700; color: #059669;">Hydration & Photoprotection</span>
+              </div>
+
+              <div class="routine-steps-list">
+                <div class="routine-step-row">
+                  <div class="step-left">
+                    <span class="step-num">1</span>
+                    <div>
+                      <div class="step-name">Gentle Botanical Polish</div>
+                      <div class="step-tag">Step 1: Bio-Ferment Cleanse</div>
+                    </div>
+                  </div>
+                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
+                </div>
+
+                <div class="routine-step-row">
+                  <div class="step-left">
+                    <span class="step-num">2</span>
+                    <div>
+                      <div class="step-name">The Dew Serum</div>
+                      <div class="step-tag">Step 2: Hyaluronic + Niacinamide</div>
+                    </div>
+                  </div>
+                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
+                </div>
+
+                <div class="routine-step-row">
+                  <div class="step-left">
+                    <span class="step-num">3</span>
+                    <div>
+                      <div class="step-name">Mineral Sheer Shield SPF 50</div>
+                      <div class="step-tag">Step 3: Zinc Photoprotection</div>
+                    </div>
+                  </div>
+                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- PM Routine -->
+            <div class="routine-box">
+              <div class="routine-header">
+                <div class="routine-title-badge">
+                  <i class="fa-solid fa-moon" style="color: #6366F1;"></i>
+                  <span>Evening Ritual (PM)</span>
+                </div>
+                <span style="font-size: 0.78rem; font-weight: 700; color: #8B5CF6;">Nocturnal Cellular Repair</span>
+              </div>
+
+              <div class="routine-steps-list">
+                <div class="routine-step-row">
+                  <div class="step-left">
+                    <span class="step-num">1</span>
+                    <div>
+                      <div class="step-name">Herbal Melt Cleansing Balm</div>
+                      <div class="step-tag">Step 1: Oil Impurity Dissolution</div>
+                    </div>
+                  </div>
+                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
+                </div>
+
+                <div class="routine-step-row">
+                  <div class="step-left">
+                    <span class="step-num">2</span>
+                    <div>
+                      <div class="step-name">Barrier Lipid Restoration Cream</div>
+                      <div class="step-tag">Step 2: 3:1:1 Phytoceramide Infusion</div>
+                    </div>
+                  </div>
+                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
+                </div>
+
+                <div class="routine-step-row">
+                  <div class="step-left">
+                    <span class="step-num">3</span>
+                    <div>
+                      <div class="step-name">Restorative Botanical Night Oil</div>
+                      <div class="step-tag">Step 3: Gua Sha Facial Sculpting</div>
+                    </div>
+                  </div>
+                  <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==============================================
+             RECENT ORDERS & ORDER TRACKING DEMONSTRATION
+             ============================================== -->
+        <div class="orders-section-card">
+          <div class="section-title-wrap">
+            <h3 class="section-heading-text"><i class="fa-solid fa-receipt"></i> Recent Studio Order</h3>
+            <span style="font-size: 0.84rem; color: var(--color-coral); font-weight: 700;">Live Dispatch Telemetry</span>
+          </div>
+
+          <div class="order-card-item">
+            <div class="order-card-top">
+              <div>
+                <span class="order-id-badge">Order #SK-8941</span>
+                <span class="order-date-text">• Placed Oct 26, 2026 • 2 Items • <strong>$184.00</strong></span>
+              </div>
+              <span class="status-badge status-processing" style="background-color: rgba(59, 130, 246, 0.12); color: #2563EB; padding: 6px 14px; border-radius: 999px; font-weight: 700; font-size: 0.8rem;">
+                <i class="fa-solid fa-truck-fast"></i> Out for Delivery
+              </span>
+            </div>
+
+            <!-- Stepper Progress Tracker -->
+            <div class="order-tracking-stepper">
+              <div class="stepper-line"></div>
+              <div class="stepper-line-progress"></div>
+
+              <!-- Node 1 -->
+              <div class="stepper-node completed">
+                <div class="stepper-circle"><i class="fa-solid fa-check"></i></div>
+                <span class="stepper-title">Order Placed</span>
+              </div>
+
+              <!-- Node 2 -->
+              <div class="stepper-node completed">
+                <div class="stepper-circle"><i class="fa-solid fa-check"></i></div>
+                <span class="stepper-title">Lab Formulating</span>
+              </div>
+
+              <!-- Node 3 -->
+              <div class="stepper-node completed">
+                <div class="stepper-circle"><i class="fa-solid fa-check"></i></div>
+                <span class="stepper-title">Dispatched</span>
+              </div>
+
+              <!-- Node 4 -->
+              <div class="stepper-node active">
+                <div class="stepper-circle"><i class="fa-solid fa-box-open"></i></div>
+                <span class="stepper-title">Arriving Today</span>
+              </div>
+            </div>
+
+            <p style="font-size: 0.86rem; color: #64748B; margin-top: 14px;">
+              Carrier: <strong>FedEx Climate-Neutral Courier</strong> • Tracking # <strong>FX-99201482-NY</strong>
+            </p>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             SAVED PRODUCTS & WISHLIST
+             ============================================== -->
+        <div class="orders-section-card">
+          <div class="section-title-wrap">
+            <h3 class="section-heading-text"><i class="fa-solid fa-heart"></i> Saved In Wishlist</h3>
+            <span style="font-size: 0.84rem; color: #64748B;">5 formulas saved for your next skincare refill</span>
+          </div>
+
+          <div class="wishlist-grid" id="wishlist-grid">
+            
+            <!-- Item 1 -->
+            <div class="wishlist-card">
+              <div class="wishlist-thumb-wrap">
+                <img src="assets/unsplash_90ozvS4qMCk.webp" alt="The Dew Serum" class="wishlist-thumb">
+                <button class="btn-remove-wishlist" onclick="removeWishlistItem(this, 'The Dew Serum')" title="Remove from wishlist">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+              <div class="wishlist-body">
+                <h4 class="wishlist-name">The Dew Serum</h4>
+                <span class="wishlist-price">$88.00</span>
+                <button class="btn-add-cart" onclick="addToCart('The Dew Serum')">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="wishlist-card">
+              <div class="wishlist-thumb-wrap">
+                <img src="assets/unsplash_b2bXKspL5MY.webp" alt="Botanical Night Oil" class="wishlist-thumb">
+                <button class="btn-remove-wishlist" onclick="removeWishlistItem(this, 'Botanical Night Oil')" title="Remove from wishlist">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+              <div class="wishlist-body">
+                <h4 class="wishlist-name">Botanical Night Oil</h4>
+                <span class="wishlist-price">$110.00</span>
+                <button class="btn-add-cart" onclick="addToCart('Botanical Night Oil')">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="wishlist-card">
+              <div class="wishlist-thumb-wrap">
+                <img src="assets/unsplash_NtsCm4Er-PI.webp" alt="Barrier Lipid Cream" class="wishlist-thumb">
+                <button class="btn-remove-wishlist" onclick="removeWishlistItem(this, 'Barrier Lipid Cream')" title="Remove from wishlist">
+                  <i class="fa-solid fa-trash-can"></i>
+                </button>
+              </div>
+              <div class="wishlist-body">
+                <h4 class="wishlist-name">Barrier Lipid Cream</h4>
+                <span class="wishlist-price">$96.00</span>
+                <button class="btn-add-cart" onclick="addToCart('Barrier Lipid Cream')">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  <span>Add to Bag</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ==============================================
+             PERSONALIZED RECOMMENDATIONS (Interactive Pills)
+             ============================================== -->
+        <div class="orders-section-card">
+          <div class="section-title-wrap">
+            <h3 class="section-heading-text"><i class="fa-solid fa-wand-magic-sparkles"></i> Tailored Formula Suggestions</h3>
+            <span style="font-size: 0.84rem; color: #64748B;">Select a skin priority to explore botanical pairings</span>
+          </div>
+
+          <div class="pref-pills-row">
+            <button class="pref-pill active" onclick="switchPreference('Barrier Repair', this)">Barrier Repair</button>
+            <button class="pref-pill" onclick="switchPreference('Hydration Lock', this)">Hydration Lock</button>
+            <button class="pref-pill" onclick="switchPreference('Radiance & Glow', this)">Radiance & Glow</button>
+            <button class="pref-pill" onclick="switchPreference('Sensitive Calm', this)">Sensitive Calm</button>
+          </div>
+
+          <div id="recommendation-result" style="background-color: var(--color-nude-light); padding: 22px; border-radius: 14px; border: 1px solid var(--color-border); display: flex; align-items: center; justify-content: space-between; flex-wrap: gap: 16px;">
+            <div>
+              <strong style="color: var(--color-navy); font-size: 1.05rem;" id="rec-title">Phyto-Ceramide Intensive Moisture Balm</strong>
+              <p style="color: #64748B; font-size: 0.88rem; margin-top: 4px;" id="rec-desc">
+                Engineered with cold-pressed oat lipids and bio-mimetic squalane to re-seal fragile stratum corneum boundaries within 7 days.
+              </p>
+            </div>
+            <button class="btn-add-cart" onclick="addToCart('Recommended Formula')" style="flex-shrink: 0;">
+              <i class="fa-solid fa-bag-shopping"></i>
+              <span>Explore Formula</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             CLINICAL MEDICAL DISCLAIMER (User Explicit Rule)
+             ============================================== -->
+        <div class="clinical-disclaimer-box">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <div>
+            <strong>Clinical & Medical Disclaimer:</strong>
+            Routine suggestions, ingredient information, and personalized formulas presented on this portal are designed strictly for cosmetic skin care and holistic self-care purposes. They do not constitute medical dermatological diagnoses, prescriptions, or treatments for skin diseases. If you experience persistent chronic conditions, consult a board-certified dermatologist.
+          </div>
+        </div>
+
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="client-toast" id="client-toast">
+    <i class="fa-solid fa-circle-check" style="color: var(--color-green);"></i>
+    <span id="client-toast-text">Action completed successfully</span>
+  </div>
+
+  <!-- GSAP Animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      'use strict';
+
+      // 1. Load User Session from Login
+      const savedUser = localStorage.getItem('stackly_auth_user');
+      if (savedUser) {
+        try {
+          const userObj = JSON.parse(savedUser);
+          if (userObj.name) {
+            document.getElementById('client-name-display').textContent = userObj.name;
+          }
+        } catch (e) {}
+      }
+
+      // 2. GSAP Entrance Animation
+      if (typeof gsap !== 'undefined') {
+        const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
+        tl.from('#client-sidebar', {
+          x: -30,
+          opacity: 0,
+          duration: 0.6
+        })
+        .from('#hero-banner', {
+          opacity: 0,
+          y: 20,
+          duration: 0.7
+        }, '-=0.3')
+        .from('.client-kpi-card', {
+          opacity: 0,
+          y: 20,
+          duration: 0.5,
+          stagger: 0.1
+        }, '-=0.3')
+        .from('.routine-section-card, .orders-section-card', {
+          opacity: 0,
+          y: 20,
+          duration: 0.6,
+          stagger: 0.15
+        }, '-=0.2');
+
+        // Counters
+        document.querySelectorAll('.counter-client').forEach(el => {
+          const target = parseFloat(el.getAttribute('data-target'));
+          gsap.fromTo(el, { innerText: 0 }, {
+            innerText: target,
+            duration: 1.5,
+            snap: { innerText: 1 },
+            ease: 'power2.out'
+          });
+        });
+      }
+
+      // 3. Mobile Sidebar Toggle
+      const sidebarToggleBtn = document.getElementById('client-sidebar-toggle');
+      const sidebar = document.getElementById('client-sidebar');
+
+      if (sidebarToggleBtn && sidebar) {
+        sidebarToggleBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('mobile-open');
+        });
+
+        document.addEventListener('click', (e) => {
+          if (window.innerWidth <= 868 && !sidebar.contains(e.target) && e.target !== sidebarToggleBtn && !sidebarToggleBtn.contains(e.target)) {
+            sidebar.classList.remove('mobile-open');
+          }
+        });
+      }
+
+      // 4. Toast Helper
+      const toast = document.getElementById('client-toast');
+      const toastText = document.getElementById('client-toast-text');
+
+      window.showToast = function(msg) {
+        if (!toast) return;
+        toastText.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 2400);
+      };
+
+      // 5. Sidebar Tabs
+      const menuItems = document.querySelectorAll('.sidebar-menu-item');
+      menuItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.preventDefault();
+          menuItems.forEach(i => i.classList.remove('active'));
+          item.classList.add('active');
+          const name = item.querySelector('span').textContent;
+          showToast(`Switched view to ${name}`);
+        });
+      });
+
+      // 6. Wishlist Actions
+      window.removeWishlistItem = function(btn, title) {
+        const card = btn.closest('.wishlist-card');
+        if (card) {
+          card.style.opacity = '0';
+          card.style.transform = 'scale(0.9)';
+          setTimeout(() => {
+            card.remove();
+            showToast(`"${title}" removed from your wishlist.`);
+          }, 250);
+        }
+      };
+
+      window.addToCart = function(title) {
+        showToast(`"${title}" added to your shopping bag.`);
+      };
+
+      // 7. Personalized Recommendation Switcher
+      const recData = {
+        'Barrier Repair': {
+          title: 'Phyto-Ceramide Intensive Moisture Balm',
+          desc: 'Engineered with cold-pressed oat lipids and bio-mimetic squalane to re-seal fragile stratum corneum boundaries.'
+        },
+        'Hydration Lock': {
+          title: 'The Dew Serum: Quad-Hyaluronic Complex',
+          desc: 'Four molecular weights of hyaluronic acid delivering deep dermal moisture reservoirs with zero stickiness.'
+        },
+        'Radiance & Glow': {
+          title: 'Vitamin C Radiance Bio-Ferment',
+          desc: 'Stabilized THD ascorbate blended with organic pomegranate enzymes for clear, unhurried morning luminosity.'
+        },
+        'Sensitive Calm': {
+          title: 'Centella & Blue Tansy Soothing Elixir',
+          desc: 'Anti-inflammatory azulene botanicals formulated to diffuse capillary redness and thermal heat sensations.'
+        }
+      };
+
+      window.switchPreference = function(category, pillEl) {
+        document.querySelectorAll('.pref-pill').forEach(p => p.classList.remove('active'));
+        pillEl.classList.add('active');
+
+        const data = recData[category] || recData['Barrier Repair'];
+        const titleEl = document.getElementById('rec-title');
+        const descEl = document.getElementById('rec-desc');
+
+        if (titleEl && descEl) {
+          if (typeof gsap !== 'undefined') {
+            gsap.fromTo('#recommendation-result', { opacity: 0.4 }, { opacity: 1, duration: 0.35 });
+          }
+          titleEl.textContent = data.title;
+          descEl.textContent = data.desc;
+        }
+
+        showToast(`Recommendations updated for ${category}.`);
+      };
+
+    });
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Service Menu &amp; Treatments — Stackly Skincare | Treatments That Actually Work</title>
+<meta content="Explore our bespoke clinical skincare menu, HydraFacial infusions, chemical resurfacing, lymphatic sculpting, and restorative bridal rituals." name="description"/>
+<!-- Favicon -->
+<link href="assets/Brand-logo.webp" rel="icon" type="image/webp"/>
+<!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- FontAwesome 6 (Strictly FontAwesome across the project) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!-- AOS (Animate On Scroll) CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet"/>
+<!-- Custom Stylesheet -->
+<link href="style.css" rel="stylesheet"/>
+</head>
+<body class="page-service">
+<!-- ==============================================
+       HEADER & TOP NAVBAR
+       ============================================== -->
+<header class="site-header" id="header">
+<div class="nav-container">
+<!-- Brand Logo on Navbar -->
+<a aria-label="Stackly Skincare Home" class="brand-link" href="index.html">
+<img alt="Stackly Skincare Logo" class="nav-logo" src="assets/Brand-logo.webp"/>
+</a>
+<!-- Desktop Navigation Links -->
+<nav aria-label="Main Navigation" class="desktop-nav">
+<ul class="nav-links">
+<li><a class="nav-link" href="index.html#hero">Home</a></li>
+<li><a class="nav-link active" href="Service.html">Service</a></li>
+<li><a class="nav-link" href="About.html">About</a></li>
+<li><a class="nav-link" href="Blog.html">Blog</a></li>
+<li><a class="nav-link" href="Contact.html">Contact</a></li>
+</ul>
+</nav>
+<!-- Right Header Actions -->
+<div class="header-actions">
+<a class="btn btn-nav-cta" href="Login.html" id="login-nav-btn">
+<i class="fa-solid fa-user"></i>
+<span>Login</span>
+</a>
+<!-- Mobile Hamburger Toggle -->
+<button aria-controls="mobile-drawer" aria-expanded="false" aria-label="Toggle Navigation Menu" class="hamburger-btn" id="hamburger-btn">
+<span class="hamburger-line line-1"></span>
+<span class="hamburger-line line-2"></span>
+<span class="hamburger-line line-3"></span>
+</button>
+</div>
+</div>
+<!-- Mobile Navigation Drawer -->
+<div aria-hidden="true" class="mobile-drawer" id="mobile-drawer">
+<div class="mobile-drawer-inner">
+<ul class="mobile-nav-links">
+<li><a class="mobile-nav-link" href="index.html#hero"><i class="fa-solid fa-house"></i> Home</a></li>
+<li><a class="mobile-nav-link active" href="Service.html"><i class="fa-solid fa-spa"></i> Service</a></li>
+<li><a class="mobile-nav-link" href="About.html"><i class="fa-solid fa-seedling"></i> About</a></li>
+<li><a class="mobile-nav-link" href="Blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a></li>
+<li><a class="mobile-nav-link" href="Contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+</ul>
+<div class="mobile-drawer-footer">
+<a class="btn btn-nav-cta btn-mobile-login" href="Login.html" id="mobile-login-btn">
+<i class="fa-solid fa-user"></i>
+<span>Login</span>
+</a>
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- ==============================================
+         1. HERO SECTION ("Treatments that actually work")
+         ============================================== -->
+<section class="service-hero-section" id="service-hero">
+<div class="container">
+<div class="service-hero-grid">
+<!-- Hero Text -->
+<div class="service-hero-content" data-aos="fade-right" data-aos-duration="900">
+<div class="hero-badge">
+<i class="fa-solid fa-sparkles"></i>
+<span>CLINICAL RESULTS • BOTANICAL INTEGRITY</span>
+</div>
+<h1 class="service-hero-title">
+              Treatments <br/>that <span class="highlight-coral strikethrough">actually</span> <br/>work
+            </h1>
+<p class="service-hero-subtext">
+              Deep cleanse, resurface, and hydrate your skin with clinically backed botanical rituals engineered to reverse damage and unlock your authentic, long-lasting glow.
+            </p>
+<div class="service-hero-actions">
+<a class="btn btn-coral btn-hero" href="404.html">
+<i class="fa-solid fa-calendar-check"></i>
+<span>Book a service</span>
+</a>
+<a class="btn btn-outline btn-hero" href="404.html">
+<i class="fa-solid fa-box-open"></i>
+<span>View Packages</span>
+</a>
+</div>
+<div class="service-hero-guarantee">
+<div class="guarantee-item">
+<i class="fa-solid fa-circle-check"></i>
+<span>Customized to Your Skin Season</span>
+</div>
+<div class="guarantee-item">
+<i class="fa-solid fa-circle-check"></i>
+<span>Zero Downtime or Irritation</span>
+</div>
+</div>
+</div>
+<!-- Hero Graphic Visual (3D Coral Sphere + Leaf) -->
+<div class="service-hero-visual" data-aos="zoom-in" data-aos-duration="1000">
+<div class="sphere-composition">
+<div class="sphere-leaf-motif"></div>
+<div class="sphere-ball"></div>
+<div class="sphere-shadow"></div>
+<!-- Floating Glass Badge -->
+<div class="floating-badge sphere-badge">
+<i class="fa-solid fa-award"></i>
+<div>
+<strong>100% Bio-Compatible</strong>
+<span>Clinical Efficacy</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+         2. SERVICE MENU (8 Arched Service Cards)
+         ============================================== -->
+<section class="service-menu-section" id="service-menu">
+<div class="container">
+<div class="section-title-wrap" data-aos="fade-right">
+<div class="coral-accent-bar"></div>
+<h2 class="section-title">Service menu</h2>
+<p class="section-subtitle">
+            Explore our curated menu of clinical esthetic facials, holistic sculpt therapies, and targeted rituals. Every appointment includes a personalized skin consultation.
+          </p>
+</div>
+<!-- 8 Cards Grid (2 rows of 4) -->
+<div class="services-menu-grid">
+<!-- Card 1: Skin Consultation -->
+<article class="service-card" data-aos="fade-up" data-aos-delay="100">
+<div class="card-arch-frame">
+<img alt="Skin consultation and barrier analysis" class="card-img" loading="lazy" src="assets/unsplash_0Zx1bDv5BNY.webp"/>
+<div class="card-leaf-badge" title="Diagnostic Assessment">
+<i class="fa-solid fa-microscope"></i>
+</div>
+</div>
+<div class="card-body">
+<span class="card-tag"><i class="fa-solid fa-clock"></i> 30 Min • Diagnostic</span>
+<h3 class="card-title">Skin consultation</h3>
+<p class="card-text">
+                Comprehensive digital moisture assessment, lipid analysis, and a personalized product prescription designed for your hormonal cycle.
+              </p>
+<div class="card-footer">
+<span class="card-price">$60</span>
+<a class="card-link" href="404.html">Book now <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</article>
+<!-- Card 2: Hydra Facial -->
+<article class="service-card" data-aos="fade-up" data-aos-delay="150">
+<div class="card-arch-frame">
+<img alt="Hydra facial clinical infusion" class="card-img" loading="lazy" src="assets/unsplash_C3gjLSgTKNw.webp"/>
+<div class="card-leaf-badge" title="Hydra Infusion">
+<i class="fa-solid fa-droplet"></i>
+</div>
+</div>
+<div class="card-body">
+<span class="card-tag"><i class="fa-solid fa-clock"></i> 60 Min • Plumping</span>
+<h3 class="card-title">Hydra facial</h3>
+<p class="card-text">
+                Gentle vortex vacuum extraction removes congested impurities while flooding cells with multi-depth hyaluronic acid and peptides.
+              </p>
+<div class="card-footer">
+<span class="card-price">$145</span>
+<a class="card-link" href="404.html">Book now <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</article>
+<!-- Card 3: Brightening Peel -->
+<article class="service-card" data-aos="fade-up" data-aos-delay="200">
+<div class="card-arch-frame">
+<img alt="Brightening peel fruit acid treatment" class="card-img" loading="lazy" src="assets/unsplash_94l_R9cVhWI.webp"/>
+<div class="card-leaf-badge" title="Enzyme Resurfacing">
+<i class="fa-solid fa-sun"></i>
+</div>
+</div>
+<div class="card-body">
+<span class="card-tag"><i class="fa-solid fa-clock"></i> 50 Min • Radiance</span>
+<h3 class="card-title">Brightening peel</h3>
+<p class="card-text">
+                Gentle fermented papaya and lactic fruit acids target hyperpigmentation and sun damage to reveal an illuminated, uniform complexion.
+              </p>
+<div class="card-footer">
+<span class="card-price">$130</span>
+<a class="card-link" href="404.html">Book now <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</article>
+<!-- Card 4: Bridal Makeup -->
+<article class="service-card" data-aos="fade-up" data-aos-delay="250">
+<div class="card-arch-frame">
+<img alt="Bridal makeup and luminous skin" class="card-img" loading="lazy" src="assets/unsplash_eY76GCU7Yzc.webp"/>
+<div class="card-leaf-badge" title="Event Glamour">
+<i class="fa-solid fa-heart"></i>
+</div>
+</div>
+<div class="card-body">
+<span class="card-tag"><i class="fa-solid fa-clock"></i> 90 Min • Special Occasion</span>
+<h3 class="card-title">Bridal makeup</h3>
+<p class="card-text">
+                High-definition, photography-ready makeup using clean botanical skincare bases that remain fresh, weightless, and radiant all day.
+              </p>
+<div class="card-footer">
+<span class="card-price">$195</span>
+<a class="card-link" href="404.html">Book now <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</article>
+<!-- Card 5: Hair and Scalp Ritual -->
+<article class="service-card" data-aos="fade-up" data-aos-delay="300">
+<div class="card-arch-frame">
+<img alt="Hair and scalp relaxation massage" class="card-img" loading="lazy" src="assets/unsplash_8xvuEIdzw1Q.webp"/>
+<div class="card-leaf-badge" title="Scalp Wellness">
+<i class="fa-solid fa-feather"></i>
+</div>
+</div>
+<div class="card-body">
+<span class="card-tag"><i class="fa-solid fa-clock"></i> 60 Min • Tension Release</span>
+<h3 class="card-title">Hair and scalp ritual</h3>
+<p class="card-text">
+                Warm rosemary botanical infusion, acupressure neck release, and scalp micro-stimulation to awaken hair follicles and relieve deep stress.
+              </p>
+<div class="card-footer">
+<span class="card-price">$110</span>
+<a class="card-link" href="404.html">Book now <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</article>
+<!-- Card 6: Nail Artistry -->
+<article class="service-card" data-aos="fade-up" data-aos-delay="350">
+<div class="card-arch-frame">
+<img alt="Nail artistry and clean manicure" class="card-img" loading="lazy" src="assets/unsplash_THnjMTXuFuk.webp"/>
+<div class="card-leaf-badge" title="Clean Nail Care">
+<i class="fa-solid fa-hand-sparkles"></i>
+</div>
+</div>
+<div class="card-body">
+<span class="card-tag"><i class="fa-solid fa-clock"></i> 45 Min • Manicure</span>
+<h3 class="card-title">Nail artistry</h3>
+<p class="card-text">
+                Waterless botanical cuticle care, organic hand massage with avocado butter, and elegant non-toxic, long-wear breathable gel polish.
+              </p>
+<div class="card-footer">
+<span class="card-price">$75</span>
+<a class="card-link" href="404.html">Book now <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</article>
+<!-- Card 7: Skin Rejuvenation -->
+<article class="service-card" data-aos="fade-up" data-aos-delay="400">
+<div class="card-arch-frame">
+<img alt="Skin rejuvenation collagen treatment" class="card-img" loading="lazy" src="assets/unsplash_ajDUxve6clA.webp"/>
+<div class="card-leaf-badge" title="Collagen Boost">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+</div>
+</div>
+<div class="card-body">
+<span class="card-tag"><i class="fa-solid fa-clock"></i> 75 Min • Firming &amp; Lift</span>
+<h3 class="card-title">Skin rejuvenation</h3>
+<p class="card-text">
+                Microcurrent myofascial contouring paired with amber LED phototherapy and plant stem cells to stimulate natural collagen synthesis.
+              </p>
+<div class="card-footer">
+<span class="card-price">$180</span>
+<a class="card-link" href="404.html">Book now <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</article>
+<!-- Card 8: Hydra and Scalp Ritual Fusion -->
+<article class="service-card" data-aos="fade-up" data-aos-delay="450">
+<div class="card-arch-frame">
+<img alt="Hydra and scalp complete ritual fusion" class="card-img" loading="lazy" src="assets/unsplash_Hki-3eGBi9c.webp"/>
+<div class="card-leaf-badge" title="Full Ritual Fusion">
+<i class="fa-solid fa-gem"></i>
+</div>
+</div>
+<div class="card-body">
+<span class="card-tag"><i class="fa-solid fa-clock"></i> 90 Min • Dual Sanctuary</span>
+<h3 class="card-title">Hydra &amp; scalp ritual</h3>
+<p class="card-text">
+                The pinnacle of holistic restoration: our signature HydraGlow facial coupled with an aromatic warm botanical scalp bath and tension melt.
+              </p>
+<div class="card-footer">
+<span class="card-price">$225</span>
+<a class="card-link" href="404.html">Book now <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- ==============================================
+         3. HOW BOOKING WORKS
+         ============================================== -->
+<section class="booking-process-section" id="booking-process">
+<div class="container">
+<div class="section-title-wrap" data-aos="fade-right">
+<div class="coral-accent-bar"></div>
+<h2 class="section-title">How booking works</h2>
+<p class="section-subtitle">
+            Seamless, transparent, and completely customized from your initial online reservation to your post-treatment glow check-in.
+          </p>
+</div>
+<!-- 4 Step Process Bar -->
+<div class="booking-timeline" data-aos="fade-up" data-aos-duration="900">
+<div class="booking-track-line"></div>
+<div class="booking-steps-grid">
+<!-- Step 1 -->
+<div class="booking-step-node">
+<div class="node-circle">01</div>
+<h3 class="node-title">Choose</h3>
+<p class="node-desc">Select your desired ritual &amp; convenient time online.</p>
+</div>
+<!-- Step 2 -->
+<div class="booking-step-node">
+<div class="node-circle">02</div>
+<h3 class="node-title">Consult</h3>
+<p class="node-desc">Complete a 2-minute digital skin profile prior to arrival.</p>
+</div>
+<!-- Step 3 -->
+<div class="booking-step-node">
+<div class="node-circle">03</div>
+<h3 class="node-title">Treat</h3>
+<p class="node-desc">Sink into our private, tranquil esthetic sanctuary.</p>
+</div>
+<!-- Step 4 -->
+<div class="booking-step-node">
+<div class="node-circle">04</div>
+<h3 class="node-title">Follow-up</h3>
+<p class="node-desc">Receive your tailored home routine &amp; personalized advice.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+         4. PACKAGES SECTION (Dark Container)
+         ============================================== -->
+<section class="packages-section" id="packages">
+<div class="container">
+<div class="packages-card-dark" data-aos="fade-up" data-aos-duration="1000">
+<div class="packages-header">
+<div class="coral-accent-bar"></div>
+<h2 class="packages-title">Packages</h2>
+<p class="packages-subtitle">
+              Curated treatment bundles and memberships for continuous barrier health, seasonal resets, and milestones. Save up to 25% compared to single bookings.
+            </p>
+</div>
+<div class="packages-grid">
+<!-- Package 1: Glow Starter -->
+<div class="package-item" data-aos="fade-up" data-aos-delay="100">
+<div class="package-leaf-tag"><i class="fa-solid fa-leaf"></i></div>
+<span class="package-badge">POPULAR FOR NEWCOMERS</span>
+<h3 class="package-name">Glow Starter</h3>
+<p class="package-desc">The essential 3-session series to reset your moisture barrier and eliminate persistent dullness.</p>
+<ul class="package-features">
+<li><i class="fa-solid fa-check"></i> 2x HydraGlow Infusion Facials (60 min)</li>
+<li><i class="fa-solid fa-check"></i> 1x Bio-Enzyme Brightening Peel (50 min)</li>
+<li><i class="fa-solid fa-check"></i> Complimentary travel-size Dew Serum</li>
+<li><i class="fa-solid fa-check"></i> Digital skin hydration tracking</li>
+</ul>
+<div class="package-price-wrap">
+<span class="pkg-price">$380</span>
+<span class="pkg-save">Save $75 vs single</span>
+</div>
+<a class="btn btn-outline-light btn-package" href="404.html">Select Package</a>
+</div>
+<!-- Package 2: Monthly Ritual (Featured) -->
+<div class="package-item package-featured" data-aos="fade-up" data-aos-delay="200">
+<div class="package-leaf-tag"><i class="fa-solid fa-star"></i></div>
+<span class="package-badge badge-featured">BEST VALUE MEMBERSHIP</span>
+<h3 class="package-name">Monthly Ritual</h3>
+<p class="package-desc">Continuous glass radiance with recurring seasonal care and member-exclusive botanical perks.</p>
+<ul class="package-features">
+<li><i class="fa-solid fa-check"></i> 1x Bespoke monthly clinical facial of choice</li>
+<li><i class="fa-solid fa-check"></i> 15% off all retail Dew Serum formulas</li>
+<li><i class="fa-solid fa-check"></i> Priority weekend &amp; evening booking slots</li>
+<li><i class="fa-solid fa-check"></i> Free guest pass after 6 consecutive months</li>
+</ul>
+<div class="package-price-wrap">
+<span class="pkg-price">$120 <small>/ month</small></span>
+<span class="pkg-save">Cancel or pause anytime</span>
+</div>
+<a class="btn btn-coral btn-package" href="404.html">Join Membership</a>
+</div>
+<!-- Package 3: Bridal Lift -->
+<div class="package-item" data-aos="fade-up" data-aos-delay="300">
+<div class="package-leaf-tag"><i class="fa-solid fa-heart"></i></div>
+<span class="package-badge">WEDDING COUNTDOWN</span>
+<h3 class="package-name">Bridal Lift</h3>
+<p class="package-desc">An 8-week comprehensive skin preparation program for brides, grooms, and milestone celebrations.</p>
+<ul class="package-features">
+<li><i class="fa-solid fa-check"></i> 4x Progressive HydraGlow &amp; Peel sessions</li>
+<li><i class="fa-solid fa-check"></i> 2x Lymphatic Sculpt &amp; Lift contour facials</li>
+<li><i class="fa-solid fa-check"></i> Wedding-week glow prep &amp; soothing mask</li>
+<li><i class="fa-solid fa-check"></i> Bridal party skincare discount voucher</li>
+</ul>
+<div class="package-price-wrap">
+<span class="pkg-price">$650</span>
+<span class="pkg-save">Save $170 total</span>
+</div>
+<a class="btn btn-outline-light btn-package" href="404.html">Select Package</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+         5. REAL RESULTS (Before / After Showcase)
+         ============================================== -->
+<section class="real-results-section" id="real-results">
+<div class="container">
+<div class="results-grid">
+<!-- Circular Frame Graphic -->
+<div class="results-visual" data-aos="zoom-in" data-aos-duration="900">
+<div class="results-circle-outer">
+<div class="results-dashed-ring"></div>
+<div class="results-circle-inner">
+<img alt="Marion client before and after 6-week skin barrier transformation" class="results-img" loading="lazy" src="assets/results_before_after.webp"/>
+</div>
+<div class="results-tag-pill">
+<i class="fa-solid fa-certificate"></i>
+<span>6-Week Clinical Transformation</span>
+</div>
+</div>
+</div>
+<!-- Story & Stats -->
+<div class="results-content" data-aos="fade-left" data-aos-duration="900">
+<div class="monogram-backdrop">R</div>
+<div class="coral-accent-bar"></div>
+<span class="spotlight-eyebrow">UNRETOUCHED CLINICAL PHOTOGRAPHY</span>
+<h2 class="spotlight-title">Real results</h2>
+<p class="spotlight-lead">
+              Our client Marion (age 58) suffered from persistent seasonal barrier erosion, chronic facial flushing, and surface dehydration. After completing our 6-week Barrier Lipid protocol, her skin's moisture mantle was fully restored with zero irritation.
+            </p>
+<div class="results-metrics-grid">
+<div class="metric-card">
+<span class="metric-val">-78%</span>
+<span class="metric-lbl">Visible Redness</span>
+</div>
+<div class="metric-card">
+<span class="metric-val">+94%</span>
+<span class="metric-lbl">Hydration Held</span>
+</div>
+<div class="metric-card">
+<span class="metric-val">100%</span>
+<span class="metric-lbl">Barrier Calmed</span>
+</div>
+</div>
+<blockquote class="results-quote">
+<i class="fa-solid fa-quote-left"></i>
+<span>“I spent years covering up dry, reactive skin with thick makeup. Now I walk out the door every day with just the Dew Serum and SPF.”</span>
+<cite>— Marion H., Verified Client</cite>
+</blockquote>
+</div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+         6. QUESTIONS WE HEAR A LOT (FAQ Accordion)
+         ============================================== -->
+<section class="faq-section" id="faq">
+<div class="container">
+<div class="section-title-wrap text-center" data-aos="fade-up">
+<div class="coral-accent-bar" style="margin-left: auto; margin-right: auto;"></div>
+<h2 class="section-title">Questions we hear a lot</h2>
+<p class="section-subtitle">
+            Everything you need to know about preparing for your session, clinical safety, and appointment etiquette.
+          </p>
+</div>
+<div class="faq-accordion" data-aos="fade-up" data-aos-delay="150">
+<!-- Item 1 -->
+<div class="faq-item active">
+<button aria-expanded="true" class="faq-question">
+<span>Safe for sensitive skin?</span>
+<i class="fa-solid fa-plus faq-toggle-icon"></i>
+</button>
+<div class="faq-answer">
+<p>
+                Every treatment is bio-compatible and formulated without synthetic fragrance, harsh acids, or drying alcohols. We begin every first-time appointment with a patch test and barrier assessment to ensure complete safety and comfort.
+              </p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="faq-item">
+<button aria-expanded="false" class="faq-question">
+<span>How long is a session?</span>
+<i class="fa-solid fa-plus faq-toggle-icon"></i>
+</button>
+<div class="faq-answer">
+<p>
+                Standard clinical facials range from 50 to 75 minutes. Multi-service packages or bridal rituals run between 90 and 120 minutes. We recommend arriving 10 minutes prior to enjoy a complementary warm botanical tea.
+              </p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="faq-item">
+<button aria-expanded="false" class="faq-question">
+<span>Can I wear makeup after?</span>
+<i class="fa-solid fa-plus faq-toggle-icon"></i>
+</button>
+<div class="faq-answer">
+<p>
+                We suggest allowing your freshly treated skin to breathe and absorb active hydration for at least 6 to 12 hours. If you have an event immediately following, we can apply an ultra-light, clean mineral SPF tint.
+              </p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="faq-item">
+<button aria-expanded="false" class="faq-question">
+<span>What is your cancellation policy?</span>
+<i class="fa-solid fa-plus faq-toggle-icon"></i>
+</button>
+<div class="faq-answer">
+<p>
+                We kindly ask for at least 24 hours' notice for cancellations or rescheduling so we may accommodate guests on our waitlist. Late cancellations within 12 hours may be subject to a 50% reservation fee.
+              </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==============================================
+         7. READY WHEN YOU ARE (CTA Section)
+         ============================================== -->
+<section class="ready-cta-section" id="ready-cta">
+<div class="container">
+<div class="ready-card-dark" data-aos="zoom-in" data-aos-duration="800">
+<div class="ready-inner">
+<div class="coral-accent-bar" style="margin-left: auto; margin-right: auto;"></div>
+<h2 class="ready-title">Ready when you are</h2>
+<p class="ready-subtitle">
+              Reserve your personalized treatment in less than two minutes. Experience unhurried, mindful skincare delivered by master estheticians.
+            </p>
+<a class="btn btn-coral btn-hero" href="404.html">
+<i class="fa-solid fa-calendar-check"></i>
+<span>Book now</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- ==============================================
+       8. FOOTER SECTION
+       ============================================== -->
+<footer class="site-footer" id="contact">
+<div class="container">
+<!-- Footer Main Columns -->
+<div class="footer-top-grid">
+<!-- Column 1: Brand & Bio -->
+<div class="footer-col footer-col-brand">
+<a aria-label="Stackly Skincare Home" class="footer-brand-logo" href="index.html#hero">
+<img alt="Stackly Skincare Logo" class="footer-logo" src="assets/Brand-logo.webp"/>
+</a>
+<p class="footer-bio">
+            Pioneering biocompatible, microbiome-friendly skincare formulated to nourish your lipid barrier and celebrate your authentic, unfiltered radiance every single day.
+          </p>
+<div class="footer-social-links">
+<a aria-label="Stackly on Instagram" href="404.html"><i class="fa-brands fa-instagram"></i></a>
+<a aria-label="Stackly on Facebook" href="404.html"><i class="fa-brands fa-facebook-f"></i></a>
+<a aria-label="Stackly on Pinterest" href="404.html"><i class="fa-brands fa-pinterest-p"></i></a>
+<a aria-label="Stackly on TikTok" href="404.html"><i class="fa-brands fa-tiktok"></i></a>
+<a aria-label="Stackly on YouTube" href="404.html"><i class="fa-brands fa-youtube"></i></a>
+</div>
+</div>
+<!-- Column 2: Quick Links -->
+<div class="footer-col">
+<h4 class="footer-heading">Quick Links</h4>
+<ul class="footer-links">
+<li><a href="index.html#hero"><i class="fa-solid fa-angle-right"></i> Home</a></li>
+<li><a href="Service.html"><i class="fa-solid fa-angle-right"></i> Service</a></li>
+<li><a href="About.html"><i class="fa-solid fa-angle-right"></i> About</a></li>
+<li><a href="Blog.html"><i class="fa-solid fa-angle-right"></i> Blog</a></li>
+<li><a href="Contact.html"><i class="fa-solid fa-angle-right"></i> Contact</a></li>
+</ul>
+</div>
+<!-- Column 3: Clinical Treatments -->
+<div class="footer-col">
+<h4 class="footer-heading">Treatments</h4>
+<ul class="footer-links">
+<li><a href="404.html"><i class="fa-solid fa-angle-right"></i> HydraGlow Infusion</a></li>
+<li><a href="404.html"><i class="fa-solid fa-angle-right"></i> Lymphatic Sculpt &amp; Lift</a></li>
+<li><a href="404.html"><i class="fa-solid fa-angle-right"></i> Bio-Enzyme Oxygen Peel</a></li>
+<li><a href="404.html"><i class="fa-solid fa-angle-right"></i> Barrier Lipid Restoration</a></li>
+<li><a href="404.html"><i class="fa-solid fa-angle-right"></i> Hair &amp; Scalp Immersion</a></li>
+<li><a href="404.html"><i class="fa-solid fa-angle-right"></i> Bridal Radiance Packages</a></li>
+</ul>
+</div>
+<!-- Column 4: Contact & Studio Info -->
+<div class="footer-col">
+<h4 class="footer-heading">Visit Our Sanctuary</h4>
+<ul class="footer-contact-list">
+<li>
+<i class="fa-solid fa-location-dot"></i>
+<span>482 Radiant Boulevard, Suite 402, Soho, New York, NY 10013</span>
+</li>
+<li>
+<i class="fa-solid fa-phone"></i>
+<a href="404.html">+1 (800) 456-GLOW (4569)</a>
+</li>
+<li>
+<i class="fa-solid fa-envelope"></i>
+<a href="404.html">concierge@stacklyskincare.com</a>
+</li>
+<li>
+<i class="fa-solid fa-clock"></i>
+<span>Monday – Saturday: 9:00 AM – 7:00 PM EST</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Footer Bottom Bar -->
+<div class="footer-bottom-bar">
+<p class="copyright-text">
+          © 2026 STACKLY SKIN CARE. All rights reserved. Crafted with clean intention.
+        </p>
+<div class="footer-legal-links">
+<a href="404.html">Privacy Policy</a>
+<a href="404.html">Terms of Service</a>
+<a href="404.html">Shipping &amp; Returns</a>
+<a href="404.html">Accessibility</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- ==============================================
+       LOGIN MODAL DIALOG
+       ============================================== -->
+<div aria-hidden="true" aria-labelledby="login-modal-title" class="login-modal" id="login-modal" role="dialog">
+<div class="login-modal-overlay" id="login-modal-overlay"></div>
+<div class="login-modal-dialog">
+<button aria-label="Close login dialog" class="login-modal-close" id="login-modal-close">
+<i class="fa-solid fa-xmark"></i>
+</button>
+<div class="login-modal-header text-center">
+<img alt="Stackly Skincare Logo" class="login-modal-logo" src="assets/Brand-logo.webp"/>
+<h3 class="login-modal-title" id="login-modal-title">Welcome Back</h3>
+<p class="login-modal-subtitle">Sign in to your account to manage orders, booking rituals, and rewards.</p>
+</div>
+<form class="login-form" id="login-form">
+<div class="login-form-group">
+<label for="login-email">Email Address</label>
+<div class="input-with-icon">
+<i class="fa-solid fa-envelope"></i>
+<input autocomplete="email" id="login-email" placeholder="name@example.com" required="" type="email"/>
+</div>
+</div>
+<div class="login-form-group">
+<div class="label-with-link">
+<label for="login-password">Password</label>
+<a class="forgot-link" href="404.html">Forgot password?</a>
+</div>
+<div class="input-with-icon">
+<i class="fa-solid fa-lock"></i>
+<input autocomplete="current-password" id="login-password" placeholder="••••••••" required="" type="password"/>
+</div>
+</div>
+<div class="login-remember-row">
+<label class="remember-checkbox-label">
+<input checked="" id="remember-me" type="checkbox"/>
+<span>Remember me for 30 days</span>
+</label>
+</div>
+<button class="btn btn-coral btn-modal-submit" type="submit">
+<i class="fa-solid fa-arrow-right-to-bracket"></i>
+<span>Sign In</span>
+</button>
+<div class="login-feedback" id="login-feedback" style="display: none;">
+<i class="fa-solid fa-circle-check"></i>
+<span>Login successful! Welcome back to your glow space.</span>
+</div>
+</form>
+<div class="login-modal-footer text-center">
+<p>Don't have an account yet? <a class="signup-link" href="Signup.html">Create an Account</a></p>
+<p style="margin-top: 6px;"><a href="Login.html" style="font-size: 0.82rem; color: var(--color-coral); text-decoration: underline;">Open Full Login Page →</a></p>
+</div>
+</div>
+</div>
+<!-- Back to Top Floating Button -->
+<button aria-label="Back to top of page" class="back-to-top" id="back-to-top">
+<i class="fa-solid fa-arrow-up"></i>
+</button>
+<!-- ==============================================
+       JAVASCRIPT LIBRARIES & SCRIPTS
+       ============================================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
