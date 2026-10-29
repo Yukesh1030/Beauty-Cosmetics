@@ -159,48 +159,58 @@ document.addEventListener('DOMContentLoaded', () => {
       gsap.registerPlugin(ScrollTrigger);
     }
 
-    // A. Hero Section Entrance Animation
+    // A. Hero Section Entrance Animation (Glitch-free, fail-safe with clearProps)
     const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-    heroTl.from('.hero-badge, .blog-hero-badge, .contact-hero-badge', {
-      opacity: 0,
-      y: -20,
-      duration: 0.6,
-      delay: 0.2
-    })
-    .from('.hero-heading, .blog-hero-title, .contact-hero-title', {
-      opacity: 0,
-      y: 30,
-      duration: 0.8
-    }, '-=0.4')
-    .from('.hero-subtext, .blog-hero-subtext, .contact-hero-subtext', {
-      opacity: 0,
-      y: 20,
-      duration: 0.7
-    }, '-=0.5')
-    .from('.hero-actions .btn, .blog-hero-actions .btn, .contact-hero-actions .btn', {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      stagger: 0.15
-    }, '-=0.4')
-    .from('.hero-trust-bar .trust-item, .blog-hero-stats .guarantee-item, .contact-hero-guarantees .guarantee-item', {
-      opacity: 0,
-      y: 15,
-      duration: 0.5,
-      stagger: 0.1
-    }, '-=0.3')
-    .from('.hero-graphic-stage, .blog-hero-visual, .contact-hero-visual', {
-      opacity: 0,
-      scale: 0.92,
-      duration: 1
-    }, '-=1.2')
-    .from('.floating-badge', {
-      opacity: 0,
-      y: 20,
-      duration: 0.6,
-      stagger: 0.2
-    }, '-=0.5');
+    const heroBadges = '.hero-badge, .service-hero-badge, .about-hero-badge, .blog-hero-badge, .contact-hero-badge';
+    const heroHeadings = '.hero-heading, .service-hero-title, .about-hero-title, .blog-hero-title, .contact-hero-title';
+    const heroSubtexts = '.hero-subtext, .service-hero-subtext, .about-hero-subtext, .blog-hero-subtext, .contact-hero-subtext';
+    const heroActionButtons = '.hero-actions .btn, .service-hero-actions .btn, .about-hero-actions .btn, .blog-hero-actions .btn, .contact-hero-actions .btn';
+    const heroTrusts = '.hero-trust-bar .trust-item, .service-hero-guarantee .guarantee-item, .about-hero-badges .about-badge, .blog-hero-stats .guarantee-item, .contact-hero-guarantees .guarantee-item';
+
+    heroTl.fromTo(heroBadges,
+      { opacity: 0, y: -16 },
+      { opacity: 1, y: 0, duration: 0.5, delay: 0.1, clearProps: 'all' }
+    )
+    .fromTo(heroHeadings,
+      { opacity: 0, y: 24 },
+      { opacity: 1, y: 0, duration: 0.6, clearProps: 'all' },
+      '-=0.3'
+    )
+    .fromTo(heroSubtexts,
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.5, clearProps: 'all' },
+      '-=0.35'
+    )
+    .fromTo(heroActionButtons,
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.5, stagger: 0.08, clearProps: 'all' },
+      '-=0.3'
+    )
+    .fromTo(heroTrusts,
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.45, stagger: 0.06, clearProps: 'all' },
+      '-=0.25'
+    )
+    .fromTo('.hero-graphic-stage, .service-hero-visual, .about-hero-visual, .blog-hero-visual, .contact-hero-visual',
+      { opacity: 0, scale: 0.94 },
+      { opacity: 1, scale: 1, duration: 0.7, clearProps: 'all' },
+      '-=0.8'
+    )
+    .fromTo('.floating-badge',
+      { opacity: 0, y: 16 },
+      { opacity: 1, y: 0, duration: 0.5, stagger: 0.15, clearProps: 'all' },
+      '-=0.4'
+    );
+
+    // Fail-safe: unconditionally ensure hero buttons are visible even if GSAP is throttled by the browser
+    setTimeout(() => {
+      document.querySelectorAll(heroActionButtons).forEach(btn => {
+        btn.style.opacity = '1';
+        btn.style.visibility = 'visible';
+        btn.style.transform = 'none';
+      });
+    }, 350);
 
     // B. Floating Badges Gentle Idle Levitation
     gsap.to('.badge-top-right, .sphere-badge', {
