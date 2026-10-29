@@ -415,6 +415,26 @@
       } catch (err) {
         console.warn('GSAP animation skipped:', err);
       }
+
+      // Brand logo directs to top AdminDashboard/ClientDashboard with respect to role
+      const brandLogo404 = document.querySelector('.page-404-header a[aria-label="Stackly Home"]');
+      if (brandLogo404) {
+        brandLogo404.addEventListener('click', (e) => {
+          try {
+            const raw = localStorage.getItem('stackly_auth_user') || sessionStorage.getItem('stackly_auth_user');
+            if (raw) {
+              const auth = JSON.parse(raw);
+              if (auth && auth.role === 'Admin') {
+                e.preventDefault();
+                window.location.href = 'AdminDashboard.html';
+              } else if (auth && (auth.role === 'Client' || auth.role === 'Customer')) {
+                e.preventDefault();
+                window.location.href = 'ClientDashboard.html';
+              }
+            }
+          } catch(err) {}
+        });
+      }
     });
   </script>
 

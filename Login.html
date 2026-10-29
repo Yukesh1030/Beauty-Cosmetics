@@ -722,6 +722,26 @@
           }, 900);
         });
       }
+
+      // Brand logo directs to top AdminDashboard/ClientDashboard with respect to role
+      const authLogoLink = document.querySelector('.auth-header a[aria-label="Stackly Skincare Home"]');
+      if (authLogoLink) {
+        authLogoLink.addEventListener('click', (e) => {
+          try {
+            const raw = localStorage.getItem('stackly_auth_user') || sessionStorage.getItem('stackly_auth_user');
+            if (raw) {
+              const auth = JSON.parse(raw);
+              if (auth && auth.role === 'Admin') {
+                e.preventDefault();
+                window.location.href = 'AdminDashboard.html';
+              } else if (auth && (auth.role === 'Client' || auth.role === 'Customer')) {
+                e.preventDefault();
+                window.location.href = 'ClientDashboard.html';
+              }
+            }
+          } catch(err) {}
+        });
+      }
     });
   </script>
 

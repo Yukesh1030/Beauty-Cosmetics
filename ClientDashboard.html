@@ -678,7 +678,7 @@ input:focus, select:focus, textarea:focus {
 
 <aside class="side" id="side">
   <div class="sidebar-brand-box">
-    <a href="404.html" class="sidebar-brand-link" title="Return to Storefront">
+    <a href="ClientDashboard.html" class="sidebar-brand-link" id="sidebarBrandLink" title="Stackly Client Dashboard - Home">
       <div class="logo"><img src="./assets/Brand-logo.webp" alt="Stackly Skincare Logo"></div>
     </a>
     <div class="dashboard-role-badge">
@@ -696,9 +696,9 @@ input:focus, select:focus, textarea:focus {
   </nav>
 
   <div class="sidebar-bottom">
-    <a href="404.html" class="sidebar-back-link" title="Return to Storefront">
+    <a href="index.html" class="sidebar-back-link" id="sidebarBackHomeLink" title="Back to Home">
       <i class="fa-solid fa-arrow-left"></i>
-      <span>Back to Store</span>
+      <span>Back to Home</span>
     </a>
     <button class="out" id="logoutBtn">
       <i class="fa-solid fa-right-from-bracket"></i>
@@ -1173,6 +1173,47 @@ document.querySelectorAll('.day-card').forEach(day => {
 
 gsap.fromTo('.side .nav, .side .out, .sidebar-back-link',{x:-20,opacity:0},{x:0,opacity:1,duration:.5,stagger:.05,ease:'power2.out',clearProps:'all'});
 
+// Function to resolve top dashboard URL with respect to user role
+function getDashboardUrlByRole() {
+  try {
+    const raw = localStorage.getItem('stackly_auth_user') || sessionStorage.getItem('stackly_auth_user');
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.role) {
+        const r = parsed.role.toString().toLowerCase();
+        if (r.includes('admin')) return 'AdminDashboard.html';
+        if (r.includes('client') || r.includes('customer') || r.includes('user')) return 'ClientDashboard.html';
+      }
+    }
+  } catch(e) {}
+  return 'ClientDashboard.html';
+}
+
+// Brand-logo click handler: direct to top AdminDashboard/ClientDashboard with respect to role
+const sidebarBrandLink = document.querySelector('.sidebar-brand-link');
+if (sidebarBrandLink) {
+  sidebarBrandLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    const dest = getDashboardUrlByRole();
+    if (dest.includes('ClientDashboard')) {
+      go('dash');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', '#dash');
+    } else {
+      window.location.href = dest;
+    }
+  });
+}
+
+// "Back to Home" menu handler: direct to index.html
+const sidebarBackHomeLink = document.querySelector('.sidebar-back-link');
+if (sidebarBackHomeLink) {
+  sidebarBackHomeLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.location.href = 'index.html';
+  });
+}
+
 // Sync dynamic logged-in user email into top-right badge
 function syncUserEmail() {
   let email = '';
@@ -1299,6 +1340,16 @@ document.addEventListener('click', (e) => {
     return;
   }
 
+  // 1b. Brand logo directs to top AdminDashboard/ClientDashboard with respect to role!
+  if (e.target.closest('.sidebar-brand-link') || e.target.closest('#sidebarBrandLink')) {
+    return;
+  }
+
+  // 1c. "Back to Home" menu directs to index.html!
+  if (e.target.closest('.sidebar-back-link') || e.target.closest('#sidebarBackHomeLink')) {
+    return;
+  }
+
   // 2. Mobile drawer controls
   if (e.target.closest('#burger') || e.target.closest('#ov') || e.target.closest('#sidebar-close-btn')) {
     return;
@@ -1334,7 +1385,7 @@ document.addEventListener('click', (e) => {
     return;
   }
 
-  // 9. All other <a> tags and <button> clicks anywhere in the page direct to 404.html
+  // 9. All other non-whitelisted button and anchor clicks direct to 404.html
   const clickable = e.target.closest('a') || e.target.closest('button') || e.target.closest('.btn');
   if (clickable) {
     e.preventDefault();
