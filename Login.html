@@ -9,7 +9,11 @@
   <title>Login | Stackly Skincare Studio</title>
 
   <!-- Favicon -->
-  <link rel="icon" type="image/webp" href="assets/Brand-logo.webp">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/Favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/Favicon-16x16.png">
+<link rel="icon" type="image/webp" href="assets/Favicon.webp">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/Favicon-180x180.png">
 
   <!-- Google Fonts: Playfair Display & Plus Jakarta Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -495,6 +499,59 @@
   </style>
 </head>
 <body>
+<!-- ==============================================
+     STACKLY 1-SECOND LUXURY BRAND PRELOADER
+     ============================================== -->
+<style id="stackly-preloader-css">
+.stackly-preloader{position:fixed;inset:0;width:100vw;height:100vh;background-color:#06121A;z-index:999999;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .4s cubic-bezier(.4,0,.2,1),visibility .4s ease;overflow:hidden}
+.stackly-preloader.preloader-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.preloader-content{display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:2}
+.preloader-icon-wrap{position:relative;width:86px;height:86px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.preloader-logo-icon{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(248,29,67,.5));animation:preloaderPulse 1.2s ease-in-out infinite alternate}
+.preloader-ring{position:absolute;inset:0;border-radius:50%;border:2px solid rgba(255,255,255,.08);border-top-color:#F81D43;border-right-color:rgba(229,184,105,.7);animation:preloaderSpin .9s linear infinite}
+.preloader-brand-title{font-family:'DM Sans','Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:800;letter-spacing:4px;color:#FFFFFF;margin-bottom:18px;text-transform:uppercase;opacity:.95}
+.preloader-bar-wrap{width:140px;height:3px;background:rgba(255,255,255,.1);border-radius:999px;overflow:hidden;position:relative}
+.preloader-bar{position:absolute;top:0;left:0;height:100%;width:0%;background:linear-gradient(90deg,#F81D43,#E5B869);border-radius:999px;animation:preloaderProgress 1s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes preloaderPulse{0%{transform:scale(.95);filter:drop-shadow(0 0 10px rgba(248,29,67,.4))}100%{transform:scale(1.05);filter:drop-shadow(0 0 22px rgba(248,29,67,.85))}}
+@keyframes preloaderSpin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+@keyframes preloaderProgress{0%{width:0%}100%{width:100%}}
+</style>
+<div class="stackly-preloader" id="stackly-preloader" aria-label="Loading Stackly Skincare">
+  <div class="preloader-content">
+    <div class="preloader-icon-wrap">
+      <img src="assets/Favicon.png" alt="Stackly Icon" class="preloader-logo-icon">
+      <div class="preloader-ring"></div>
+    </div>
+    <div class="preloader-brand-title">STACKLY</div>
+    <div class="preloader-bar-wrap">
+      <div class="preloader-bar"></div>
+    </div>
+  </div>
+</div>
+<script>
+  (function() {
+    var start = Date.now();
+    function dismiss() {
+      var wait = Math.max(0, 1000 - (Date.now() - start));
+      setTimeout(function() {
+        var p = document.getElementById('stackly-preloader');
+        if (p) {
+          p.classList.add('preloader-hidden');
+          setTimeout(function() {
+            if (p && p.parentNode) p.parentNode.removeChild(p);
+          }, 450);
+        }
+      }, wait);
+    }
+    if (document.readyState === 'complete') {
+      dismiss();
+    } else {
+      window.addEventListener('load', dismiss);
+      setTimeout(dismiss, 1000); // 1-second fallback
+    }
+  })();
+</script>
+
 
   <!-- Ambient Decorative Background -->
   <div class="auth-bg-layer" aria-hidden="true">
