@@ -3232,7 +3232,13 @@ button, input {
   padding: 56px 48px;
   box-shadow: var(--shadow-sm);
   border: 1px solid rgba(255, 255, 255, 0.8);
-  max-width: 800px;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.join-card-box .coral-accent-bar {
+  margin: 0 auto 16px;
 }
 
 .join-title {
@@ -3242,14 +3248,122 @@ button, input {
   color: var(--color-text-dark);
   line-height: 1.2;
   margin-bottom: 14px;
+  text-align: center;
 }
 
 .join-subtitle {
   font-size: 1.02rem;
   color: var(--color-text-muted);
   line-height: 1.7;
-  margin-bottom: 32px;
+  margin: 0 auto 32px;
   max-width: 620px;
+  text-align: center;
+}
+
+/* Join Us Email Form */
+.join-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  max-width: 520px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.join-form-group {
+  position: relative;
+  flex-grow: 1;
+}
+
+.join-form-icon {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  color: #8C9FA8;
+  font-size: 1.05rem;
+}
+
+.join-email-input {
+  width: 100%;
+  padding: 15px 20px 15px 48px;
+  background-color: #FAF5F2;
+  border: 1.5px solid rgba(6, 18, 26, 0.12);
+  border-radius: var(--radius-pill);
+  color: var(--color-text-dark);
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: var(--transition-smooth);
+}
+
+.join-email-input:focus {
+  outline: none;
+  background-color: #FFFFFF;
+  border-color: var(--color-coral);
+  box-shadow: 0 0 0 3px rgba(248, 29, 67, 0.2);
+}
+
+.join-email-input.input-error {
+  border-color: var(--color-coral) !important;
+  background-color: #FFF5F6 !important;
+  box-shadow: 0 0 0 3px rgba(248, 29, 67, 0.22) !important;
+}
+
+.join-error-msg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--color-coral);
+  background-color: rgba(248, 29, 67, 0.08);
+  border: 1px solid rgba(248, 29, 67, 0.35);
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-top: 14px;
+  animation: joinErrorFadeIn 0.25s ease;
+}
+
+.join-error-msg i {
+  font-size: 0.95rem;
+  color: var(--color-coral);
+}
+
+@keyframes joinErrorFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-join {
+  padding: 15px 32px;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.join-feedback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: rgba(114, 226, 174, 0.15);
+  color: #0f8650;
+  border: 1px solid rgba(114, 226, 174, 0.5);
+  padding: 14px 24px;
+  border-radius: var(--radius-pill);
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin-top: 16px;
 }
 
 /* Responsive Overrides for About Page */
@@ -4887,7 +5001,8 @@ button, input {
   /* Actions stacked on narrow screens */
   .hero-actions,
   .blog-hero-actions,
-  .contact-hero-actions {
+  .contact-hero-actions,
+  .join-form {
     flex-direction: column !important;
     align-items: stretch !important;
     width: 100% !important;
@@ -4896,7 +5011,8 @@ button, input {
 
   .hero-actions .btn,
   .blog-hero-actions .btn,
-  .contact-hero-actions .btn {
+  .contact-hero-actions .btn,
+  .join-form .btn-join {
     width: 100% !important;
     justify-content: center !important;
     text-align: center !important;

@@ -298,6 +298,81 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // -------------------------------------------------------------------------
+  // 5B. ABOUT PAGE "JOIN US" FORM HANDLING (VALIDATION & REDIRECTION TO 404.HTML)
+  // -------------------------------------------------------------------------
+  const joinForm = document.getElementById('join-form');
+  const joinFeedback = document.getElementById('join-feedback');
+  const joinEmailInput = document.getElementById('join-email');
+  const joinBtn = document.getElementById('btn-join');
+  const joinErrorMsg = document.getElementById('join-error-msg');
+  const joinErrorText = document.getElementById('join-error-text');
+
+  function showJoinError(message) {
+    if (joinEmailInput) {
+      joinEmailInput.classList.add('input-error');
+      joinEmailInput.focus();
+    }
+    if (joinErrorMsg && joinErrorText) {
+      joinErrorText.textContent = message;
+      joinErrorMsg.style.display = 'inline-flex';
+      if (typeof gsap !== 'undefined') {
+        gsap.fromTo(joinErrorMsg, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.25 });
+      }
+    }
+  }
+
+  function clearJoinError() {
+    if (joinEmailInput) {
+      joinEmailInput.classList.remove('input-error');
+    }
+    if (joinErrorMsg) {
+      joinErrorMsg.style.display = 'none';
+    }
+  }
+
+  if (joinEmailInput) {
+    joinEmailInput.addEventListener('input', clearJoinError);
+  }
+
+  if (joinForm) {
+    joinForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      clearJoinError();
+      const email = joinEmailInput ? joinEmailInput.value.trim() : '';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (!email) {
+        showJoinError('Please enter your email address to join.');
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        showJoinError('Please enter a valid email address (e.g., name@domain.com).');
+        return;
+      }
+
+      clearJoinError();
+
+      if (joinBtn) {
+        joinBtn.disabled = true;
+        joinBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Joining...</span>';
+      }
+
+      if (joinFeedback) {
+        joinFeedback.style.display = 'inline-flex';
+        joinForm.style.display = 'none';
+        if (typeof gsap !== 'undefined') {
+          gsap.fromTo(joinFeedback, { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.4 });
+        }
+      }
+
+      setTimeout(() => {
+        window.location.href = '404.html';
+      }, 900);
+    });
+  }
+
+  // -------------------------------------------------------------------------
   // 6. LOGIN MODAL FUNCTIONALITY
   // -------------------------------------------------------------------------
   const loginModal = document.getElementById('login-modal');

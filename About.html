@@ -477,10 +477,26 @@
 <p class="join-subtitle">
             We are always looking for passionate licensed estheticians, clean beauty biochemists, and mindful front-of-house coordinators who share our deep love for unfiltered skin.
           </p>
-<a class="btn btn-coral btn-hero" href="404.html">
-<i class="fa-solid fa-briefcase"></i>
-<span>See open roles</span>
-</a>
+<!-- Interactive Career / Join Us Email Form -->
+<form class="join-form" id="join-form" novalidate>
+<div class="join-form-group">
+<i class="fa-solid fa-envelope join-form-icon"></i>
+<input autocomplete="email" class="join-email-input" id="join-email" name="email" placeholder="Enter your email address..." required type="email"/>
+</div>
+<button class="btn btn-coral btn-join" id="btn-join" type="submit">
+<i class="fa-solid fa-paper-plane"></i>
+<span>Join us</span>
+</button>
+</form>
+<!-- In-line Alert Notification with Red Color (#F81D43) -->
+<div class="join-error-msg" id="join-error-msg" role="alert" style="display: none;">
+<i class="fa-solid fa-circle-exclamation"></i>
+<span id="join-error-text">Please enter a valid email address.</span>
+</div>
+<div class="join-feedback" id="join-feedback" style="display: none;">
+<i class="fa-solid fa-circle-check"></i>
+<span>Thank you! Your interest has been received. Redirecting...</span>
+</div>
 </div>
 </div>
 </section>
