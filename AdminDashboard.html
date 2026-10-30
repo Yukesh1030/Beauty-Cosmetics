@@ -307,7 +307,146 @@ tr:hover td{background:#fbf6f4}
 .box h3{margin-bottom:8px}.box p{color:var(--muted);margin-bottom:20px}
 .box .btn{margin:0 4px}
 .toast{position:fixed;right:20px;bottom:20px;background:var(--navy);color:#fff;padding:14px 20px;border-radius:12px;z-index:120;display:none}
-@media(max-width:900px){.side{transform:translateX(-100%)}.side.open{transform:none}.main{margin-left:0;padding:16px}.burger{display:flex}.top h1{font-size:22px}.who span{display:none}.who{padding:6px}}
+
+.hero{background:var(--white);color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.hero h2{font-size:30px;margin-bottom:6px}.hero p{color:var(--muted)}
+.ring{position:relative;width:120px;height:120px}
+.ring svg{transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:'Fraunces',serif;font-size:24px}
+
+
+/* Sidebar User Card (Hamburger menu drawer) */
+.sidebar-user-chip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 14px;
+  border-radius: 14px;
+  margin: 0 16px 18px 16px;
+  transition: all 0.25s ease;
+}
+.sidebar-user-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(248, 29, 67, 0.4);
+}
+.sidebar-user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #F81D43, #d81436);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(248, 29, 67, 0.35);
+}
+.sidebar-user-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+.sidebar-user-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8C9CA8;
+  font-weight: 600;
+}
+.sidebar-user-email {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* Mobile Fixed Header & Sticky Top Bar */
+@media(max-width:900px){
+  .side{transform:translateX(-100%)}
+  .side.open{transform:none}
+  .main{
+    margin-left:0;
+    padding:16px;
+    padding-top:80px;
+    overflow-x:hidden;
+  }
+  .burger{
+    display:flex;
+    width:40px;
+    height:40px;
+    font-size:16px;
+    flex-shrink:0;
+  }
+  .top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 64px;
+    z-index: 35;
+    background: var(--blush);
+    padding: 0 16px;
+    margin: 0;
+    box-shadow: 0 4px 18px rgba(6, 18, 26, 0.08);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-sizing: border-box;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .top h1 {
+    font-size: 20px;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 0;
+  }
+  .who {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 12px 5px 5px !important;
+    max-width: 190px;
+    flex-shrink: 0;
+  }
+  .who span {
+    display: inline-block !important;
+    font-size: 11.5px;
+    max-width: 125px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .hero h2{font-size:24px}
+}
+@media(max-width:600px){
+  .card{padding:16px}
+  .stat strong{font-size:22px}
+  .main{padding:14px;padding-top:74px}
+  .top{height:60px;padding:0 14px}
+  .top h1{font-size:18px}
+  .who{max-width:160px;padding:4px 10px 4px 4px !important}
+  .who span{max-width:100px;font-size:11px}
+}
+@media(max-width:400px){
+  .main{padding:12px;padding-top:68px}
+  .top{height:56px;padding:0 10px;gap:8px}
+  .top h1{font-size:16px}
+  .who{max-width:145px;padding:4px 8px 4px 4px !important}
+  .who span{max-width:90px;font-size:10px}
+}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
 /* Additional Responsive Layout Helpers & Section Components */
@@ -338,11 +477,7 @@ tr:hover td{background:#fbf6f4}
 .tag-pill{display:inline-flex;align-items:center;gap:6px;padding:3px 10px;border-radius:20px;font-size:11.5px;font-weight:600;background:rgba(6,18,26,.06);color:var(--navy)}
 .action-box{border:1.5px dashed var(--blush);border-radius:14px;padding:16px;text-align:center;transition:.2s}
 .action-box:hover{border-color:var(--red);background:#fff9f9}
-@media(max-width:600px){
-  .card{padding:16px}
-  .stat strong{font-size:22px}
-  .who{max-width:160px}
-}
+
 
 
 /* ==========================================================================
@@ -733,6 +868,14 @@ input:focus, select:focus, textarea:focus {
     </div>
   </div>
   
+  <div class="sidebar-user-chip" id="sidebarUserChip" onclick="location.href='404.html'" style="cursor:pointer" title="Signed in user">
+    <div class="sidebar-user-avatar" id="sidebarUserAvatar">AD</div>
+    <div class="sidebar-user-meta">
+      <span class="sidebar-user-label">Signed in as</span>
+      <span class="sidebar-user-email" id="sidebarUserEmail">admin@stackly.com</span>
+    </div>
+  </div>
+  
   <nav>
     <button class="nav active" data-page="dash"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></button>
     <button class="nav" data-page="products"><i class="fa-solid fa-boxes-stacked"></i><span>Product &amp; Inventory</span></button>
@@ -764,6 +907,20 @@ input:focus, select:focus, textarea:focus {
   <!-- PRODUCTS -->
     <!-- DASHBOARD OVERVIEW -->
   <section class="page active" id="dash">
+    <div class="card hero anim" style="margin-bottom: 22px;">
+      <div>
+        <h2 id="greetingName" style="color: black;">Hello, Admin</h2>
+        <p>Studio operations, client consultations, and inventory fulfillment are running smoothly.</p>
+        <button type="button" class="btn" style="margin-top:16px" onclick="location.href='404.html'"><i class="fa-solid fa-boxes-stacked" style="margin-right:6px"></i>Manage inventory</button>
+      </div>
+      <div class="ring" style="color:#040D13">
+        <svg width="120" height="120">
+          <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.15)" stroke-width="10"/>
+          <circle id="ringC" cx="60" cy="60" r="52" fill="none" stroke="#F81D43" stroke-width="10" stroke-linecap="round" stroke-dasharray="326.7" stroke-dashoffset="65.34"/>
+        </svg>
+        <b id="ringT">80%</b>
+      </div>
+    </div>
     <div class="grid g4">
       <div class="card stat anim"><i class="fa-solid fa-receipt"></i><div><strong data-count="328">0</strong><span>Total orders</span></div></div>
       <div class="card stat anim"><i class="fa-solid fa-pump-soap"></i><div><strong data-count="86">0</strong><span>Total products</span></div></div>
@@ -1225,6 +1382,46 @@ function syncUserEmail() {
     const cleanPrefix = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '');
     const initials = cleanPrefix.length >= 2 ? cleanPrefix.slice(0, 2).toUpperCase() : (cleanPrefix.toUpperCase() || 'AD');
     avatarEl.textContent = initials;
+  }
+
+  // Personalize dashboard hero greeting
+  const greetEl = $('#greetingName');
+  if (greetEl && email) {
+    const rawName = email.split('@')[0].split(/[._-]/)[0];
+    const capitalized = rawName.charAt(0).toUpperCase() + rawName.slice(1);
+    greetEl.textContent = 'Hello, ' + capitalized;
+  }
+
+  // Sync to sidebar user card inside hamburger menu
+  const sideEmailEl = $('#sidebarUserEmail');
+  const sideAvatarEl = $('#sidebarUserAvatar');
+  if (sideEmailEl) {
+    sideEmailEl.textContent = email;
+    sideEmailEl.title = email;
+  }
+  if (sideAvatarEl && email) {
+    const cleanPrefix = email.split('@')[0].replace(/[^a-zA-Z0-9]/g, '');
+    const initials = cleanPrefix.length >= 2 ? cleanPrefix.slice(0, 2).toUpperCase() : (cleanPrefix.toUpperCase() || 'AD');
+    sideAvatarEl.textContent = initials;
+  }
+}
+
+// Animate Admin Dashboard ring
+if (typeof gsap !== 'undefined') {
+  const ringC = $('#ringC');
+  const ringT = $('#ringT');
+  if (ringC && ringT) {
+    const targetPct = 80;
+    const ringObj = { v: 0 };
+    gsap.to('#ringC', { strokeDashoffset: 326.7 * (1 - targetPct / 100), duration: 1.2, ease: 'power2.out', delay: 0.3 });
+    gsap.to(ringObj, {
+      v: targetPct,
+      duration: 1.2,
+      delay: 0.3,
+      onUpdate: () => {
+        ringT.textContent = Math.round(ringObj.v) + '%';
+      }
+    });
   }
 }
 syncUserEmail();
