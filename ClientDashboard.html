@@ -805,6 +805,48 @@ input:focus, select:focus, textarea:focus {
   box-shadow: 0 2px 8px rgba(248, 29, 67, 0.35);
 }
 
+/* Custom Luxury Scrollbar in Brand Red (#F81D43) */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+::-webkit-scrollbar-track {
+  background: var(--blush);
+}
+::-webkit-scrollbar-thumb {
+  background: #F81D43;
+  border-radius: 999px;
+  border: 2px solid var(--blush);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.15);
+  transition: background 0.25s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #D91033;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #b50f2c;
+}
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #F81D43 var(--blush);
+}
+
+/* Lenis Animated Luxury Scroll Progress Indicator in #F81D43 */
+.lenis-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3.5px;
+  background: linear-gradient(90deg, #F81D43 0%, #ff4d6d 50%, #F81D43 100%);
+  transform-origin: 0% 50%;
+  transform: scaleX(0);
+  z-index: 99999;
+  pointer-events: none;
+  box-shadow: 0 0 12px rgba(248, 29, 67, 0.65);
+  transition: transform 0.04s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease;
+}
+
 </style>
 </head>
 <body>
@@ -862,7 +904,7 @@ input:focus, select:focus, textarea:focus {
 </script>
 
 
-<aside class="side" id="side">
+<aside class="side" id="side" data-lenis-prevent>
   <div class="sidebar-brand-box">
     <a href="ClientDashboard.html" class="sidebar-brand-link" id="sidebarBrandLink" title="Stackly Client Dashboard - Home">
       <div class="logo"><img src="./assets/Brand-logo.webp" alt="Stackly Skincare Logo"></div>
@@ -1264,11 +1306,12 @@ input:focus, select:focus, textarea:focus {
 <div class="toast" id="toast"></div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="assets/lenis.min.js"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 const titles={dash:'Dashboard',orders:'My Orders',wish:'Wishlist',routine:'My Skincare Routine',profile:'Profile & Support'};
 const side=$('#side'),ov=$('#ov');
-function menu(o){side.classList.toggle('open',o);ov.classList.toggle('show',o)}
+function menu(o){side.classList.toggle('open',o);ov.classList.toggle('show',o);if(window.lenis){o?window.lenis.stop():window.lenis.start();}}
 $('#burger').onclick=()=>menu(!side.classList.contains('open'));
 ov.onclick=()=>menu(false);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){menu(false);$('#modal').classList.remove('show')}});
@@ -1465,6 +1508,44 @@ function syncUserEmail() {
     sideAvatarEl.textContent = initials;
   }
 }
+
+// -------------------------------------------------------------------------
+// LENIS LUXURY SMOOTH SCROLL & #F81D43 SCROLLBAR PROGRESS
+// -------------------------------------------------------------------------
+if (typeof Lenis !== 'undefined') {
+  const lenis = new Lenis({
+    duration: 1.1,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+  });
+  window.lenis = lenis;
+
+  let progressBar = document.getElementById('lenis-scroll-progress');
+  if (!progressBar) {
+    progressBar = document.createElement('div');
+    progressBar.id = 'lenis-scroll-progress';
+    progressBar.className = 'lenis-scroll-progress';
+    document.body.prepend(progressBar);
+  }
+
+  lenis.on('scroll', ({ progress, velocity }) => {
+    if (progressBar) {
+      progressBar.style.transform = `scaleX(${progress})`;
+      const vel = Math.abs(velocity || 0);
+      const glow = Math.min(22, 6 + vel * 1.2);
+      progressBar.style.boxShadow = `0 0 ${glow}px rgba(248, 29, 67, ${Math.min(0.9, 0.55 + vel * 0.04)})`;
+    }
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+}
+
 syncUserEmail();
 
 

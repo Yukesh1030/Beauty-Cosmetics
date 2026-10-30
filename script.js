@@ -18,6 +18,74 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   // -------------------------------------------------------------------------
+  // 0. LENIS LUXURY SMOOTH SCROLL & #F81D43 SCROLL PROGRESS ANIMATION
+  // -------------------------------------------------------------------------
+  let lenis = null;
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1.05,
+      touchMultiplier: 1.6,
+      infinite: false,
+    });
+    window.lenis = lenis;
+
+    // Attach to or create top luxury progress indicator in #F81D43
+    let progressBar = document.getElementById('lenis-scroll-progress');
+    if (!progressBar) {
+      progressBar = document.createElement('div');
+      progressBar.id = 'lenis-scroll-progress';
+      progressBar.className = 'lenis-scroll-progress';
+      document.body.prepend(progressBar);
+    }
+
+    // Lenis scroll event: update progress bar animation with velocity glow
+    lenis.on('scroll', ({ scroll, limit, velocity, progress }) => {
+      if (progressBar) {
+        progressBar.style.transform = `scaleX(${progress})`;
+        const vel = Math.abs(velocity || 0);
+        const glow = Math.min(22, 6 + vel * 1.2);
+        progressBar.style.boxShadow = `0 0 ${glow}px rgba(248, 29, 67, ${Math.min(0.9, 0.55 + vel * 0.04)})`;
+      }
+      handleScroll();
+    });
+
+    // Synchronize with GSAP ScrollTrigger if present
+    if (typeof ScrollTrigger !== 'undefined' && typeof gsap !== 'undefined') {
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      gsap.ticker.lagSmoothing(0);
+    } else {
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+    }
+
+    // Smooth anchor navigation with Lenis
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId && targetId !== '#' && targetId.length > 1 && !targetId.startsWith('#!')) {
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            lenis.scrollTo(targetEl, { offset: -90, duration: 1.2 });
+          }
+        }
+      });
+    });
+  }
+
+
+  // -------------------------------------------------------------------------
   // 1. MOBILE HAMBURGER MENU & DRAWER
   // -------------------------------------------------------------------------
   const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -30,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburgerBtn.setAttribute('aria-expanded', 'true');
     mobileDrawer.classList.add('active');
     mobileDrawer.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('menu-open');
+    document.body.classList.add('menu-open'); if (window.lenis) window.lenis.stop();
   }
 
   function closeMenu() {
@@ -39,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hamburgerBtn.setAttribute('aria-expanded', 'false');
     mobileDrawer.classList.remove('active');
     mobileDrawer.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('menu-open');
+    document.body.classList.remove('menu-open'); if (window.lenis) window.lenis.start();
   }
 
   if (hamburgerBtn && mobileDrawer) {
@@ -130,11 +198,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // Back to top click handler
   const backToTopBtn = document.getElementById('back-to-top');
   if (backToTopBtn) {
-    backToTopBtn.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+    backToTopBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (window.lenis) {
+        window.lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      }
     });
   }
 
